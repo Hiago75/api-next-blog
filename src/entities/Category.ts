@@ -2,7 +2,7 @@ import { Column, CreateDateColumn, Entity, PrimaryColumn, UpdateDateColumn } fro
 import { v4 as uuid } from 'uuid';
 
 @Entity('categories')
-export class Categories {
+export class Category {
   @PrimaryColumn()
   readonly id: string;
 

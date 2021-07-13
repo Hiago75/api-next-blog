@@ -1,10 +1,14 @@
 import express from 'express';
+import categoryRoutes from './routes/categoryRoutes';
+import 'reflect-metadata';
+import './config/database';
 
 class App {
   private _app;
 
   constructor() {
     this._app = express();
+    this.middlewares();
     this.routes();
   }
 
@@ -12,10 +16,12 @@ class App {
     return this._app;
   }
 
+  middlewares() {
+    this.app.use(express.json());
+  }
+
   routes() {
-    this.app.get('/', (_request, response) => {
-      response.json('Hello world');
-    });
+    this.app.use('/category', categoryRoutes);
   }
 }
 

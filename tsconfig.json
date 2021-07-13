@@ -15,10 +15,6 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "strictPropertyInitialization": false,
-    "baseUrl": ".",
-    "paths": {
-      // "@controllers/*": ["./src/controllers/*"] //Just an example
-    }
   },
   "include": [
     "src/**/*"
