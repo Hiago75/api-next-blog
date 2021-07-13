@@ -1,10 +1,5 @@
-import { server } from './server';
+import { server } from '../../src/server';
 import request from 'supertest';
-
-afterAll((done) => {
-  server.close();
-  done();
-});
 
 describe('Test my app server', () => {
   it('should get main route', async () => {
@@ -12,4 +7,9 @@ describe('Test my app server', () => {
 
     expect(res.statusCode).toEqual(200);
   });
+});
+
+afterAll((done) => {
+  server.close();
+  done();
 });
