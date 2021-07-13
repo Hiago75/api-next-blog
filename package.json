@@ -7,6 +7,7 @@
     "build": "babel src --extensions \".js,.ts\" --out-dir dist --copy-files --no-copy-ignored",
     "start": "node dist/server.js",
     "dev": "ts-node-dev src/server.ts -r tsconfig-paths/register --ignore-watch node_modules --transpileOnly --no-notify",
+    "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js",
     "test": "jest",
     "test:watch": "jest --watch"
   },
