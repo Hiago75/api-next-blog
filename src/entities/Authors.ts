@@ -1,5 +1,6 @@
-import { Entity, PrimaryColumn, Column, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+import { Entity, PrimaryColumn, Column, CreateDateColumn, UpdateDateColumn, OneToMany } from 'typeorm';
 import { v4 as uuid } from 'uuid';
+import { Posts } from './Posts';
 
 @Entity('authors')
 export class Authors {
@@ -8,6 +9,9 @@ export class Authors {
 
   @Column()
   name: string;
+
+  @OneToMany((type) => Posts, (author) => Authors)
+  posts: Posts[];
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;
