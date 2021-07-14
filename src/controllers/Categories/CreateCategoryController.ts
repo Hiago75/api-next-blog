@@ -6,7 +6,6 @@ export class CreateCategoryController {
 
   async handle(request: Request, response: Response) {
     const { name } = request.body;
-    console.log(name);
 
     const category = await this.createCategoryService.execute({ name });
 

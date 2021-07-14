@@ -1,5 +1,5 @@
 import express from 'express';
-import categoryRoutes from './routes/categoryRoutes';
+import { categoryRoutes, authorRoutes } from './routes/index';
 import 'reflect-metadata';
 import './config/database';
 
@@ -22,6 +22,7 @@ class App {
 
   routes() {
     this.app.use('/category', categoryRoutes);
+    this.app.use('/author', authorRoutes);
   }
 }
 
