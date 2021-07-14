@@ -1,8 +1,9 @@
 import { Router } from 'express';
-import { CreateAuthorController } from '../controllers/Authors/CreateAuthorController';
-import { CreateAuthorService } from '../services/Authors/CreateAuthorService';
+import { CreateAuthorController } from '../controllers';
+import { CreateAuthorService } from '../services';
 
 const router = Router();
+
 const createAuthorService = new CreateAuthorService();
 const createAuthorController = new CreateAuthorController(createAuthorService);
 

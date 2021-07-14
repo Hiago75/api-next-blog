@@ -21,8 +21,8 @@ class App {
   }
 
   routes() {
-    this.app.use('/category', categoryRoutes);
-    this.app.use('/author', authorRoutes);
+    this.app.use('/categories', categoryRoutes);
+    this.app.use('/authors', authorRoutes);
   }
 }
 
