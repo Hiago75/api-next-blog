@@ -2,6 +2,7 @@ import { Column, CreateDateColumn, Entity, ManyToOne, PrimaryColumn, UpdateDateC
 import { v4 as uuid } from 'uuid';
 import { Authors } from './Authors';
 import { Categories } from './Categories';
+import { Covers } from './Covers';
 
 @Entity('posts')
 export class Posts {
@@ -17,14 +18,14 @@ export class Posts {
   @Column()
   slug: string;
 
-  @Column()
-  cover: string;
-
   @ManyToOne((type) => Categories, (posts) => Posts)
   category: Categories;
 
   @ManyToOne((type) => Authors, (posts) => Posts)
   author: Authors;
+
+  @ManyToOne((type) => Covers, (posts) => posts)
+  cover: Covers;
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;

@@ -1,5 +1,6 @@
-import { Column, CreateDateColumn, Entity, PrimaryColumn, UpdateDateColumn } from 'typeorm';
+import { Column, CreateDateColumn, Entity, OneToMany, PrimaryColumn, UpdateDateColumn } from 'typeorm';
 import { v4 as uuid } from 'uuid';
+import { Posts } from './Posts';
 
 @Entity('covers')
 export class Covers {
@@ -23,6 +24,9 @@ export class Covers {
 
   @Column()
   provider: string;
+
+  @OneToMany((type) => Posts, (cover) => Covers)
+  posts: Posts[];
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;
