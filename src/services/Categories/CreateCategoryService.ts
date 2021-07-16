@@ -5,7 +5,7 @@ import { CategoriesRepositories } from '../../repositories/CategoriesRepositorie
 export class CreateCategoryService {
   async execute({ name }: ICategoryRequestDTO) {
     const categoriesRepositories = getCustomRepository(CategoriesRepositories);
-    // TODO - Create custom error classes
+    // TODO: Create custom error classes
 
     if (!name) {
       throw new Error('Category name is empty');

@@ -1,6 +1,6 @@
 import express from 'express';
 import dotenv from 'dotenv';
-import { categoryRoutes, authorRoutes } from './routes/index';
+import { categoryRoutes, authorRoutes, postsRoutes } from './routes/index';
 import 'reflect-metadata';
 import './config/database';
 
@@ -25,6 +25,7 @@ class App {
   routes() {
     this.app.use('/categories', categoryRoutes);
     this.app.use('/authors', authorRoutes);
+    this.app.use('/posts', postsRoutes);
   }
 }
 
