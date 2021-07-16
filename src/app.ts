@@ -4,6 +4,7 @@ import { categoryRoutes, authorRoutes, postsRoutes } from './routes/index';
 import 'reflect-metadata';
 import './config/database';
 
+// TODO: Create abstract classes for every dependency injection on controllers
 class App {
   private _app;
 
