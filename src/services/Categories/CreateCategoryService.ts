@@ -1,4 +1,5 @@
 import { getCustomRepository } from 'typeorm';
+import { BadRequest } from '../../custom/errors';
 import { ICategoryRequestDTO } from '../../DTOs/ICategoryRequestDTO';
 import { CategoriesRepositories } from '../../repositories/CategoriesRepositories';
 
@@ -8,13 +9,13 @@ export class CreateCategoryService {
     // TODO: Create custom error classes
 
     if (!name) {
-      throw new Error('Category name is empty');
+      throw new BadRequest('Category name is empty');
     }
 
     const categoryAlreadyExists = await categoriesRepositories.findOne({ name });
 
     if (categoryAlreadyExists) {
-      throw new Error('Category already exists');
+      throw new BadRequest('Category already exists');
     }
 
     const category = categoriesRepositories.create({ name });

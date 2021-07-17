@@ -1,18 +1,23 @@
+// TODO: Create abstract classes for every dependency injection on controllers
 import express from 'express';
 import dotenv from 'dotenv';
-import { categoryRoutes, authorRoutes, postRoutes, coverRoutes } from './routes/index';
+
+import 'express-async-errors';
 import 'reflect-metadata';
 import './config/database';
 
-// TODO: Create abstract classes for every dependency injection on controllers
+import { errorHandler } from './middlewares/errorHandler';
+import { categoryRoutes, authorRoutes, postRoutes, coverRoutes } from './routes/index';
+
+dotenv.config();
 class App {
   private _app;
 
   constructor() {
     this._app = express();
-    dotenv.config();
     this.middlewares();
     this.routes();
+    this.errorHandler();
   }
 
   get app() {
@@ -28,6 +33,10 @@ class App {
     this.app.use('/authors', authorRoutes);
     this.app.use('/posts', postRoutes);
     this.app.use('/covers', coverRoutes);
+  }
+
+  errorHandler() {
+    this.app.use(errorHandler);
   }
 }
 

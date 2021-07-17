@@ -1,4 +1,5 @@
 import { getCustomRepository } from 'typeorm';
+import { BadRequest } from '../../custom/errors';
 import { IAuthorRequestDTO } from '../../DTOs/IAuthorRequestDTO';
 import { AuthorsRepositories } from '../../repositories/AuthorsRepositories';
 
@@ -7,7 +8,7 @@ export class CreateAuthorService {
     const authorsRepositories = getCustomRepository(AuthorsRepositories);
 
     if (!name) {
-      throw new Error('Author name is empty');
+      throw new BadRequest('Author name is empty');
     }
 
     const author = authorsRepositories.create({ name });
