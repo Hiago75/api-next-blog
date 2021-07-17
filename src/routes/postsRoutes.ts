@@ -4,6 +4,8 @@ import { CreateCoverService } from '../services';
 import upload from '../config/multer';
 import { CreatePostsService } from '../services/Posts/CreatePostsService';
 import { CreatePostsController } from '../controllers/Posts/CreatePostsController';
+import { ListPostsService } from '../services/Posts/ListPostsService';
+import { ListPostsController } from '../controllers/Posts/ListPostsController';
 
 const router = Router();
 
@@ -13,6 +15,10 @@ const createCoverController = new CreateCoversController(createCoverService);
 const createPostsService = new CreatePostsService();
 const createPostsController = new CreatePostsController(createPostsService, createCoverController);
 
+const listsPostsService = new ListPostsService();
+const listsPostsController = new ListPostsController(listsPostsService);
+
+router.get('/', listsPostsController.handle.bind(listsPostsController));
 router.post('/', upload.single('image'), createPostsController.handle.bind(createPostsController));
 
 export default router;

@@ -10,6 +10,7 @@ export class CreatePostsController {
     const { title, content, categoryId, authorId, coverId } = request.body;
     // const cover = await this.createCoverController.handle(request, response);
 
+    // TODO: Slug  be dynamic
     const post = await this.createPostsService.execute({
       title,
       content,
