@@ -8,6 +8,7 @@ import { CreatePostsService } from './Posts/CreatePostsService';
 import { ListPostsService } from './Posts/ListPostsService';
 
 import { CreateCoverService } from './Covers/CreateCoverService';
+import { ListCoversService } from './Covers/ListCoversService';
 
 export {
   CreateAuthorService,
@@ -17,4 +18,5 @@ export {
   ListCategoriesService,
   ListAuthorsService,
   ListPostsService,
+  ListCoversService,
 };
