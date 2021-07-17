@@ -1,5 +1,6 @@
 import categoryRoutes from './categoryRoutes';
 import authorRoutes from './authorRoutes';
-import postsRoutes from './postsRoutes';
+import postRoutes from './postRoutes';
+import coverRoutes from './coverRoutes';
 
-export { categoryRoutes, authorRoutes, postsRoutes };
+export { categoryRoutes, authorRoutes, postRoutes, coverRoutes };

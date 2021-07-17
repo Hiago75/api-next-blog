@@ -1,14 +1,12 @@
 import { Request, Response } from 'express';
-import { CreateCoversController } from '../../controllers';
 import { CreatePostsService } from '../../services/Posts/CreatePostsService';
 
 export class CreatePostsController {
-  constructor(private createPostsService: CreatePostsService, private createCoverController: CreateCoversController) {}
+  constructor(private createPostsService: CreatePostsService) {}
 
   async handle(request: Request, response: Response) {
     // TODO: Refactor
     const { title, content, categoryId, authorId, coverId } = request.body;
-    // const cover = await this.createCoverController.handle(request, response);
 
     // TODO: Slug  be dynamic
     const post = await this.createPostsService.execute({

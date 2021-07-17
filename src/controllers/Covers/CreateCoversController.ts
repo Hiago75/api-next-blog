@@ -23,6 +23,6 @@ export class CreateCoversController {
       provider: 'cloudinary',
     });
 
-    return cover;
+    return response.json(cover);
   }
 }

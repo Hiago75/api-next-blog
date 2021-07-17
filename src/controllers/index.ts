@@ -4,12 +4,17 @@ import { ListAuthorsController } from './Authors/ListAuthorsController';
 import { CreateCategoryController } from './Categories/CreateCategoryController';
 import { ListCategoriesController } from './Categories/ListCategoriesController';
 
+import { CreatePostsController } from './Posts/CreatePostsController';
+import { ListPostsController } from './Posts/ListPostsController';
+
 import { CreateCoversController } from './Covers/CreateCoversController';
 
 export {
   CreateAuthorController,
   CreateCategoryController,
+  CreatePostsController,
+  CreateCoversController,
   ListCategoriesController,
   ListAuthorsController,
-  CreateCoversController,
+  ListPostsController,
 };
