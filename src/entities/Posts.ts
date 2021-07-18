@@ -18,7 +18,7 @@ export class Posts {
   @Column()
   slug: string;
 
-  @ManyToOne((type) => Categories, (posts) => Posts)
+  @ManyToOne((type) => Categories, (posts) => Posts, { onDelete: 'CASCADE' })
   category: Categories;
 
   @ManyToOne((type) => Authors, (posts) => Posts)

@@ -3,6 +3,7 @@ import { ListAuthorsController } from './Authors/ListAuthorsController';
 
 import { CreateCategoryController } from './Categories/CreateCategoryController';
 import { ListCategoriesController } from './Categories/ListCategoriesController';
+import { DeleteCategoryController } from './Categories/DeleteCategoryController';
 
 import { CreatePostsController } from './Posts/CreatePostsController';
 import { ListPostsController } from './Posts/ListPostsController';
@@ -19,4 +20,5 @@ export {
   ListAuthorsController,
   ListPostsController,
   ListCoversController,
+  DeleteCategoryController,
 };

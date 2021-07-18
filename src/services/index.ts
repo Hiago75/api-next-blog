@@ -3,6 +3,7 @@ import { ListAuthorsService } from './Authors/ListAuthorsService';
 
 import { CreateCategoryService } from './Categories/CreateCategoryService';
 import { ListCategoriesService } from './Categories/ListCategoriesService';
+import { DeleteCategoryService } from './Categories/DeleteCategoryService';
 
 import { CreatePostsService } from './Posts/CreatePostsService';
 import { ListPostsService } from './Posts/ListPostsService';
@@ -19,4 +20,5 @@ export {
   ListAuthorsService,
   ListPostsService,
   ListCoversService,
+  DeleteCategoryService,
 };

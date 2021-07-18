@@ -1,6 +1,6 @@
 import { Router } from 'express';
-import { CreateCategoryController, ListCategoriesController } from '../controllers';
-import { CreateCategoryService, ListCategoriesService } from '../services';
+import { CreateCategoryController, DeleteCategoryController, ListCategoriesController } from '../controllers';
+import { CreateCategoryService, DeleteCategoryService, ListCategoriesService } from '../services';
 
 const router = Router();
 
@@ -10,7 +10,11 @@ const createCategoryController = new CreateCategoryController(createCategoryServ
 const listCategoriesService = new ListCategoriesService();
 const listCategoriesController = new ListCategoriesController(listCategoriesService);
 
+const deleteCategoryService = new DeleteCategoryService();
+const deleteCategoryController = new DeleteCategoryController(deleteCategoryService);
+
 router.get('/', listCategoriesController.handle.bind(listCategoriesController));
 router.post('/', createCategoryController.handle.bind(createCategoryController));
+router.delete('/', deleteCategoryController.handle.bind(deleteCategoryController));
 
 export default router;

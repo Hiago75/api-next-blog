@@ -12,7 +12,7 @@ export class CreatePostsController {
   async handle(request: Request, response: Response) {
     const { title, content, categoryId, authorId, coverId } = request.body;
     const postsRepositories = getCustomRepository(PostsRepositories);
-    const titleUsed = await postsRepositories.find({ title: title });
+    const titleUsed = await postsRepositories.findOne({ title: title });
 
     if (titleUsed) {
       throw new BadRequest('That title has already been used');

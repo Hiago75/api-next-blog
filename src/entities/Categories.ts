@@ -10,7 +10,7 @@ export class Categories {
   @Column()
   name: string;
 
-  @OneToMany((type) => Posts, (category) => Categories)
+  @OneToMany((type) => Posts, (category) => Categories, { onDelete: 'CASCADE' })
   posts: Posts[];
 
   @CreateDateColumn({ name: 'created_at' })
