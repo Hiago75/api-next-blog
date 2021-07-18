@@ -14,19 +14,18 @@ export class CreatePostsService {
     const authorsRepositories = getCustomRepository(AuthorsRepositories);
     const coversRepositories = getCustomRepository(CoversRepositories);
 
-    const post = postsRepositories.create({
-      title,
-      content,
-      slug,
-    });
-
     const category = await categoriesRepositories.findOne({ id: categoryId });
     const author = await authorsRepositories.findOne({ id: authorId });
     const cover = await coversRepositories.findOne({ id: coverId });
 
-    if (category) post.category = category;
-    if (author) post.author = author;
-    if (cover) post.cover = cover;
+    const post = postsRepositories.create({
+      title,
+      content,
+      slug,
+      category,
+      author,
+      cover,
+    });
 
     await postsRepositories.save(post);
 
