@@ -1,9 +1,6 @@
 import { getCustomRepository } from 'typeorm';
 import { ICreatePostsRequestDTO } from '../../DTOs/ICreatePostsRequestDTO';
-import { AuthorsRepositories } from '../../repositories/AuthorsRepositories';
-import { CategoriesRepositories } from '../../repositories/CategoriesRepositories';
-import { CoversRepositories } from '../../repositories/CoversRepositories';
-import { PostsRepositories } from '../../repositories/PostsRepositories';
+import { AuthorsRepositories, CategoriesRepositories, CoversRepositories, PostsRepositories } from '../../repositories';
 
 export class CreatePostsService {
   // TODO: Refactor
