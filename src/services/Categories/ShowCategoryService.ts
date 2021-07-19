@@ -1,4 +1,5 @@
 import { getCustomRepository } from 'typeorm';
+import { BadRequest } from '../../custom/errors';
 import { IShowCategoryRequestDTO } from '../../DTOs/IShowCategoryRequestDTO';
 import { CategoriesRepositories } from '../../repositories';
 
@@ -7,6 +8,10 @@ export class ShowCategoryService {
     const categoriesRepositories = getCustomRepository(CategoriesRepositories);
 
     const category = categoriesRepositories.findOne({ id: id });
+
+    if (!category) {
+      throw new BadRequest('ID not found');
+    }
 
     return category;
   }

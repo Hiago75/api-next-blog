@@ -1,4 +1,5 @@
 import { getCustomRepository } from 'typeorm';
+import { BadRequest } from '../../custom/errors';
 import { ICreatePostsRequestDTO } from '../../DTOs/ICreatePostsRequestDTO';
 import { AuthorsRepositories, CategoriesRepositories, CoversRepositories, PostsRepositories } from '../../repositories';
 export class CreatePostsService {
@@ -11,6 +12,10 @@ export class CreatePostsService {
     const category = await categoriesRepositories.findOne({ id: categoryId });
     const author = await authorsRepositories.findOne({ id: authorId });
     const cover = await coversRepositories.findOne({ id: coverId });
+
+    const titleUsed = await postsRepositories.findOne({ title: title });
+
+    if (titleUsed) throw new BadRequest('That title has already been used');
 
     const post = postsRepositories.create({
       title,
