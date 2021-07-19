@@ -7,6 +7,7 @@ import { DeleteCategoryService } from './Categories/DeleteCategoryService';
 
 import { CreatePostsService } from './Posts/CreatePostsService';
 import { ListPostsService } from './Posts/ListPostsService';
+import { DeletePostService } from './Posts/DeletePostService';
 
 import { CreateCoverService } from './Covers/CreateCoverService';
 import { ListCoversService } from './Covers/ListCoversService';
@@ -21,4 +22,5 @@ export {
   ListPostsService,
   ListCoversService,
   DeleteCategoryService,
+  DeletePostService,
 };

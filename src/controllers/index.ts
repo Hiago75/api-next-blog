@@ -7,6 +7,7 @@ import { DeleteCategoryController } from './Categories/DeleteCategoryController'
 
 import { CreatePostsController } from './Posts/CreatePostsController';
 import { ListPostsController } from './Posts/ListPostsController';
+import { DeletePostController } from './Posts/DeletePostController';
 
 import { CreateCoversController } from './Covers/CreateCoversController';
 import { ListCoversController } from './Covers/ListCoversController';
@@ -21,4 +22,5 @@ export {
   ListPostsController,
   ListCoversController,
   DeleteCategoryController,
+  DeletePostController,
 };

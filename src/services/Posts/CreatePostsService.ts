@@ -2,8 +2,6 @@ import { getCustomRepository } from 'typeorm';
 import { ICreatePostsRequestDTO } from '../../DTOs/ICreatePostsRequestDTO';
 import { AuthorsRepositories, CategoriesRepositories, CoversRepositories, PostsRepositories } from '../../repositories';
 export class CreatePostsService {
-  // TODO: Refactor
-
   async execute({ title, content, slug, categoryId, authorId, coverId }: ICreatePostsRequestDTO) {
     const postsRepositories = getCustomRepository(PostsRepositories);
     const categoriesRepositories = getCustomRepository(CategoriesRepositories);

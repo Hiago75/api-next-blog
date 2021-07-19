@@ -13,7 +13,7 @@ export class DeleteCategoryController {
 
     const categoryExists = await categoriesRepositories.findOne({ id: categoryId });
 
-    if (!categoryId) throw new BadRequest('Category is obligatory');
+    if (!categoryId) throw new BadRequest('Category ID is obligatory');
     if (!categoryExists) throw new BadRequest('Category not found');
 
     await this.deleteCategoryService.execute({ categoryId });

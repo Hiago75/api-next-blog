@@ -1,9 +1,9 @@
 import { Request, Response } from 'express';
 import slugify from 'slugify';
 import { getCustomRepository } from 'typeorm';
+
 import { BadRequest } from '../../custom/errors';
 import { PostsRepositories } from '../../repositories/PostsRepositories';
-
 import { CreatePostsService } from '../../services/Posts/CreatePostsService';
 
 export class CreatePostsController {
