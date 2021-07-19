@@ -1,5 +1,6 @@
 import { Column, CreateDateColumn, Entity, OneToMany, PrimaryColumn, UpdateDateColumn } from 'typeorm';
 import { v4 as uuid } from 'uuid';
+import { Formats } from './Formats';
 import { Posts } from './Posts';
 
 @Entity('covers')
@@ -27,6 +28,9 @@ export class Covers {
 
   @OneToMany((type) => Posts, (cover) => Covers)
   posts: Posts[];
+
+  @OneToMany((type) => Formats, (cover) => Covers, { onDelete: 'CASCADE' })
+  formats: Formats[];
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;
