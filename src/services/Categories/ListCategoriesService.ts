@@ -5,12 +5,16 @@ export class ListCategoriesService {
   async execute() {
     const categoriesRepositories = getCustomRepository(CategoriesRepositories);
 
-    const categories = await categoriesRepositories.find({
-      order: {
-        name: 'ASC',
-      },
-    });
+    try {
+      await categoriesRepositories.find({
+        order: {
+          name: 'ASC',
+        },
+      });
+    } catch (e) {
+      console.log(e);
+    }
 
-    return categories;
+    // return categories;
   }
 }

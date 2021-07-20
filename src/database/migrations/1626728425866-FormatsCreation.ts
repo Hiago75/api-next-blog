@@ -11,22 +11,7 @@ export class FormatsCreation1626728425866 implements MigrationInterface {
             type: 'uuid',
             isPrimary: true,
           },
-          {
-            name: 'name',
-            type: 'varchar',
-          },
-          {
-            name: 'width',
-            type: 'integer',
-          },
-          {
-            name: 'height',
-            type: 'integer',
-          },
-          {
-            name: 'url',
-            type: 'varchar',
-          },
+
           {
             name: 'created_at',
             type: 'timestamp',
@@ -42,5 +27,7 @@ export class FormatsCreation1626728425866 implements MigrationInterface {
     );
   }
 
-  public async down(queryRunner: QueryRunner): Promise<void> {}
+  public async down(queryRunner: QueryRunner): Promise<void> {
+    await queryRunner.dropTable('formats');
+  }
 }

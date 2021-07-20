@@ -24,7 +24,7 @@ export class Posts {
   @ManyToOne((type) => Authors, (posts) => Posts)
   author: Authors;
 
-  @ManyToOne((type) => Covers, (posts) => posts)
+  @ManyToOne((type) => Covers, (posts) => posts, { nullable: true, onDelete: 'SET NULL' })
   cover: Covers;
 
   @CreateDateColumn({ name: 'created_at' })

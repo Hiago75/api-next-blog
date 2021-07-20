@@ -1,4 +1,13 @@
-import { Column, CreateDateColumn, Entity, OneToMany, PrimaryColumn, UpdateDateColumn } from 'typeorm';
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  JoinColumn,
+  OneToMany,
+  OneToOne,
+  PrimaryColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 import { v4 as uuid } from 'uuid';
 import { Formats } from './Formats';
 import { Posts } from './Posts';
@@ -26,11 +35,12 @@ export class Covers {
   @Column()
   provider: string;
 
-  @OneToMany((type) => Posts, (cover) => Covers)
+  @OneToMany((type) => Posts, (cover) => Covers, { nullable: true, onDelete: 'SET NULL' })
   posts: Posts[];
 
-  @OneToMany((type) => Formats, (cover) => Covers, { onDelete: 'CASCADE' })
-  formats: Formats[];
+  @OneToOne((type) => Formats, (cover) => Covers)
+  @JoinColumn()
+  format: Formats;
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;
