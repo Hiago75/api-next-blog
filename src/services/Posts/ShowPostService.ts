@@ -8,7 +8,16 @@ export class ShowPostService {
     const postsRepositories = getCustomRepository(PostsRepositories);
     const post = await postsRepositories.findOne({
       where: { slug: slug },
-      relations: ['cover', 'author', 'category'],
+      relations: [
+        'cover',
+        'cover.format',
+        'cover.format.large',
+        'cover.format.medium',
+        'cover.format.small',
+        'cover.format.thumbnail',
+        'author',
+        'category',
+      ],
     });
 
     if (!post) throw new BadRequest('Post not found');
