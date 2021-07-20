@@ -1,9 +1,13 @@
 import { Request, Response } from 'express';
 import { CreateCoverService } from '../../services';
 import { cloudinary } from '../../config/cloudinary';
+import { CreateFormatController } from '../Formats/CreateFormatController';
 
 export class CreateCoversController {
-  constructor(private createCoversService: CreateCoverService) {}
+  constructor(
+    private createCoversService: CreateCoverService,
+    private createFormatsController: CreateFormatController,
+  ) {}
 
   async handle(request: Request, response: Response) {
     const {
@@ -12,7 +16,13 @@ export class CreateCoversController {
       width,
       height,
       secure_url: url,
-    } = await cloudinary.uploader.upload(request.file ? request.file.path : '');
+      eager,
+    } = await cloudinary.uploader.upload(request.file ? request.file.path : '', {
+      eager: [{ width: 1280 }, { width: 1000 }, { width: 750 }, { width: 500 }],
+    });
+
+    const formatId = (await this.createFormatsController.handle(eager)).id;
+    console.log(formatId);
 
     const cover = await this.createCoversService.execute({
       name,
@@ -20,6 +30,7 @@ export class CreateCoversController {
       width,
       height,
       url,
+      formatId,
       provider: 'cloudinary',
     });
 

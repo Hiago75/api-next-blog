@@ -1,15 +1,27 @@
 import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 
-export class FormatsCreation1626728425866 implements MigrationInterface {
+export class ThumbnailCreation1626785412876 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: 'formats',
+        name: 'thumbnail',
         columns: [
           {
             name: 'id',
             type: 'uuid',
             isPrimary: true,
+          },
+          {
+            name: 'width',
+            type: 'integer',
+          },
+          {
+            name: 'height',
+            type: 'integer',
+          },
+          {
+            name: 'url',
+            type: 'varchar',
           },
           {
             name: 'created_at',
@@ -27,6 +39,6 @@ export class FormatsCreation1626728425866 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable('formats');
+    await queryRunner.dropTable('thumbnail');
   }
 }

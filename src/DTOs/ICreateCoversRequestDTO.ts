@@ -4,5 +4,6 @@ export interface ICreateCoversRequestDTO {
   width: number;
   height: number;
   url: string;
+  formatId: string;
   provider: string;
 }
