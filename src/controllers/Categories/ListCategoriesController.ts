@@ -6,6 +6,7 @@ export class ListCategoriesController {
 
   async handle(request: Request, response: Response) {
     const categories = await this.listCategoriesService.execute();
+
     return response.json(categories);
   }
 }

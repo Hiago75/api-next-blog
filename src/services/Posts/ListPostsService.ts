@@ -2,22 +2,15 @@ import { getCustomRepository } from 'typeorm';
 import { PostsRepositories } from '../../repositories/PostsRepositories';
 
 export class ListPostsService {
-  async execute() {
+  async execute(start: number, limit: number) {
     const postsRepositories = getCustomRepository(PostsRepositories);
+    let posts;
 
-    const posts = postsRepositories.find({
-      relations: [
-        'cover',
-        'cover.format',
-        'cover.format.large',
-        'cover.format.medium',
-        'cover.format.small',
-        'cover.format.thumbnail',
-        'author',
-        'category',
-      ],
-    });
-
+    if (start || limit) {
+      posts = postsRepositories.findAndPaginate(start, limit);
+    } else {
+      posts = postsRepositories.findAndOrder();
+    }
     return posts;
   }
 }

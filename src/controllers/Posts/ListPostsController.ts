@@ -5,7 +5,12 @@ export class ListPostsController {
   constructor(private listPostsService: ListPostsService) {}
 
   async handle(request: Request, response: Response) {
-    const posts = await this.listPostsService.execute();
+    const { start, limit } = request.query;
+
+    const skip = Number(start);
+    const take = Number(limit);
+
+    const posts = await this.listPostsService.execute(skip, take);
 
     return response.json(posts);
   }
