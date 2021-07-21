@@ -3,7 +3,7 @@ import { Posts } from '../entities/Posts';
 
 @EntityRepository(Posts)
 export class PostsRepositories extends Repository<Posts> {
-  findAndOrder() {
+  findByCategory(category: string | undefined) {
     return this.find({
       relations: [
         'cover',
@@ -15,6 +15,9 @@ export class PostsRepositories extends Repository<Posts> {
         'author',
         'category',
       ],
+      where: {
+        category: category,
+      },
       order: {
         createdAt: 'DESC',
       },
