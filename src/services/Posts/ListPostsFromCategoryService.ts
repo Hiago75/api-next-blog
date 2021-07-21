@@ -1,13 +1,18 @@
 import { getCustomRepository } from 'typeorm';
+import { BadRequest } from '../../custom/errors';
+import { IListPostsFromCategoryRequestDTO } from '../../DTOs/IListPostsFromCategoryRequestDTO';
 import { CategoriesRepositories, PostsRepositories } from '../../repositories';
 
 export class ListPostsFromCategoryService {
-  async execute({ category }: { category: string }) {
+  async execute({ category, start, limit }: IListPostsFromCategoryRequestDTO) {
     const postsRepositories = getCustomRepository(PostsRepositories);
     const categoriesRepositories = getCustomRepository(CategoriesRepositories);
 
     const categoryId = await categoriesRepositories.findIdByName(category);
-    const posts = await postsRepositories.findByCategory(categoryId);
+    if (!categoryId) throw new BadRequest('Category not found');
+
+    const posts = await postsRepositories.findByCategory(start, limit, categoryId);
+    console.log(posts.length);
 
     return posts;
   }
