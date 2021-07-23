@@ -1,4 +1,4 @@
-import { Exclude } from 'class-transformer';
+import { classToPlain, Exclude } from 'class-transformer';
 import { Entity, PrimaryColumn, Column, CreateDateColumn, UpdateDateColumn, OneToMany } from 'typeorm';
 import { v4 as uuid } from 'uuid';
 import { Posts } from './Posts';
@@ -14,7 +14,7 @@ export class Authors {
   @Column()
   email: string;
 
-  @Exclude()
+  @Exclude({ toPlainOnly: true })
   @Column()
   password: string;
 
@@ -29,6 +29,10 @@ export class Authors {
 
   @UpdateDateColumn({ name: 'updated_at' })
   updatedAt: Date;
+
+  toJSON() {
+    return classToPlain(this);
+  }
 
   constructor() {
     if (!this.id) {

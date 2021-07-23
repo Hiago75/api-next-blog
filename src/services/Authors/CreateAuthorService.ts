@@ -11,16 +11,12 @@ export class CreateAuthorService {
     const authorAlreadyExists = await authorsRepositories.findOne({ email: email });
     if (authorAlreadyExists) throw new BadRequest('This email has already been }used');
 
-    try {
-      const passwordHash = await encrypt(password);
+    const passwordHash = await encrypt(password);
 
-      const author = authorsRepositories.create({ name, email, password: passwordHash, admin });
+    const author = authorsRepositories.create({ name, email, password: passwordHash, admin });
 
-      await authorsRepositories.save(author);
+    await authorsRepositories.save(author);
 
-      return author;
-    } catch (e) {
-      console.log(e);
-    }
+    return author;
   }
 }

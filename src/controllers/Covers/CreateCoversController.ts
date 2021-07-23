@@ -21,8 +21,7 @@ export class CreateCoversController {
       eager: [{ width: 1280 }, { width: 1000 }, { width: 750 }, { width: 500 }],
     });
 
-    const formatId = (await this.createFormatsController.handle(eager)).id;
-    console.log(formatId);
+    const { id: formatId } = await this.createFormatsController.handle(eager);
 
     const cover = await this.createCoversService.execute({
       name,

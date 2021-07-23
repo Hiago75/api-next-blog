@@ -10,12 +10,8 @@ export class AuthenticateUserController {
 
     if (!email || !password) throw new BadRequest('Both, email and password, are obligatory');
 
-    try {
-      const user = await this.authenticateUserService.execute({ email, password });
+    const user = await this.authenticateUserService.execute({ email, password });
 
-      return response.json(user);
-    } catch (e) {
-      console.log(e);
-    }
+    return response.json(user);
   }
 }
