@@ -23,7 +23,7 @@ export class CreateFormatService {
       thumbnail,
     });
 
-    formatsRepositories.save(format);
+    await formatsRepositories.save(format);
 
     return format;
   }

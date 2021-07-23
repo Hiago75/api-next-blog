@@ -8,7 +8,7 @@ export class CreateCoverService {
     const coversRepositories = getCustomRepository(CoversRepositories);
     const formatsRepositories = getCustomRepository(FormatsRepositories);
 
-    const format = await formatsRepositories.findOne({ id: formatId });
+    const format = await formatsRepositories.findOneOrFail(formatId);
 
     // FIX-ME cover creation not working
     const cover = coversRepositories.create({ name, publicId, width, height, url, provider, format });
