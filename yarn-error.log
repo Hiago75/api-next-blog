@@ -1,5 +1,5 @@
 Arguments: 
-  /home/workubuntu/.nvm/versions/node/v14.17.1/bin/node /home/workubuntu/.nvm/versions/node/v14.17.1/bin/yarn add @types/slugify
+  /home/workubuntu/.nvm/versions/node/v14.17.1/bin/node /home/workubuntu/.nvm/versions/node/v14.17.1/bin/yarn add brycpt
 
 PATH: 
   /home/workubuntu/.nvm/versions/node/v14.17.1/bin:/home/workubuntu/.zinit/polaris/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/workubuntu/.fzf/bin
@@ -14,7 +14,7 @@ Platform:
   linux x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/@types%2fslugify: Not found
+  Error: https://registry.yarnpkg.com/brycpt: Not found
       at Request.params.callback [as _callback] (/home/workubuntu/.nvm/versions/node/v14.17.1/lib/node_modules/yarn/lib/cli.js:66988:18)
       at Request.self.callback (/home/workubuntu/.nvm/versions/node/v14.17.1/lib/node_modules/yarn/lib/cli.js:140662:22)
       at Request.emit (events.js:375:28)
