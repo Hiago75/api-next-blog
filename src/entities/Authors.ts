@@ -10,6 +10,15 @@ export class Authors {
   @Column()
   name: string;
 
+  @Column()
+  email: string;
+
+  @Column({ select: false })
+  password: string;
+
+  @Column()
+  admin: boolean;
+
   @OneToMany((type) => Posts, (author) => Authors)
   posts: Posts[];
 
