@@ -7,6 +7,7 @@ import { CreateLargeController } from '../controllers/Formats/Sizes/CreateLargeC
 import { CreateMediumController } from '../controllers/Formats/Sizes/CreateMediumController';
 import { CreateSmallController } from '../controllers/Formats/Sizes/CreateSmallController';
 import { CreateThumbnailController } from '../controllers/Formats/Sizes/CreateThumbnailController';
+import { ensureAuthenticated } from '../middlewares/ensureAuthenticated';
 import { CreateCoverService, ListCoversService } from '../services';
 import { CreateFormatService } from '../services/Formats/CreateFormatService';
 import { CreateLargeService } from '../services/Formats/Sizes/CreateLargeService';
@@ -44,6 +45,6 @@ const listCoversController = new ListCoversController(listCoversService);
 const router = Router();
 
 router.get('/', listCoversController.handle.bind(listCoversController));
-router.post('/', upload.single('image'), createCoverController.handle.bind(createCoverController));
+router.post('/', ensureAuthenticated, upload.single('image'), createCoverController.handle.bind(createCoverController));
 
 export default router;

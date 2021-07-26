@@ -1,6 +1,6 @@
 import { Router } from 'express';
-import { CreateAuthorController, ListAuthorsController } from '../controllers';
-import { ShowAuthorController } from '../controllers/Authors/ShowAuthorController';
+import { CreateAuthorController, ListAuthorsController, ShowAuthorController } from '../controllers';
+import { ensureAuthenticated } from '../middlewares/ensureAuthenticated';
 import { CreateAuthorService, ListAuthorsService } from '../services';
 import { ShowAuthorService } from '../services/Authors/ShowAuthorService';
 
@@ -17,6 +17,6 @@ const showAuthorController = new ShowAuthorController(showAuthorService);
 
 router.get('/', listAuthorsController.handle.bind(listAuthorsController));
 router.get('/:id', showAuthorController.handle.bind(showAuthorController));
-router.post('/', createAuthorController.handle.bind(createAuthorController));
+router.post('/', ensureAuthenticated, createAuthorController.handle.bind(createAuthorController));
 
 export default router;

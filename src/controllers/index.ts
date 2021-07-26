@@ -1,18 +1,25 @@
+import { AuthenticateUserController } from './Auth/AuthenticateUserController';
+
 import { CreateAuthorController } from './Authors/CreateAuthorController';
 import { ListAuthorsController } from './Authors/ListAuthorsController';
+import { ShowAuthorController } from './Authors/ShowAuthorController';
 
 import { CreateCategoryController } from './Categories/CreateCategoryController';
 import { ListCategoriesController } from './Categories/ListCategoriesController';
+import { ShowCategoryController } from './Categories/ShowCategoryController';
 import { DeleteCategoryController } from './Categories/DeleteCategoryController';
 
 import { CreatePostsController } from './Posts/CreatePostsController';
 import { ListPostsController } from './Posts/ListPostsController';
 import { DeletePostController } from './Posts/DeletePostController';
+import { ListPostsFromCategoryController } from './Posts/ListPostsFromCategoryController';
+import { ShowPostController } from './Posts/ShowPostController';
 
 import { CreateCoversController } from './Covers/CreateCoversController';
 import { ListCoversController } from './Covers/ListCoversController';
 
 export {
+  AuthenticateUserController,
   CreateAuthorController,
   CreateCategoryController,
   CreatePostsController,
@@ -23,4 +30,8 @@ export {
   ListCoversController,
   DeleteCategoryController,
   DeletePostController,
+  ShowAuthorController,
+  ShowCategoryController,
+  ListPostsFromCategoryController,
+  ShowPostController,
 };

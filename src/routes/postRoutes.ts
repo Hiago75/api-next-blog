@@ -6,6 +6,7 @@ import { ShowPostService } from '../services/Posts/ShowPostService';
 import { ShowPostController } from '../controllers/Posts/ShowPostController';
 import { ListPostsFromCategoryService } from '../services/Posts/ListPostsFromCategoryService';
 import { ListPostsFromCategoryController } from '../controllers/Posts/ListPostsFromCategoryController';
+import { ensureAuthenticated } from '../middlewares/ensureAuthenticated';
 
 const router = Router();
 
@@ -27,7 +28,7 @@ const deletePostController = new DeletePostController(deletePostService);
 router.get('/', listsPostsController.handle.bind(listsPostsController));
 router.get('/:slug', showPostController.handle.bind(showPostController));
 router.get('/categories/:category', listPostsFromCategoryController.handle.bind(listPostsFromCategoryController));
-router.post('/', createPostsController.handle.bind(createPostsController));
-router.delete('/', deletePostController.handle.bind(deletePostController));
+router.post('/', ensureAuthenticated, createPostsController.handle.bind(createPostsController));
+router.delete('/', ensureAuthenticated, deletePostController.handle.bind(deletePostController));
 
 export default router;
