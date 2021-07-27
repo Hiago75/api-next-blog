@@ -8,6 +8,11 @@ import { ShowAuthorFactory } from './Authors/ShowAuthorFactory';
 import { AuthenticateUserFactory } from './Auth/AuthenticateUserFactory';
 import { CreateCoverFactory } from './Covers/CreateCoverFactory';
 import { ListCoversFactory } from './Covers/ListCoversFactory';
+import { CreatePostFactory } from './Posts/CreatePostFactory';
+import { ListPostsFactory } from './Posts/ListPostsFactory';
+import { ListPostsFromCategoryFactory } from './Posts/ListPostsFromCategoryFactory';
+import { ShowPostFactory } from './Posts/ShowPostFactory';
+import { DeletePostFactory } from './Posts/DeletePostFactory';
 
 export {
   CreateCategoryFactory,
@@ -20,4 +25,9 @@ export {
   AuthenticateUserFactory,
   CreateCoverFactory,
   ListCoversFactory,
+  CreatePostFactory,
+  ListPostsFactory,
+  ListPostsFromCategoryFactory,
+  ShowPostFactory,
+  DeletePostFactory,
 };

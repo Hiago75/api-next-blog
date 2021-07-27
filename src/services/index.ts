@@ -13,6 +13,7 @@ import { ShowCategoryService } from './Categories/ShowCategoryService';
 import { CreatePostsService } from './Posts/CreatePostsService';
 import { ListPostsService } from './Posts/ListPostsService';
 import { DeletePostService } from './Posts/DeletePostService';
+import { ShowPostService } from './Posts/ShowPostService';
 
 import { CreateCoverService } from './Covers/CreateCoverService';
 import { ListCoversService } from './Covers/ListCoversService';
@@ -32,4 +33,5 @@ export {
   ListPostsFromCategoryService,
   ShowCategoryService,
   ShowAuthorService,
+  ShowPostService,
 };
