@@ -1,6 +1,7 @@
 // TODO: Create abstract classes for every dependency injection on controllers
 import dotenv from 'dotenv';
 import express from 'express';
+import cors from 'cors';
 
 import 'express-async-errors';
 import 'reflect-metadata';
@@ -26,6 +27,7 @@ class App {
   }
 
   middlewares() {
+    this.app.use(cors());
     this.app.use(express.json());
   }
 
