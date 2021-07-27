@@ -1,11 +1,9 @@
 import { Router } from 'express';
-import { AuthenticateUserController } from '../controllers/Auth/AuthenticateUserController';
-import { AuthenticateUserService } from '../services/Auth/AuthenticateUserService';
+import { AuthenticateUserFactory } from '../factories';
 
 const router = Router();
 
-const authenticateUserService = new AuthenticateUserService();
-const authenticateUserController = new AuthenticateUserController(authenticateUserService);
+const authenticateUserController = AuthenticateUserFactory();
 
 router.post('/', authenticateUserController.handle.bind(authenticateUserController));
 

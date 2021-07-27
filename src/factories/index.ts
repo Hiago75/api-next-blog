@@ -5,6 +5,7 @@ import { DeleteCategoryFactory } from './Categories/DeleteCategoryFactory';
 import { CreateAuthorFactory } from './Authors/CreateAuthorFactory';
 import { ListAuthorFactory } from './Authors/ListAuthorsFactories';
 import { ShowAuthorFactory } from './Authors/ShowAuthorFactory';
+import { AuthenticateUserFactory } from './Auth/AuthenticateUserFactory';
 
 export {
   CreateCategoryFactory,
@@ -14,4 +15,5 @@ export {
   CreateAuthorFactory,
   ListAuthorFactory,
   ShowAuthorFactory,
+  AuthenticateUserFactory,
 };
