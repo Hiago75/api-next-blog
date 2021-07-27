@@ -17,7 +17,7 @@ export function ensureAuthenticated(request: Request, response: Response, next: 
 
   // Verify if token is valid and inject on request
   try {
-    const { sub } = verify(token, process.env.TOKEN_SECRET) as IPayload;
+    const { sub } = verify(token, process.env.TOKEN_SECRET as string) as IPayload;
     request.user_id = sub;
 
     return next();

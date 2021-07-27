@@ -20,7 +20,7 @@ export class AuthenticateUserService {
       {
         email: user.email,
       },
-      process.env.TOKEN_SECRET,
+      process.env.TOKEN_SECRET as string,
       {
         subject: user.id,
         expiresIn: '1d',

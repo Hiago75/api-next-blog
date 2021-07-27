@@ -1,23 +1,14 @@
 import { Router } from 'express';
-import { CreateCategoryController, DeleteCategoryController, ListCategoriesController } from '../controllers';
-import { ShowCategoryController } from '../controllers/Categories/ShowCategoryController';
+
+import { CreateCategoryFactory, ListCategoriesFactory, DeleteCategoryFactory, ShowCategoryFactory } from '../factories';
 import { ensureAuthenticated } from '../middlewares/ensureAuthenticated';
-import { CreateCategoryService, DeleteCategoryService, ListCategoriesService } from '../services';
-import { ShowCategoryService } from '../services/Categories/ShowCategoryService';
 
 const router = Router();
 
-const createCategoryService = new CreateCategoryService();
-const createCategoryController = new CreateCategoryController(createCategoryService);
-
-const listCategoriesService = new ListCategoriesService();
-const listCategoriesController = new ListCategoriesController(listCategoriesService);
-
-const showCategoryService = new ShowCategoryService();
-const showCategoryController = new ShowCategoryController(showCategoryService);
-
-const deleteCategoryService = new DeleteCategoryService();
-const deleteCategoryController = new DeleteCategoryController(deleteCategoryService);
+const createCategoryController = CreateCategoryFactory();
+const listCategoriesController = ListCategoriesFactory();
+const showCategoryController = ShowCategoryFactory();
+const deleteCategoryController = DeleteCategoryFactory();
 
 router.get('/', listCategoriesController.handle.bind(listCategoriesController));
 router.get('/:id', showCategoryController.handle.bind(showCategoryController));
