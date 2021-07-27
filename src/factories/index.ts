@@ -6,6 +6,8 @@ import { CreateAuthorFactory } from './Authors/CreateAuthorFactory';
 import { ListAuthorFactory } from './Authors/ListAuthorsFactories';
 import { ShowAuthorFactory } from './Authors/ShowAuthorFactory';
 import { AuthenticateUserFactory } from './Auth/AuthenticateUserFactory';
+import { CreateCoverFactory } from './Covers/CreateCoverFactory';
+import { ListCoversFactory } from './Covers/ListCoversFactory';
 
 export {
   CreateCategoryFactory,
@@ -16,4 +18,6 @@ export {
   ListAuthorFactory,
   ShowAuthorFactory,
   AuthenticateUserFactory,
+  CreateCoverFactory,
+  ListCoversFactory,
 };
