@@ -1,4 +1,5 @@
 import { Router } from 'express';
+
 import { AuthenticateUserFactory } from '../factories';
 
 const router = Router();

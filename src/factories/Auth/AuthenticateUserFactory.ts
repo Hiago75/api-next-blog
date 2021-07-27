@@ -1,4 +1,5 @@
 import { AuthenticateUserController } from '../../controllers';
+
 import { AuthenticateUserService } from '../../services';
 
 export const AuthenticateUserFactory = () => {
