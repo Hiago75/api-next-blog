@@ -1,4 +1,3 @@
-// TODO: Create abstract classes for every dependency injection on controllers
 import dotenv from 'dotenv';
 import express from 'express';
 import cors from 'cors';

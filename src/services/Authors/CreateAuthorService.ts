@@ -14,7 +14,6 @@ export class CreateAuthorService {
     const passwordHash = await encrypt(password);
 
     const author = authorsRepositories.create({ name, email, password: passwordHash, admin });
-
     await authorsRepositories.save(author);
 
     return author;
