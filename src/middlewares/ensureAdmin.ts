@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import { getCustomRepository } from 'typeorm';
 import { BadRequest } from '../custom/errors';
-import { Forbidden } from '../custom/errors/Forbidden';
+import { Unauthorized } from '../custom/errors/Unauthorized';
 import { AuthorsRepositories } from '../repositories';
 
 export async function ensureAdmin(request: Request, _response: Response, next: NextFunction) {
@@ -16,5 +16,5 @@ export async function ensureAdmin(request: Request, _response: Response, next: N
   const { admin } = author;
   if (admin) return next();
 
-  throw new Forbidden('You don`t have the necessary permissions for that');
+  throw new Unauthorized('You don`t have the necessary permissions for that');
 }

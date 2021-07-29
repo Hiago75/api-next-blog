@@ -9,7 +9,7 @@ export class CreateAuthorService {
     const authorsRepositories = getCustomRepository(AuthorsRepositories);
 
     const authorAlreadyExists = await authorsRepositories.findOne({ email: email });
-    if (authorAlreadyExists) throw new BadRequest('This email has already been }used');
+    if (authorAlreadyExists) throw new BadRequest('This email has already been used');
 
     const passwordHash = await encrypt(password);
 

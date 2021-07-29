@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import { verify } from 'jsonwebtoken';
-import { Forbidden } from '../custom/errors/Forbidden';
+import { Unauthorized } from '../custom/errors/Unauthorized';
 
 interface IPayload {
   sub: string;
@@ -10,7 +10,7 @@ interface IPayload {
 export function ensureAuthenticated(request: Request, response: Response, next: NextFunction) {
   // Try to get token from headers and
   const authToken = request.headers.authorization;
-  if (!authToken) throw new Forbidden('You need to login to access this page');
+  if (!authToken) throw new Unauthorized('You need to login to access this page');
 
   // Divide the "Bearer" word from the token itself
   const [, token] = authToken.split(' ');
@@ -22,6 +22,6 @@ export function ensureAuthenticated(request: Request, response: Response, next: 
 
     return next();
   } catch (e) {
-    throw new Forbidden('Invalid token');
+    throw new Unauthorized('Invalid token');
   }
 }

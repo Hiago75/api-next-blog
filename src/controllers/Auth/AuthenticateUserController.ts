@@ -1,5 +1,4 @@
 import { Request, Response } from 'express';
-import { BadRequest } from '../../custom/errors';
 import { AuthenticateUserService } from '../../services/Auth/AuthenticateUserService';
 
 export class AuthenticateUserController {
@@ -8,10 +7,10 @@ export class AuthenticateUserController {
   async handle(request: Request, response: Response) {
     const { email, password } = request.body;
 
-    if (!email || !password) throw new BadRequest('Both, email and password, are obligatory');
+    if (!email || !password) return response.status(400).send({ error: 'Both, email and password, are obligatory' });
 
-    const user = await this.authenticateUserService.execute({ email, password });
+    const token = await this.authenticateUserService.execute({ email, password });
 
-    return response.json({ token: user });
+    return response.json({ token: token });
   }
 }

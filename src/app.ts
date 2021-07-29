@@ -35,7 +35,7 @@ class App {
     this.app.use('/authors', authorRoutes);
     this.app.use('/posts', postRoutes);
     this.app.use('/covers', coverRoutes);
-    this.app.use('/login', authRoutes);
+    this.app.use('/auth', authRoutes);
   }
 
   errorHandler() {

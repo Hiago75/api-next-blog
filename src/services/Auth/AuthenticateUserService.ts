@@ -18,6 +18,7 @@ export class AuthenticateUserService {
 
     const token = sign(
       {
+        name: user.name,
         email: user.email,
       },
       process.env.TOKEN_SECRET as string,
