@@ -10,9 +10,11 @@ export class RetrieveUserDataController {
 
     if (!token) return response.status(401).send({ error: 'No Token provided' });
 
-    const isValid = jwt.verify(token, process.env.TOKEN_SECRET as string);
-    if (!isValid) return response.status(401).send({ error: 'Invalid token' });
-
+    try {
+      jwt.verify(token, process.env.TOKEN_SECRET as string);
+    } catch (e) {
+      return response.status(401).send({ error: 'Invalid token' });
+    }
     const user = await this.retrieveUserDataService.execute(token);
 
     return response.json({
