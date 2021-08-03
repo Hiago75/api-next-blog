@@ -1,5 +1,5 @@
-import { RetrieveUserDataController } from '../../controllers/Auth/RetrieveUserDataController';
-import { RetrieveUserDataService } from '../../services/Auth/RetrieveUserDataService';
+import { RetrieveUserDataController } from '../../controllers/';
+import { RetrieveUserDataService } from '../../services';
 
 export const RetrieveUserDataFactory = () => {
   const retrieveUserDataService = new RetrieveUserDataService();

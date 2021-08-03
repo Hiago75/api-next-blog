@@ -1,9 +1,10 @@
 import { compare } from 'bcrypt';
-import { sign } from 'jsonwebtoken';
 import { getCustomRepository } from 'typeorm';
 import { Unauthorized } from '../../custom/errors';
 
 import { IAuthenticateUserRequestDTO } from '../../DTOs/IAuthenticateUserRequestDTO';
+import { GenerateRefreshToken } from '../../provider/GenerateRefreshToken';
+import { GenerateTokenProvider } from '../../provider/GenerateTokenProvider';
 import { AuthorsRepositories } from '../../repositories';
 
 export class AuthenticateUserService {
@@ -16,18 +17,12 @@ export class AuthenticateUserService {
     const passwordMatch = await compare(password, user.password);
     if (!passwordMatch) throw new Unauthorized('Email/password incorrect');
 
-    const token = sign(
-      {
-        name: user.name,
-        email: user.email,
-      },
-      process.env.TOKEN_SECRET as string,
-      {
-        subject: user.id,
-        expiresIn: '1d',
-      },
-    );
+    const token = GenerateTokenProvider(user);
+    if (!token) throw new Error('Token can`t be generated');
 
-    return token;
+    const refreshToken = await GenerateRefreshToken(user);
+    if (!refreshToken) throw new Error('Refesh Token can`t be generated');
+
+    return { token, refreshToken };
   }
 }

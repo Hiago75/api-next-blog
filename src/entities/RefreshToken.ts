@@ -1,4 +1,4 @@
-import { Column, Entity, OneToOne, PrimaryColumn } from 'typeorm';
+import { Column, Entity, JoinColumn, OneToOne, PrimaryColumn } from 'typeorm';
 import { v4 as uuid } from 'uuid';
 import { Authors } from './Authors';
 
@@ -13,8 +13,10 @@ export class RefreshToken {
   @OneToOne((type) => Authors, (refresh_token) => RefreshToken, {
     nullable: false,
     cascade: true,
+    onDelete: 'SET NULL',
   })
-  userId: Authors;
+  @JoinColumn({ name: 'user_id' })
+  user: Authors;
 
   constructor() {
     if (!this.id) {

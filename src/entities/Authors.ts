@@ -39,7 +39,7 @@ export class Authors {
   @OneToOne((type) => RefreshToken, (user_id) => Authors, {
     nullable: true,
     eager: true,
-    cascade: true,
+    onDelete: 'SET NULL',
   })
   @JoinColumn({ name: 'refresh_token' })
   refreshToken: RefreshToken;

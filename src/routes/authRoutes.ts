@@ -1,14 +1,14 @@
 import { Router } from 'express';
 
-import { AuthenticateUserFactory } from '../factories';
-import { RetrieveUserDataFactory } from '../factories/Auth/RetrieveUserDataFactory';
-
+import { AuthenticateUserFactory, RefreshUserTokenFactory, RetrieveUserDataFactory } from '../factories';
 const router = Router();
 
 const authenticateUserController = AuthenticateUserFactory();
-const retrieveUserDataFactory = RetrieveUserDataFactory();
+const retrieveUserDataController = RetrieveUserDataFactory();
+const refreshUserTokenController = RefreshUserTokenFactory();
 
 router.post('/login', authenticateUserController.handle.bind(authenticateUserController));
-router.post('/retrieve', retrieveUserDataFactory.handle.bind(retrieveUserDataFactory));
+router.post('/retrieve', retrieveUserDataController.handle.bind(retrieveUserDataController));
+router.post('/refresh', refreshUserTokenController.handle.bind(refreshUserTokenController));
 
 export default router;

@@ -6,6 +6,8 @@ import { CreateAuthorFactory } from './Authors/CreateAuthorFactory';
 import { ListAuthorFactory } from './Authors/ListAuthorsFactories';
 import { ShowAuthorFactory } from './Authors/ShowAuthorFactory';
 import { AuthenticateUserFactory } from './Auth/AuthenticateUserFactory';
+import { RetrieveUserDataFactory } from './Auth/RetrieveUserDataFactory';
+import { RefreshUserTokenFactory } from './Auth/RefreshUserTokenFactory';
 import { CreateCoverFactory } from './Covers/CreateCoverFactory';
 import { ListCoversFactory } from './Covers/ListCoversFactory';
 import { CreatePostFactory } from './Posts/CreatePostFactory';
@@ -30,4 +32,6 @@ export {
   ListPostsFromCategoryFactory,
   ShowPostFactory,
   DeletePostFactory,
+  RetrieveUserDataFactory,
+  RefreshUserTokenFactory,
 };

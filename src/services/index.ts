@@ -1,4 +1,6 @@
 import { AuthenticateUserService } from './Auth/AuthenticateUserService';
+import { RetrieveUserDataService } from './Auth/RetrieveUserDataService';
+import { RefreshUserTokenService } from './Auth/RefreshUserTokenService';
 
 import { CreateAuthorService } from './Authors/CreateAuthorService';
 import { ListAuthorsService } from './Authors/ListAuthorsService';
@@ -34,4 +36,6 @@ export {
   ShowCategoryService,
   ShowAuthorService,
   ShowPostService,
+  RetrieveUserDataService,
+  RefreshUserTokenService,
 };

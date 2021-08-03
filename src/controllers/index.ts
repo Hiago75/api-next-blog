@@ -1,4 +1,6 @@
 import { AuthenticateUserController } from './Auth/AuthenticateUserController';
+import { RetrieveUserDataController } from './Auth/RetrieveUserDataController';
+import { RefreshUserTokenController } from './Auth/RefreshUserTokenController';
 
 import { CreateAuthorController } from './Authors/CreateAuthorController';
 import { ListAuthorsController } from './Authors/ListAuthorsController';
@@ -34,4 +36,6 @@ export {
   ShowCategoryController,
   ListPostsFromCategoryController,
   ShowPostController,
+  RefreshUserTokenController,
+  RetrieveUserDataController,
 };
