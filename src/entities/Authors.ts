@@ -1,7 +1,17 @@
 import { classToPlain, Exclude } from 'class-transformer';
-import { Entity, PrimaryColumn, Column, CreateDateColumn, UpdateDateColumn, OneToMany } from 'typeorm';
+import {
+  Entity,
+  PrimaryColumn,
+  Column,
+  CreateDateColumn,
+  UpdateDateColumn,
+  OneToMany,
+  OneToOne,
+  JoinColumn,
+} from 'typeorm';
 import { v4 as uuid } from 'uuid';
 import { Posts } from './Posts';
+import { RefreshToken } from './RefreshToken';
 
 @Entity('authors')
 export class Authors {
@@ -21,12 +31,23 @@ export class Authors {
   @Column()
   admin: boolean;
 
-  @OneToMany((type) => Posts, (author) => Authors)
+  @OneToMany((type) => Posts, (author) => Authors, {
+    onDelete: 'CASCADE',
+  })
   posts: Posts[];
+
+  @OneToOne((type) => RefreshToken, (user_id) => Authors, {
+    nullable: true,
+    eager: true,
+    cascade: true,
+  })
+  @JoinColumn({ name: 'refresh_token' })
+  refreshToken: RefreshToken;
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;
 
+  @Exclude({ toPlainOnly: true })
   @UpdateDateColumn({ name: 'updated_at' })
   updatedAt: Date;
 

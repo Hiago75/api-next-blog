@@ -21,7 +21,7 @@ export class Posts {
   @ManyToOne((type) => Categories, (posts) => Posts, { onDelete: 'CASCADE' })
   category: Categories;
 
-  @ManyToOne((type) => Authors, (posts) => Posts)
+  @ManyToOne((type) => Authors, (posts) => Posts, { onDelete: 'CASCADE' })
   author: Authors;
 
   @ManyToOne((type) => Covers, (posts) => posts, { nullable: true, onDelete: 'SET NULL' })
