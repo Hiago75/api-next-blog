@@ -8,7 +8,7 @@ export class RefreshToken {
   readonly id: string;
 
   @Column()
-  expiresOn: Date;
+  expiresOn: number;
 
   @OneToOne((type) => Authors, (refresh_token) => RefreshToken, {
     nullable: false,

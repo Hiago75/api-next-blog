@@ -3,7 +3,7 @@ import { getCustomRepository } from 'typeorm';
 import { Unauthorized } from '../../custom/errors';
 
 import { IAuthenticateUserRequestDTO } from '../../DTOs/IAuthenticateUserRequestDTO';
-import { GenerateRefreshToken } from '../../provider/GenerateRefreshToken';
+import { GenerateRefreshTokenProvider } from '../../provider/GenerateRefreshTokenProvider';
 import { GenerateTokenProvider } from '../../provider/GenerateTokenProvider';
 import { AuthorsRepositories } from '../../repositories';
 
@@ -20,9 +20,9 @@ export class AuthenticateUserService {
     const token = GenerateTokenProvider(user);
     if (!token) throw new Error('Token can`t be generated');
 
-    const refreshToken = await GenerateRefreshToken(user);
-    if (!refreshToken) throw new Error('Refesh Token can`t be generated');
+    const { id, expiresOn } = await GenerateRefreshTokenProvider(user);
+    if (!id) throw new Error('Refesh Token can`t be generated');
 
-    return { token, refreshToken };
+    return { token, refreshTokenId: id, refreshTokenExpiration: expiresOn };
   }
 }

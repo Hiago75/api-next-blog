@@ -9,6 +9,6 @@ const refreshUserTokenController = RefreshUserTokenFactory();
 
 router.post('/login', authenticateUserController.handle.bind(authenticateUserController));
 router.post('/retrieve', retrieveUserDataController.handle.bind(retrieveUserDataController));
-router.post('/refresh', refreshUserTokenController.handle.bind(refreshUserTokenController));
+router.get('/refresh', refreshUserTokenController.handle.bind(refreshUserTokenController));
 
 export default router;

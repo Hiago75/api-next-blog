@@ -9,7 +9,6 @@ interface IPayload {
 // Ensure that user has logged on application before doing something
 export function ensureAuthenticated(request: Request, response: Response, next: NextFunction) {
   const authToken = request.headers.authorization;
-
   if (!authToken) throw new Unauthorized('You need to login to access this page');
 
   // Divide the "Bearer" word from the token itself and test if token have these 2 parts

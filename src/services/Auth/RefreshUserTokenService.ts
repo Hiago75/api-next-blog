@@ -1,11 +1,11 @@
 import { getCustomRepository } from 'typeorm';
-import { BadRequest } from '../../custom/errors';
+import { Unauthorized } from '../../custom/errors';
 import { GenerateTokenProvider } from '../../provider/GenerateTokenProvider';
 import { RefreshTokenRepositories } from '../../repositories/RefreshTokenRepositories';
 
 export class RefreshUserTokenService {
   async execute(refresh_token: string) {
-    const refreshTokenRepositories = await getCustomRepository(RefreshTokenRepositories);
+    const refreshTokenRepositories = getCustomRepository(RefreshTokenRepositories);
 
     // Refactor relations
 
@@ -14,10 +14,9 @@ export class RefreshUserTokenService {
       relations: ['user'],
     });
 
-    if (!refreshToken) throw new BadRequest('Invalid refresh token');
+    if (!refreshToken) throw new Unauthorized('Invalid token');
 
     const token = GenerateTokenProvider(refreshToken.user);
-
     return token;
   }
 }

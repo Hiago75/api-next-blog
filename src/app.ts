@@ -1,5 +1,6 @@
 import dotenv from 'dotenv';
 import express from 'express';
+import cookieParser from 'cookie-parser';
 import cors from 'cors';
 
 import 'express-async-errors';
@@ -13,6 +14,11 @@ dotenv.config();
 
 class App {
   private _app;
+  private whiteList = [
+    'http://127.0.0.1:3000',
+    'http://localhost:3000',
+    'https://condescending-hugle-4d401f.netlify.app',
+  ];
 
   constructor() {
     this._app = express();
@@ -25,9 +31,16 @@ class App {
     return this._app;
   }
 
+  // TODO on production: Add restrition for my aplication URL on cors
   middlewares() {
-    this.app.use(cors());
+    this.app.use(cookieParser());
     this.app.use(express.json());
+    this.app.use(
+      cors({
+        credentials: true,
+        origin: this.whiteList,
+      }),
+    );
   }
 
   routes() {
