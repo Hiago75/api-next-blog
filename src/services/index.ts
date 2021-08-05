@@ -1,6 +1,7 @@
 import { AuthenticateUserService } from './Auth/AuthenticateUserService';
 import { RetrieveUserDataService } from './Auth/RetrieveUserDataService';
 import { RefreshUserTokenService } from './Auth/RefreshUserTokenService';
+import { LogoutUserService } from './Auth/LogoutUserService';
 
 import { CreateAuthorService } from './Authors/CreateAuthorService';
 import { ListAuthorsService } from './Authors/ListAuthorsService';
@@ -38,4 +39,5 @@ export {
   ShowPostService,
   RetrieveUserDataService,
   RefreshUserTokenService,
+  LogoutUserService,
 };

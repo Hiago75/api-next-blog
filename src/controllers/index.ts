@@ -1,6 +1,7 @@
 import { AuthenticateUserController } from './Auth/AuthenticateUserController';
 import { RetrieveUserDataController } from './Auth/RetrieveUserDataController';
 import { RefreshUserTokenController } from './Auth/RefreshUserTokenController';
+import { LogoutUserController } from './Auth/LogoutUserController';
 
 import { CreateAuthorController } from './Authors/CreateAuthorController';
 import { ListAuthorsController } from './Authors/ListAuthorsController';
@@ -38,4 +39,5 @@ export {
   ShowPostController,
   RefreshUserTokenController,
   RetrieveUserDataController,
+  LogoutUserController,
 };
