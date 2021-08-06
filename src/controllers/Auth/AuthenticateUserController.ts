@@ -10,11 +10,16 @@ export class AuthenticateUserController {
 
     if (!email || !password) throw new BadRequest('Both, email and password, are obligatory');
 
-    const { token, refreshTokenId, refreshTokenExpiration } = await this.authenticateUserService.execute({
+    const { token, tokenExp, refreshTokenId, refreshTokenExpiration } = await this.authenticateUserService.execute({
       email,
       password,
     });
 
-    return response.json({ accessToken: token, refreshToken: refreshTokenId, refreshTokenExpiration });
+    return response.json({
+      accessToken: token,
+      accessTokenExpiration: tokenExp,
+      refreshToken: refreshTokenId,
+      refreshTokenExpiration,
+    });
   }
 }

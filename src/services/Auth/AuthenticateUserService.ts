@@ -1,11 +1,12 @@
 import { compare } from 'bcrypt';
 import { getCustomRepository } from 'typeorm';
 import { Unauthorized } from '../../custom/errors';
+import jwtDecode from 'jwt-decode';
 
 import { IAuthenticateUserRequestDTO } from '../../DTOs/IAuthenticateUserRequestDTO';
-import { GenerateRefreshTokenProvider } from '../../provider/GenerateRefreshTokenProvider';
-import { GenerateTokenProvider } from '../../provider/GenerateTokenProvider';
+import { GenerateRefreshTokenProvider, GenerateTokenProvider } from '../../provider/';
 import { AuthorsRepositories } from '../../repositories';
+import { IToken } from '../../interfaces/IToken';
 
 export class AuthenticateUserService {
   async execute({ email, password }: IAuthenticateUserRequestDTO) {
@@ -23,6 +24,8 @@ export class AuthenticateUserService {
     const { id, expiresOn } = await GenerateRefreshTokenProvider(user);
     if (!id) throw new Error('Refesh Token can`t be generated');
 
-    return { token, refreshTokenId: id, refreshTokenExpiration: expiresOn };
+    const { exp } = jwtDecode<IToken>(token);
+
+    return { token, tokenExp: exp, refreshTokenId: id, refreshTokenExpiration: expiresOn };
   }
 }

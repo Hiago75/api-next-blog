@@ -7,10 +7,12 @@ export class RefreshUserTokenController {
   async handle(request: Request, response: Response) {
     const refreshToken = request.headers.cookie;
 
+    console.log('cheguei aqui');
+
     if (!refreshToken) throw new Unauthorized('Refresh token missing');
 
-    const token = await this.refreshUserTokenService.execute(refreshToken);
+    const { token, tokenExpiration } = await this.refreshUserTokenService.execute(refreshToken);
 
-    return response.json(token);
+    return response.json({ token, tokenExpiration });
   }
 }
