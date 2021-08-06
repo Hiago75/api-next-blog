@@ -1,6 +1,8 @@
 import { Request, Response } from 'express';
+import { BadRequest } from '../../custom/errors';
+import { uploadToCloudinary } from '../../provider/';
 import { CreateCoverService } from '../../services';
-import { cloudinary } from '../../config/cloudinary';
+
 import { CreateFormatController } from '../Formats/CreateFormatController';
 
 export class CreateCoversController {
@@ -10,16 +12,13 @@ export class CreateCoversController {
   ) {}
 
   async handle(request: Request, response: Response) {
-    const {
-      original_filename: name,
-      public_id: publicId,
-      width,
-      height,
-      secure_url: url,
-      eager,
-    } = await cloudinary.uploader.upload(request.file ? request.file.path : '', {
-      eager: [{ width: 1280 }, { width: 1000 }, { width: 750 }, { width: 500 }],
-    });
+    const file = request.file ? request.file.path : '';
+
+    if (!file) throw new BadRequest('You need to send a photo');
+
+    const formats = [{ width: 1280 }, { width: 1000 }, { width: 750 }, { width: 500 }];
+
+    const { name, publicId, width, height, url, eager } = await uploadToCloudinary(file, formats);
 
     const { id: formatId } = await this.createFormatsController.handle(eager);
 

@@ -1,8 +1,8 @@
 import dayjs from 'dayjs';
 import { getCustomRepository } from 'typeorm';
-import { Authors } from '../entities/Authors';
+import { Authors } from '../../entities/Authors';
 // import { AuthorsRepositories } from '../repositories';
-import { RefreshTokenRepositories } from '../repositories/RefreshTokenRepositories';
+import { RefreshTokenRepositories } from '../../repositories/RefreshTokenRepositories';
 
 export async function GenerateRefreshTokenProvider(user: Authors) {
   const refreshTokenRepositories = getCustomRepository(RefreshTokenRepositories);

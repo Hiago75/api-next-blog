@@ -8,7 +8,7 @@ import 'reflect-metadata';
 import './config/database';
 
 import { errorHandler } from './middlewares/errorHandler';
-import { categoryRoutes, authorRoutes, postRoutes, coverRoutes, authRoutes } from './routes/index';
+import { categoryRoutes, authorRoutes, postRoutes, coverRoutes, authRoutes, profilePhotoRoutes } from './routes/index';
 
 dotenv.config();
 
@@ -49,6 +49,7 @@ class App {
     this.app.use('/posts', postRoutes);
     this.app.use('/covers', coverRoutes);
     this.app.use('/auth', authRoutes);
+    this.app.use('/photo', profilePhotoRoutes);
   }
 
   errorHandler() {

@@ -21,6 +21,8 @@ import { ShowPostService } from './Posts/ShowPostService';
 import { CreateCoverService } from './Covers/CreateCoverService';
 import { ListCoversService } from './Covers/ListCoversService';
 
+import { CreateProfilePhotoService } from './ProfilePhotos/CreateProfilePhotoService';
+
 export {
   AuthenticateUserService,
   CreateAuthorService,
@@ -40,4 +42,5 @@ export {
   RetrieveUserDataService,
   RefreshUserTokenService,
   LogoutUserService,
+  CreateProfilePhotoService,
 };

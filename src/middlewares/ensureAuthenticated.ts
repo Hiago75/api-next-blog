@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import { verify } from 'jsonwebtoken';
 import { Unauthorized } from '../custom/errors';
+import { formatToken } from '../utils/formatToken';
 
 interface IPayload {
   sub: string;
@@ -11,13 +12,8 @@ export function ensureAuthenticated(request: Request, response: Response, next: 
   const authToken = request.headers.authorization;
   if (!authToken) throw new Unauthorized('You need to login to access this page');
 
-  // Divide the "Bearer" word from the token itself and test if token have these 2 parts
-  const parts = authToken.split(' ');
-  if (parts.length !== 2) throw new Unauthorized('Token error');
-
-  // Test if the scheme is "Bearer"
-  const [scheme, token] = parts;
-  if (!/^Bearer$/i.test(scheme)) throw new Unauthorized('Invalid token format');
+  // Split and verify the token format, then return the token only (without "Bearer")
+  const token = formatToken(authToken);
 
   // Verify if token is valid and inject on request
   verify(token, process.env.TOKEN_SECRET as string, (error, decoded) => {

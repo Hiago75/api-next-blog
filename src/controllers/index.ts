@@ -21,6 +21,8 @@ import { ShowPostController } from './Posts/ShowPostController';
 import { CreateCoversController } from './Covers/CreateCoversController';
 import { ListCoversController } from './Covers/ListCoversController';
 
+import { CreateProfilePhotoController } from './ProfilePhotos/CreateProfilePhotoController';
+
 export {
   AuthenticateUserController,
   CreateAuthorController,
@@ -40,4 +42,5 @@ export {
   RefreshUserTokenController,
   RetrieveUserDataController,
   LogoutUserController,
+  CreateProfilePhotoController,
 };

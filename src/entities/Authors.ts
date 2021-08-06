@@ -1,16 +1,8 @@
 import { classToPlain, Exclude } from 'class-transformer';
-import {
-  Entity,
-  PrimaryColumn,
-  Column,
-  CreateDateColumn,
-  UpdateDateColumn,
-  OneToMany,
-  OneToOne,
-  JoinColumn,
-} from 'typeorm';
+import { Entity, PrimaryColumn, Column, CreateDateColumn, UpdateDateColumn, OneToMany } from 'typeorm';
 import { v4 as uuid } from 'uuid';
 import { Posts } from './Posts';
+import { ProfilePhotos } from './ProfilePhotos';
 import { RefreshToken } from './RefreshToken';
 
 @Entity('authors')
@@ -24,6 +16,15 @@ export class Authors {
   @Column()
   email: string;
 
+  @OneToMany((type) => ProfilePhotos, (user_id) => Authors, {
+    nullable: true,
+    onDelete: 'SET NULL',
+  })
+  profilePhoto: ProfilePhotos;
+
+  @Column({ name: 'profile_photo', nullable: true })
+  profilePhotoUrl: string;
+
   @Exclude({ toPlainOnly: true })
   @Column()
   password: string;
@@ -36,18 +37,15 @@ export class Authors {
   })
   posts: Posts[];
 
-  @OneToOne((type) => RefreshToken, (user_id) => Authors, {
+  @OneToMany((type) => RefreshToken, (user_id) => Authors, {
     nullable: true,
-    eager: true,
     onDelete: 'SET NULL',
   })
-  @JoinColumn({ name: 'refresh_token' })
   refreshToken: RefreshToken;
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;
 
-  @Exclude({ toPlainOnly: true })
   @UpdateDateColumn({ name: 'updated_at' })
   updatedAt: Date;
 

@@ -1,4 +1,5 @@
-import { GenerateRefreshTokenProvider } from './GenerateRefreshTokenProvider';
-import { GenerateTokenProvider } from './GenerateTokenProvider';
+import { GenerateRefreshTokenProvider } from './Token/GenerateRefreshTokenProvider';
+import { GenerateTokenProvider } from './Token/GenerateTokenProvider';
+import { uploadToCloudinary } from './CloudinaryUpload';
 
-export { GenerateRefreshTokenProvider, GenerateTokenProvider };
+export { GenerateRefreshTokenProvider, GenerateTokenProvider, uploadToCloudinary };

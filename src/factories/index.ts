@@ -15,6 +15,7 @@ import { ListPostsFactory } from './Posts/ListPostsFactory';
 import { ListPostsFromCategoryFactory } from './Posts/ListPostsFromCategoryFactory';
 import { ShowPostFactory } from './Posts/ShowPostFactory';
 import { DeletePostFactory } from './Posts/DeletePostFactory';
+import { CreateProfilePhotoFactory } from './ProfilePhotos/CreateProfilePhotoFactory';
 
 export {
   CreateCategoryFactory,
@@ -34,4 +35,5 @@ export {
   DeletePostFactory,
   RetrieveUserDataFactory,
   RefreshUserTokenFactory,
+  CreateProfilePhotoFactory,
 };
