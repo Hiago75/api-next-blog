@@ -6,6 +6,7 @@ import { LogoutUserController } from './Auth/LogoutUserController';
 import { CreateAuthorController } from './Authors/CreateAuthorController';
 import { ListAuthorsController } from './Authors/ListAuthorsController';
 import { ShowAuthorController } from './Authors/ShowAuthorController';
+import { UpdateAuthorController } from './Authors/UpdateAuthorController';
 
 import { CreateCategoryController } from './Categories/CreateCategoryController';
 import { ListCategoriesController } from './Categories/ListCategoriesController';
@@ -43,4 +44,5 @@ export {
   RetrieveUserDataController,
   LogoutUserController,
   CreateProfilePhotoController,
+  UpdateAuthorController,
 };

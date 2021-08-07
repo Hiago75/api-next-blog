@@ -17,7 +17,6 @@ export class RetrieveUserDataController {
     try {
       jwt.verify(token, process.env.TOKEN_SECRET as string);
     } catch (e) {
-      console.log(e);
       throw new Unauthorized('Invalid token');
     }
 

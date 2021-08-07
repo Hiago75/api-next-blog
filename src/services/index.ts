@@ -6,6 +6,7 @@ import { LogoutUserService } from './Auth/LogoutUserService';
 import { CreateAuthorService } from './Authors/CreateAuthorService';
 import { ListAuthorsService } from './Authors/ListAuthorsService';
 import { ShowAuthorService } from './Authors/ShowAuthorService';
+import { UpdateAuthorService } from './Authors/UpdateAuthorService';
 
 import { CreateCategoryService } from './Categories/CreateCategoryService';
 import { ListCategoriesService } from './Categories/ListCategoriesService';
@@ -43,4 +44,5 @@ export {
   RefreshUserTokenService,
   LogoutUserService,
   CreateProfilePhotoService,
+  UpdateAuthorService,
 };
