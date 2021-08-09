@@ -6,9 +6,9 @@ export class UpdateAuthorController {
 
   async handle(req: Request, res: Response) {
     const userId = req.user_id;
-    const { name, email, password } = req.body;
+    const itemsToBeUpdated = req.body;
 
-    const updatedData = await this.updateAuthorService.execute({ userId, name, email, password });
+    const updatedData = await this.updateAuthorService.execute(userId, itemsToBeUpdated);
 
     return res.json(updatedData);
   }
