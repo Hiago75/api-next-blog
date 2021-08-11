@@ -2,6 +2,9 @@ import dotenv from 'dotenv';
 import express from 'express';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
+import translator from 'i18next';
+import translatorBackend from 'i18next-fs-backend';
+import translatorMiddleware from 'i18next-http-middleware';
 
 import 'express-async-errors';
 import 'reflect-metadata';
@@ -12,8 +15,19 @@ import { categoryRoutes, authorRoutes, postRoutes, coverRoutes, authRoutes, prof
 
 dotenv.config();
 
+translator
+  .use(translatorBackend)
+  .use(translatorMiddleware.LanguageDetector)
+  .init({
+    fallbackLng: 'en',
+    backend: {
+      loadPath: './locales/{{lng}}/translation.json',
+    },
+  });
+
 class App {
   private _app;
+
   private whiteList = [
     'http://127.0.0.1:3000',
     'http://localhost:3000',
@@ -34,6 +48,7 @@ class App {
   // TODO on production: Add restrition for my aplication URL on cors
   middlewares() {
     this.app.use(cookieParser());
+    this.app.use(translatorMiddleware.handle(translator));
     this.app.use(express.json());
     this.app.use(
       cors({

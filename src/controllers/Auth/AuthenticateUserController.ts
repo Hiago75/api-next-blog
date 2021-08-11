@@ -8,7 +8,7 @@ export class AuthenticateUserController {
   async handle(request: Request, response: Response) {
     const { email, password } = request.body;
 
-    if (!email || !password) throw new BadRequest('Both, email and password, are obligatory');
+    if (!email || !password) throw new BadRequest('auth_email_password_missing_error');
 
     const { token, tokenExp, refreshTokenId, refreshTokenExpiration } = await this.authenticateUserService.execute({
       email,
