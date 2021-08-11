@@ -14,7 +14,7 @@
   "user_creation_password_short": "A senha deve conter no minimo 5 caracteres",
   "user_creation_email_in_use": "Este e-mail já está sendo usado",
 
-  "category_not_found_error": "Category not found",
+  "category_not_found_error": "Categoria não encontrada",
   "category_creation_not_sent_name": "O campo nome não pode estar vazio",
   "category_creation_already_exists": "Esta categoria já existe",
   "category_deletion_missing_id": "ID da categoria ausente"

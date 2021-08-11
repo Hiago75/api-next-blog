@@ -10,7 +10,6 @@ export class CreateCoverService {
 
     const format = await formatsRepositories.findOneOrFail(formatId);
 
-    // FIX-ME cover creation not working
     const cover = coversRepositories.create({ name, publicId, width, height, url, provider, format });
 
     await coversRepositories.save(cover);

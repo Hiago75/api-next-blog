@@ -9,9 +9,7 @@ export class ShowCategoryService {
 
     const category = categoriesRepositories.findOne({ id: id });
 
-    if (!category) {
-      throw new BadRequest('ID not found');
-    }
+    if (!category) throw new BadRequest('category_not_found_error');
 
     return category;
   }
