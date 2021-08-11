@@ -8,7 +8,7 @@ export class DeletePostController {
   async handle(request: Request, response: Response) {
     const { postId } = request.body;
 
-    if (!postId) throw new BadRequest('Post ID is obligatory');
+    if (!postId) throw new BadRequest('post_deletion_missing_id');
 
     await this.deletePostService.execute({ postId });
 

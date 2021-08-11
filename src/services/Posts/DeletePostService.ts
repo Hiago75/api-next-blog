@@ -8,7 +8,7 @@ export class DeletePostService {
     const postsRepositories = getCustomRepository(PostsRepositories);
     const postExists = await postsRepositories.findOne({ id: postId });
 
-    if (!postExists) throw new BadRequest('Post not found');
+    if (!postExists) throw new BadRequest('post_not_found_error');
 
     await postsRepositories.delete({ id: postId });
   }

@@ -19,5 +19,7 @@
   "category_creation_already_exists": "Esta categoria já existe",
   "category_deletion_missing_id": "ID da categoria ausente",
 
-  "post_creation_title_in_use": "Este titulo já está sendo utilizado"
+  "post_not_found_error": "Post não encontrado",
+  "post_creation_title_in_use": "Este titulo já está sendo utilizado",
+  "post_deletion_missing_id": "Id do post ausente"
 }
