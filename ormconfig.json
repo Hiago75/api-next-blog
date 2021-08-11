@@ -1,10 +1,24 @@
-{
-  "type": "sqlite",
-  "database": "src/database/database.sqlite",
-  "migrations": ["src/database/migrations/*.ts"],
-  "entities": ["src/entities/*.ts"],
-  "cli": {
-    "migrationsDir": "src/database/migrations",
-    "entitiesDir": "src/entities"
+[
+  {
+    "name": "development",
+    "type": "sqlite",
+    "database": "src/database/database.sqlite",
+    "migrations": ["src/database/migrations/*.ts"],
+    "entities": ["src/entities/*.ts"],
+    "cli": {
+      "migrationsDir": "src/database/migrations",
+      "entitiesDir": "src/entities"
+    }
+  },
+  {
+    "name": "test",
+    "type": "sqlite",
+    "database": "src/database/test.sqlite",
+    "migrations": ["src/database/migrations/*.ts"],
+    "entities": ["src/entities/*.ts"],
+    "cli": {
+      "migrationsDir": "src/database/migrations",
+      "entitiesDir": "src/entities"
+    }
   }
-}
+]

@@ -8,7 +8,7 @@ import translatorMiddleware from 'i18next-http-middleware';
 
 import 'express-async-errors';
 import 'reflect-metadata';
-import './config/database';
+import { connectToOrm } from './config/database';
 
 import { errorHandler } from './middlewares/errorHandler';
 import { categoryRoutes, authorRoutes, postRoutes, coverRoutes, authRoutes, profilePhotoRoutes } from './routes/index';
@@ -35,6 +35,7 @@ class App {
   ];
 
   constructor() {
+    connectToOrm();
     this._app = express();
     this.middlewares();
     this.routes();
