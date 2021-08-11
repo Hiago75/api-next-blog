@@ -2,6 +2,8 @@
   "auth_email_password_missing_error": "Ambos, e-mail e senha são obrigatórios para prosseguir",
   "auth_email_password_incorrect": "E-mail/Senha incorreto(s)",
   "auth_token_missing_error": "Token ausente",
+  "auth_token_invalid_error": "Token inválido",
+  "auth_session_expired": "Sessão expirada",
 
   "auth_logout_success": "Usuário desconectado"
 }

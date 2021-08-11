@@ -7,7 +7,7 @@ export class RefreshUserTokenController {
   async handle(request: Request, response: Response) {
     const refreshToken = request.headers.cookie;
 
-    if (!refreshToken) throw new Unauthorized('Refresh token missing');
+    if (!refreshToken) throw new Unauthorized('auth_token_missing_error');
 
     const { token, tokenExpiration } = await this.refreshUserTokenService.execute(refreshToken);
 

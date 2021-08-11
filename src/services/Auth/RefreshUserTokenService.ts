@@ -15,11 +15,11 @@ export class RefreshUserTokenService {
       relations: ['user'],
     });
 
-    if (!refreshToken) throw new Unauthorized('Invalid token');
+    if (!refreshToken) throw new Unauthorized('auth_token_invalid_error');
 
     const refreshTokenExpiresDate = new Date(refreshToken.expiresOn * 1000);
 
-    if (refreshTokenExpiresDate < new Date()) throw new Unauthorized('Session expired');
+    if (refreshTokenExpiresDate < new Date()) throw new Unauthorized('auth_session_expired');
 
     const token = GenerateTokenProvider(refreshToken.user);
     const { exp } = jwtDecode<IToken>(token);

@@ -2,6 +2,8 @@
   "auth_email_password_missing_error": "Both, e-mail and password are necessary to proceed",
   "auth_email_password_incorrect": "E-mail/password incorrect",
   "auth_token_missing_error": "Missing token",
+  "auth_token_invalid_error": "Invalid token",
+  "auth_session_expired": "Session expired",
 
   "auth_logout_success": "User logged-out"
 }
