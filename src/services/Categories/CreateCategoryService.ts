@@ -7,15 +7,11 @@ export class CreateCategoryService {
   async execute({ name }: ICategoryRequestDTO) {
     const categoriesRepositories = getCustomRepository(CategoriesRepositories);
 
-    if (!name) {
-      throw new BadRequest('Category name is empty');
-    }
+    if (!name) throw new BadRequest('category_creation_not_sent_name');
 
     const categoryAlreadyExists = await categoriesRepositories.findOne({ name });
 
-    if (categoryAlreadyExists) {
-      throw new BadRequest('Category already exists');
-    }
+    if (categoryAlreadyExists) throw new BadRequest('category_creation_already_exists');
 
     const category = categoriesRepositories.create({ name });
 

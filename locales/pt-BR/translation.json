@@ -12,5 +12,8 @@
   "user_creation_not_sent_email": "O campo e-mail não pode estar vazio",
   "user_creation_not_sent_password": "O campo senha não pode estar vazio",
   "user_creation_password_short": "A senha deve conter no minimo 5 caracteres",
-  "user_creation_email_in_use": "Este e-mail já está sendo usado"
+  "user_creation_email_in_use": "Este e-mail já está sendo usado",
+
+  "category_creation_not_sent_name": "O campo nome não pode estar vazio",
+  "category_creation_already_exists": "Esta categoria já existe"
 }
