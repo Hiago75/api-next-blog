@@ -8,10 +8,10 @@ export class LogoutUserController {
   async handle(request: Request, response: Response) {
     const refreshToken = request.headers.cookie;
 
-    if (!refreshToken) throw new Unauthorized('Missing token');
+    if (!refreshToken) throw new Unauthorized('auth_token_missing_error');
 
     await this.logoutUserService.execute(refreshToken);
 
-    return response.status(200).json('User token deleted');
+    return response.status(200).json({ message: request.t('auth_logout_success') });
   }
 }
