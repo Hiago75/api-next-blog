@@ -20,7 +20,7 @@ export class ShowPostService {
       ],
     });
 
-    if (!post) throw new BadRequest('Post not found');
+    if (!post) throw new BadRequest('post_not_found_error');
 
     return post;
   }
