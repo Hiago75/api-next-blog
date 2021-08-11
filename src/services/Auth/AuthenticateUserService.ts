@@ -13,10 +13,10 @@ export class AuthenticateUserService {
     const authorsRepositories = getCustomRepository(AuthorsRepositories);
 
     const user = await authorsRepositories.findByEmail(email);
-    if (!user) throw new Unauthorized('Email/password incorrect');
+    if (!user) throw new Unauthorized('auth_email_password_incorrect');
 
     const passwordMatch = await compare(password, user.password);
-    if (!passwordMatch) throw new Unauthorized('Email/password incorrect');
+    if (!passwordMatch) throw new Unauthorized('auth_email_password_incorrect');
 
     const token = GenerateTokenProvider(user);
     if (!token) throw new Error('Token can`t be generated');
