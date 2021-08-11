@@ -8,7 +8,7 @@ export class DeleteCategoryService {
     const categoriesRepositories = getCustomRepository(CategoriesRepositories);
     const categoryExists = await categoriesRepositories.findOne({ id: categoryId });
 
-    if (!categoryExists) throw new BadRequest('Category not found');
+    if (!categoryExists) throw new BadRequest('category_not_found_error');
 
     const categories = await categoriesRepositories.delete({ id: categoryId });
 

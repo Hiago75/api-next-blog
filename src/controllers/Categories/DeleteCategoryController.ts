@@ -8,7 +8,7 @@ export class DeleteCategoryController {
   async handle(request: Request, response: Response) {
     const { categoryId } = request.body;
 
-    if (!categoryId) throw new BadRequest('Category ID is obligatory');
+    if (!categoryId) throw new BadRequest('category_deletion_missing_id');
 
     await this.deleteCategoryService.execute({ categoryId });
 

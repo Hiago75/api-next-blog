@@ -14,6 +14,8 @@
   "user_creation_password_short": "Password need to have at least 5 characters",
   "user_creation_email_in_use": "This e-mail is already is use",
 
-  "category_creation_not_sent_name": "Category already exists",
-  "category_creation_already_exists": "Category name is empty"
+  "category_not_found_error": "Category not found",
+  "category_creation_not_sent_name": "Name field can't be empty",
+  "category_creation_already_exists": "This category already exists",
+  "category_deletion_missing_id": "Missing category ID"
 }
