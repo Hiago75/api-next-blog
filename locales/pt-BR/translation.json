@@ -5,5 +5,7 @@
   "auth_token_invalid_error": "Token inválido",
   "auth_session_expired": "Sessão expirada",
 
-  "auth_logout_success": "Usuário desconectado"
+  "auth_logout_success": "Usuário desconectado",
+
+  "user_not_found_error": "Usuário não encontrado"
 }
