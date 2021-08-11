@@ -8,9 +8,7 @@ export class ShowAuthorService {
     const authorRepositories = getCustomRepository(AuthorsRepositories);
     const author = await authorRepositories.findOne({ id: id });
 
-    if (!author) {
-      throw new BadRequest('Author not found');
-    }
+    if (!author) throw new BadRequest('user_not_found_error');
 
     return author;
   }
