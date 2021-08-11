@@ -7,5 +7,10 @@
 
   "auth_logout_success": "User logged-out",
 
-  "user_not_found_error": "User not found"
+  "user_not_found_error": "User not found",
+  "user_creation_not_sent_name": "Name field can't be empty",
+  "user_creation_not_sent_email": "E-mail field can't be empty",
+  "user_creation_not_sent_password": "E-mail field can't be empty",
+  "user_creation_password_short": "Password need to have at least 5 characters",
+  "user_creation_email_in_use": "This e-mail is already is use"
 }

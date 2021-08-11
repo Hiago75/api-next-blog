@@ -11,7 +11,7 @@ export class CreateAuthorService {
     const profilePhotosRepositories = getCustomRepository(ProfilePhotosRepositories);
 
     const authorAlreadyExists = await authorsRepositories.findOne({ email: email });
-    if (authorAlreadyExists) throw new BadRequest('This email has already been used');
+    if (authorAlreadyExists) throw new BadRequest('user_creation_email_in_use');
 
     const profilePhoto = await profilePhotosRepositories.findOne(profilePhotoId);
 
