@@ -26,5 +26,7 @@
   "profile_photo_creation_photo_missing": "You need to send a photo",
 
   "necessary_permissions_missing_error": "You don`t have the necessary permissions for that",
-  "necessary_login_to_proceed": "You need to be logged in to access this page"
+  "necessary_login_to_proceed": "You need to be logged in to access this page",
+
+  "photo_upload_error": "An error occurred when trying to upload this photo"
 }
