@@ -9,11 +9,11 @@ export async function ensureAdmin(request: Request, _response: Response, next: N
   const { user_id } = request;
 
   const author = await authorsRepositories.findOne(user_id);
-  if (!author) throw new BadRequest('Author not found');
+  if (!author) throw new BadRequest('user_not_found_error');
 
   // Text if this author is admin
   const { admin } = author;
   if (admin) return next();
 
-  throw new Forbidden('You don`t have the necessary permissions for that');
+  throw new Forbidden('necessary_permissions_missing_error');
 }

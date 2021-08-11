@@ -23,5 +23,8 @@
   "post_creation_title_in_use": "Este titulo já está sendo utilizado",
   "post_deletion_missing_id": "Id do post ausente",
 
-  "profile_photo_creation_photo_missing": "Você precisa enviar uma foto"
+  "profile_photo_creation_photo_missing": "Você precisa enviar uma foto",
+
+  "necessary_permissions_missing_error": "Você não possui as permissões necessárias para realizar essa ação",
+  "necessary_login_to_proceed": "É necessário fazer login na aplicação para prosseguir"
 }

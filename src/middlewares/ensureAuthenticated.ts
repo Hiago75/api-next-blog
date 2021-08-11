@@ -10,14 +10,14 @@ interface IPayload {
 // Ensure that user has logged on application before doing something
 export function ensureAuthenticated(request: Request, response: Response, next: NextFunction) {
   const authToken = request.headers.authorization;
-  if (!authToken) throw new Unauthorized('You need to login to access this page');
+  if (!authToken) throw new Unauthorized('necessary_login_to_proceed');
 
   // Split and verify the token format, then return the token only (without "Bearer")
   const token = formatToken(authToken);
 
   // Verify if token is valid and inject on request
   verify(token, process.env.TOKEN_SECRET as string, (error, decoded) => {
-    if (error) throw new Unauthorized('Token is invalid');
+    if (error) throw new Unauthorized('auth_token_invalid_error');
     if (!decoded) throw new Error('Unexpected error');
 
     const { sub } = decoded as IPayload;

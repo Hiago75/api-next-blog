@@ -23,5 +23,8 @@
   "post_creation_title_in_use": "This title is already in use",
   "post_deletion_missing_id": "Missing post ID",
 
-  "profile_photo_creation_photo_missing": "You need to send a photo"
+  "profile_photo_creation_photo_missing": "You need to send a photo",
+
+  "necessary_permissions_missing_error": "You don`t have the necessary permissions for that",
+  "necessary_login_to_proceed": "You need to be logged in to access this page"
 }
