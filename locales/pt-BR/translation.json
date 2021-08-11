@@ -28,5 +28,7 @@
   "necessary_permissions_missing_error": "Você não possui as permissões necessárias para realizar essa ação",
   "necessary_login_to_proceed": "É necessário fazer login na aplicação para prosseguir",
 
-  "photo_upload_error": "Não foi possível fazer upload desta foto"
+  "photo_upload_error": "Não foi possível fazer upload desta foto",
+
+  "invalid_token_format": "O formato do token fornecido é inválido"
 }
