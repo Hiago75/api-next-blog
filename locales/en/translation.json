@@ -21,5 +21,7 @@
 
   "post_not_found_error": "Post not found",
   "post_creation_title_in_use": "This title is already in use",
-  "post_deletion_missing_id": "Missing post ID"
+  "post_deletion_missing_id": "Missing post ID",
+
+  "profile_photo_creation_photo_missing": "You need to send a photo"
 }

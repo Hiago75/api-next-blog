@@ -10,7 +10,7 @@ export class CreateProfilePhotoController {
     const userId = req.user_id;
     const file = req.file ? req.file.path : '';
 
-    if (!file) throw new BadRequest('You need to send a photo');
+    if (!file) throw new BadRequest('profile_photo_creation_photo_missing');
 
     const { url } = await uploadToCloudinary(file);
 

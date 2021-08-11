@@ -9,7 +9,7 @@ export class CreateProfilePhotoService {
     const profilePhotosRepositories = getCustomRepository(ProfilePhotosRepositories);
 
     const user = await authorsRepositories.findOne(userId);
-    if (!user) throw new BadRequest('User not found');
+    if (!user) throw new BadRequest('user_not_found_error');
 
     const profilePhoto = profilePhotosRepositories.create({ url, user });
     await profilePhotosRepositories.save(profilePhoto);
