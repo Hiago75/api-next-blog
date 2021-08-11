@@ -15,7 +15,7 @@ export class CreatePostsService {
 
     const titleUsed = await postsRepositories.findOne({ title: title });
 
-    if (titleUsed) throw new BadRequest('That title has already been used');
+    if (titleUsed) throw new BadRequest('post_creation_title_in_use');
 
     const post = postsRepositories.create({
       title,
