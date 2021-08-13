@@ -13,7 +13,7 @@ describe('Show category', () => {
     expect(response.status).toEqual(400);
   });
 
-  it('should create show the sent category', async () => {
+  it('should show the sent category', async () => {
     const { id } = await categoryFactory('Test category');
     const response = await request(app).get(`/categories/${id}`);
 

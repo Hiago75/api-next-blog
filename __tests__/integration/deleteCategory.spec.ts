@@ -8,7 +8,7 @@ import { categoryFactory } from '../utils/factories/categoryFactory';
 describe('Delete category', () => {
   testFactory();
 
-  it('should not be able to create a category without being authenticated', async () => {
+  it('should not be able to delete a category without being authenticated', async () => {
     const response = await request(app).delete('/categories');
 
     expect(response.status).toEqual(401);

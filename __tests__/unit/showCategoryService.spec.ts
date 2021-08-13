@@ -1,16 +1,14 @@
-import { CreateCategoryService, ShowCategoryService } from '../../src/services';
+import { ShowCategoryService } from '../../src/services';
 import { testFactory } from '../utils/testFactory';
+import { categoryFactory } from '../utils/factories/categoryFactory';
 
 describe('Show category service', () => {
-  const createCategoryService = new CreateCategoryService();
   const showCategoryService = new ShowCategoryService();
 
   testFactory();
 
   it('should show the sent category', async () => {
-    const name = 'Test';
-    const category = await createCategoryService.execute({ name });
-    const { id } = category;
+    const { id } = await categoryFactory('Test');
     const showedCategory = await showCategoryService.execute({ id });
 
     expect(showedCategory).toHaveProperty('name', 'Test');
