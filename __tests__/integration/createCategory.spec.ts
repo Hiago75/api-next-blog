@@ -1,7 +1,7 @@
 import app from '../../src/app';
 import request from 'supertest';
 
-import { mockToken } from '../utils/mockAuthentication';
+import { mockToken } from '../utils/mocks/mockAuthentication';
 import { testFactory } from '../utils/testFactory';
 
 describe('Create category', () => {

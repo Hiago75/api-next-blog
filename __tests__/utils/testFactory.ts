@@ -1,5 +1,5 @@
 import { Connection } from 'typeorm';
-import mockConnection from './mockConnection';
+import mockConnection from './mocks/mockConnection';
 
 export const testFactory = () => {
   let connection: Connection;

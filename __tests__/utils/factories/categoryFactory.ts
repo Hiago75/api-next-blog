@@ -1,6 +1,6 @@
-import { CreateCategoryService } from '../../src/services';
+import { CreateCategoryService } from '../../../src/services';
 
-export const createCategoryMock = async (name: string) => {
+export const categoryFactory = async (name: string) => {
   const createCategoryService = new CreateCategoryService();
   const category = await createCategoryService.execute({ name });
 

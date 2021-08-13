@@ -2,7 +2,7 @@ import app from '../../src/app';
 import request from 'supertest';
 
 import { testFactory } from '../utils/testFactory';
-import { createCategoryMock } from '../utils/createCategory';
+import { categoryFactory } from '../utils/factories/categoryFactory';
 
 describe('Show category', () => {
   testFactory();
@@ -14,7 +14,7 @@ describe('Show category', () => {
   });
 
   it('should create show the sent category', async () => {
-    const { id } = await createCategoryMock('Test category');
+    const { id } = await categoryFactory('Test category');
     const response = await request(app).get(`/categories/${id}`);
 
     expect(response.body).toHaveProperty('name', 'Test category');
