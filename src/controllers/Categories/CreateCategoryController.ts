@@ -1,4 +1,5 @@
 import { Request, Response } from 'express';
+import { BadRequest } from '../../custom/errors';
 import { CreateCategoryService } from '../../services/Categories/CreateCategoryService';
 
 export class CreateCategoryController {
@@ -6,6 +7,7 @@ export class CreateCategoryController {
 
   async handle(request: Request, response: Response) {
     const { name } = request.body;
+    if (!name) throw new BadRequest('category_creation_not_sent_name');
 
     const category = await this.createCategoryService.execute({ name });
 
