@@ -7,7 +7,7 @@ import { categoryFactory } from '../utils/factories/categoryFactory';
 describe('Show category', () => {
   testFactory();
 
-  it('should not be able to show a category with and invalid ID', async () => {
+  it('should not be able to show a non-existent category', async () => {
     const response = await request(app).get('/categories/fdasfasdfs');
 
     expect(response.status).toEqual(400);

@@ -12,7 +12,7 @@ export class DeleteCategoryController {
 
     await this.deleteCategoryService.execute({ categoryId });
 
-    return response.status(200).json({
+    return response.json({
       deleted: true,
     });
   }

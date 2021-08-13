@@ -16,7 +16,7 @@ describe('Delete category service', () => {
     expect(deletedCategory).toHaveProperty('deleted', true);
   });
 
-  it('should not be able to delete an invalid category', async () => {
+  it('should not be able to delete a non-existent  category', async () => {
     await expect(deleteCategoryService.execute({ categoryId: 'invalid ID' })).rejects.toEqual(
       new Error('category_not_found_error'),
     );
