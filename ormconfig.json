@@ -13,7 +13,7 @@
   {
     "name": "test",
     "type": "sqlite",
-    "database": "src/database/test.sqlite",
+    "database": "__tests__/test.sqlite",
     "migrations": ["src/database/migrations/*.ts"],
     "entities": ["src/entities/*.ts"],
     "cli": {

@@ -8,8 +8,8 @@
     "start": "node dist/server.js",
     "dev": "ts-node-dev src/server.ts -r tsconfig-paths/register --ignore-watch node_modules --transpileOnly --no-notify",
     "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js",
-    "test": "NODE_ENV=test jest",
-    "test:watch": "NODE_ENV=test jest --watch"
+    "test": "NODE_ENV=test jest --runInBand",
+    "test:watch": "NODE_ENV=test jest --watch --runInBand"
   },
   "dependencies": {
     "bcrypt": "^5.0.1",

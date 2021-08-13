@@ -10,8 +10,8 @@ export class DeleteCategoryService {
 
     if (!categoryExists) throw new BadRequest('category_not_found_error');
 
-    const categories = await categoriesRepositories.delete({ id: categoryId });
+    await categoriesRepositories.delete({ id: categoryId });
 
-    return categories;
+    return { deleted: true };
   }
 }

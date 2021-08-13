@@ -1,7 +1,7 @@
 import { CreateCategoryService } from '../../src/services/Categories/CreateCategoryService';
 import { testFactory } from '../utils/testFactory';
 
-describe('Test my app server', () => {
+describe('Create category service', () => {
   const createCategoryService = new CreateCategoryService();
 
   testFactory();

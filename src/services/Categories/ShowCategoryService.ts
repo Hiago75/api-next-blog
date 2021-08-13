@@ -7,8 +7,7 @@ export class ShowCategoryService {
   async execute({ id }: IShowCategoryRequestDTO) {
     const categoriesRepositories = getCustomRepository(CategoriesRepositories);
 
-    const category = categoriesRepositories.findOne({ id: id });
-
+    const category = await categoriesRepositories.findOne(id);
     if (!category) throw new BadRequest('category_not_found_error');
 
     return category;
