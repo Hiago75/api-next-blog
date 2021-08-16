@@ -15,4 +15,5 @@ router.get('/', listAuthorsController.handle.bind(listAuthorsController));
 router.get('/:id', showAuthorController.handle.bind(showAuthorController));
 router.post('/', ensureAuthenticated, ensureAdmin, createAuthorController.handle.bind(createAuthorController));
 router.put('/update', ensureAuthenticated, updateAuthorController.handle.bind(updateAuthorController));
+
 export default router;

@@ -1,6 +1,6 @@
-import { DeleteCategoryService } from '../../src/services';
-import { testFactory } from '../utils/testFactory';
-import { categoryFactory } from '../utils/factories/categoryFactory';
+import { DeleteCategoryService } from '../../../src/services';
+import { testFactory } from '../../utils/testFactory';
+import { categoryFactory } from '../../utils/factories/categoryFactory';
 
 describe('Delete category service', () => {
   const deleteCategoryService = new DeleteCategoryService();

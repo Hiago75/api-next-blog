@@ -1,9 +1,9 @@
-import app from '../../src/app';
+import app from '../../../src/app';
 import request from 'supertest';
 
-import { testFactory } from '../utils/testFactory';
-import { mockToken } from '../utils/mocks/mockAuthentication';
-import { categoryFactory } from '../utils/factories/categoryFactory';
+import { testFactory } from '../../utils/testFactory';
+import { mockToken } from '../../utils/mocks/mockAuthentication';
+import { categoryFactory } from '../../utils/factories/categoryFactory';
 
 describe('Delete category', () => {
   testFactory();

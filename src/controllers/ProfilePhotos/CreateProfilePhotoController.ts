@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import { BadRequest } from '../../custom/errors';
 import { uploadToCloudinary } from '../../provider';
 import { CreateProfilePhotoService } from '../../services/ProfilePhotos/CreateProfilePhotoService';
+import fs from 'fs';
 
 export class CreateProfilePhotoController {
   constructor(private createProfilePhotoService: CreateProfilePhotoService) {}
@@ -16,6 +17,8 @@ export class CreateProfilePhotoController {
 
     const { id } = await this.createProfilePhotoService.execute({ url, userId });
 
-    return res.json({ profilePhoto: id });
+    fs.unlink(file, () => {
+      return res.json({ profilePhoto: id });
+    });
   }
 }

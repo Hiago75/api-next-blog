@@ -1,6 +1,6 @@
-import { ShowCategoryService } from '../../src/services';
-import { testFactory } from '../utils/testFactory';
-import { categoryFactory } from '../utils/factories/categoryFactory';
+import { ShowCategoryService } from '../../../src/services';
+import { testFactory } from '../../utils/testFactory';
+import { categoryFactory } from '../../utils/factories/categoryFactory';
 
 describe('Show category service', () => {
   const showCategoryService = new ShowCategoryService();
