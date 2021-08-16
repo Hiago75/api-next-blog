@@ -8,6 +8,7 @@ export class CreateProfilePhotoController {
   constructor(private createProfilePhotoService: CreateProfilePhotoService) {}
 
   async handle(req: Request, res: Response) {
+    // TODO: remove the necessety of the userID
     const userId = req.user_id;
     const file = req.file ? req.file.path : '';
 

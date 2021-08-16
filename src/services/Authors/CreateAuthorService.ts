@@ -7,6 +7,7 @@ import { encrypt } from '../../utils/encrypt';
 
 export class CreateAuthorService {
   async execute({ name, email, password, admin, profilePhotoId }: IAuthorRequestDTO) {
+    // TODO: Refactor the profilePhoto system during creation
     const authorsRepositories = getCustomRepository(AuthorsRepositories);
     const profilePhotosRepositories = getCustomRepository(ProfilePhotosRepositories);
 
