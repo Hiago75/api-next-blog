@@ -1,7 +1,7 @@
 import request from 'supertest';
 import faker from 'faker';
 import app from '../../../src/app';
-import { testFactory, authFactory, authorFactory } from '../../utils';
+import { testFactory, authFactory, authorFactory, profilePhotoFactory } from '../../utils';
 
 describe('Create Author', () => {
   testFactory();
@@ -95,5 +95,24 @@ describe('Create Author', () => {
 
     expect(response.status).toBe(200);
     expect(response.body).toHaveProperty('id');
+  });
+
+  it('should be able to create a new author with a profile photo', async () => {
+    const authorization = await authFactory('123456', true);
+    const { id } = await profilePhotoFactory();
+    const response = await request(app)
+      .post('/authors')
+      .set('Authorization', 'bearer ' + authorization)
+      .send({
+        name: mockUserData.name,
+        email: mockUserData.email,
+        password: mockUserData.password,
+        admin: mockUserData.admin,
+        profilePhotoId: id,
+      });
+
+    expect(response.status).toBe(200);
+    expect(response.body).toHaveProperty('id');
+    expect(response.body).toHaveProperty('profilePhotoUrl');
   });
 });

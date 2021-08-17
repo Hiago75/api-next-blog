@@ -1,25 +1,11 @@
 import { CreateAuthorService } from '../../../src/services';
-import { testFactory, authorFactory } from '../../utils';
+import { testFactory, authorFactory, profilePhotoFactory } from '../../utils';
 import faker from 'faker';
 
 describe('Create Author Service', () => {
   const sut = new CreateAuthorService();
 
   testFactory();
-
-  it('should be able to create a new author without sending a profile photo', async () => {
-    const newUser = await sut.execute({
-      name: faker.name.firstName(),
-      email: faker.internet.email(),
-      password: faker.internet.password(),
-      admin: false,
-      profilePhotoId: '',
-    });
-
-    expect(newUser).toHaveProperty('id');
-  });
-
-  // TODO: should be able to create a new author with a profile photo
 
   it('should not be able to create a user if the email is already in use', async () => {
     const { name, email, password, admin } = await authorFactory();
@@ -39,5 +25,30 @@ describe('Create Author Service', () => {
     });
 
     expect(newUser.profilePhoto).toEqual(undefined);
+  });
+
+  it('should be able to create a new author without sending a profile photo', async () => {
+    const newUser = await sut.execute({
+      name: faker.name.firstName(),
+      email: faker.internet.email(),
+      password: faker.internet.password(),
+      admin: false,
+      profilePhotoId: '',
+    });
+
+    expect(newUser).toHaveProperty('id');
+  });
+
+  it('should be able to create a new author with a profile photo', async () => {
+    const { id } = await profilePhotoFactory();
+    const newUser = await sut.execute({
+      name: faker.name.firstName(),
+      email: faker.internet.email(),
+      password: faker.internet.password(),
+      admin: false,
+      profilePhotoId: id,
+    });
+
+    expect(newUser).toHaveProperty('id');
   });
 });

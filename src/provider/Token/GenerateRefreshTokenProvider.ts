@@ -1,13 +1,12 @@
 import dayjs from 'dayjs';
 import { getCustomRepository } from 'typeorm';
 import { Authors } from '../../entities/Authors';
-// import { AuthorsRepositories } from '../repositories';
 import { RefreshTokenRepositories } from '../../repositories/RefreshTokenRepositories';
 
+// Create a refresh token to user
 export async function GenerateRefreshTokenProvider(user: Authors) {
   const refreshTokenRepositories = getCustomRepository(RefreshTokenRepositories);
 
-  // TODO: Refactor date
   const expiresDate = dayjs().add(1, 'day').unix();
 
   const userAlreadyHaveToken = await refreshTokenRepositories.findOne({ user });

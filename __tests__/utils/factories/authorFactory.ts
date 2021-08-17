@@ -1,6 +1,8 @@
 import faker from 'faker';
 import { CreateAuthorService } from '../../../src/services';
 
+// TODO: Refactor the factories to work directly with the repositories
+
 export const authorFactory = async (password?: string, admin?: boolean, profilePhotoId?: string) => {
   const userName = faker.name.firstName();
   const userEmail = faker.internet.email();
