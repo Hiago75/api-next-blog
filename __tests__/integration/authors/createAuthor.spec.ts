@@ -96,6 +96,4 @@ describe('Create Author', () => {
     expect(response.status).toBe(200);
     expect(response.body).toHaveProperty('id');
   });
-
-  // TODO: it should be able to create a new author with a profile Photo
 });

@@ -12,6 +12,7 @@ export class RelationsFormatsSizes1626786502982 implements MigrationInterface {
     );
     await queryRunner.query(`DROP TABLE "posts"`);
     await queryRunner.query(`ALTER TABLE "temporary_posts" RENAME TO "posts"`);
+    await queryRunner.query(`DROP TABLE "thumbnail"`);
     await queryRunner.query(
       `CREATE TABLE "thumbnail" ("id" varchar PRIMARY KEY NOT NULL, "width" integer NOT NULL, "height" integer NOT NULL, "url" varchar NOT NULL, "created_at" datetime NOT NULL DEFAULT (datetime('now')), "updated_at" datetime NOT NULL DEFAULT (datetime('now')))`,
     );

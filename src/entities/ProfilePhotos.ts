@@ -1,4 +1,4 @@
-import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryColumn, UpdateDateColumn } from 'typeorm';
+import { Column, CreateDateColumn, Entity, OneToOne, PrimaryColumn, UpdateDateColumn } from 'typeorm';
 import { v4 as uuid } from 'uuid';
 import { Authors } from './Authors';
 
@@ -10,11 +10,10 @@ export class ProfilePhotos {
   @Column()
   url: string;
 
-  @ManyToOne((type) => Authors, (profile_photo) => ProfilePhotos, {
+  @OneToOne((type) => Authors, (profile_photo) => ProfilePhotos, {
     nullable: false,
     onDelete: 'CASCADE',
   })
-  @JoinColumn({ name: 'user_id' })
   user: Authors;
 
   @CreateDateColumn({ name: 'created_at' })

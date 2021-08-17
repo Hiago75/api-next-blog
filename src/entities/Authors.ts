@@ -1,5 +1,5 @@
 import { classToPlain, Exclude } from 'class-transformer';
-import { Entity, PrimaryColumn, Column, CreateDateColumn, UpdateDateColumn, OneToMany } from 'typeorm';
+import { Entity, PrimaryColumn, Column, CreateDateColumn, UpdateDateColumn, OneToMany, OneToOne } from 'typeorm';
 import { v4 as uuid } from 'uuid';
 import { Posts } from './Posts';
 import { ProfilePhotos } from './ProfilePhotos';
@@ -16,7 +16,7 @@ export class Authors {
   @Column()
   email: string;
 
-  @OneToMany((type) => ProfilePhotos, (user_id) => Authors, {
+  @OneToOne((type) => ProfilePhotos, (user_id) => Authors, {
     nullable: true,
     onDelete: 'SET NULL',
   })
