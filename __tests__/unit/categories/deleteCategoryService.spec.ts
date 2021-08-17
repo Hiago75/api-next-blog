@@ -1,11 +1,11 @@
 import { DeleteCategoryService } from '../../../src/services';
-import { testFactory } from '../../utils/testFactory';
+import { testSetup } from '../../utils/testSetup';
 import { categoryFactory } from '../../utils/factories/categoryFactory';
 
 describe('Delete category service', () => {
   const deleteCategoryService = new DeleteCategoryService();
 
-  testFactory();
+  testSetup();
 
   it('should create delete the sent category category', async () => {
     const { id: categoryId } = await categoryFactory('Test');

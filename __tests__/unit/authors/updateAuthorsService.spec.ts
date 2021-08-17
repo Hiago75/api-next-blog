@@ -1,10 +1,10 @@
 import { UpdateAuthorService } from '../../../src/services';
-import { authorFactory, testFactory } from '../../utils';
+import { authorFactory, testSetup } from '../../utils';
 
 describe('Update authors service', () => {
   const sut = new UpdateAuthorService();
 
-  testFactory();
+  testSetup();
 
   it('should be able to update the name of a user', async () => {
     const { id } = await authorFactory();

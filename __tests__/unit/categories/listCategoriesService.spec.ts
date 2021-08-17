@@ -1,11 +1,11 @@
 import { ListCategoriesService } from '../../../src/services';
-import { testFactory } from '../../utils/testFactory';
+import { testSetup } from '../../utils/testSetup';
 import { categoryFactory } from '../../utils/factories/categoryFactory';
 
 describe('List categories service', () => {
   const listCategoriesService = new ListCategoriesService();
 
-  testFactory();
+  testSetup();
 
   it('should list all categories', async () => {
     await categoryFactory('test');

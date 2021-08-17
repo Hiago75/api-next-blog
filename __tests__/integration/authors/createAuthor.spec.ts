@@ -1,10 +1,10 @@
 import request from 'supertest';
 import faker from 'faker';
 import app from '../../../src/app';
-import { testFactory, authFactory, authorFactory, profilePhotoFactory } from '../../utils';
+import { testSetup, authFactory, authorFactory, profilePhotoFactory } from '../../utils';
 
 describe('Create Author', () => {
-  testFactory();
+  testSetup();
 
   const mockUserData = {
     name: faker.name.findName(),

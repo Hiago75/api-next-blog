@@ -1,11 +1,11 @@
 import app from '../../../src/app';
 import request from 'supertest';
 
-import { testFactory } from '../../utils/testFactory';
+import { testSetup } from '../../utils/testSetup';
 import { categoryFactory } from '../../utils/factories/categoryFactory';
 
 describe('Show category', () => {
-  testFactory();
+  testSetup();
 
   it('should not be able to show a non-existent category', async () => {
     const response = await request(app).get('/categories/fdasfasdfs');

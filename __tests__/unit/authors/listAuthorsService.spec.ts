@@ -1,10 +1,10 @@
 import { ListAuthorsService } from '../../../src/services';
-import { authorFactory, testFactory } from '../../utils';
+import { authorFactory, testSetup } from '../../utils';
 
 describe('List authors service', () => {
   const sut = new ListAuthorsService();
 
-  testFactory();
+  testSetup();
 
   it('should be able to list all existent authors', async () => {
     await authorFactory();

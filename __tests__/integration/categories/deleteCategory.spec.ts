@@ -1,12 +1,12 @@
 import app from '../../../src/app';
 import request from 'supertest';
 
-import { testFactory } from '../../utils/testFactory';
+import { testSetup } from '../../utils/testSetup';
 import { mockToken } from '../../utils/mocks/mockAuthentication';
 import { categoryFactory } from '../../utils/factories/categoryFactory';
 
 describe('Delete category', () => {
-  testFactory();
+  testSetup();
 
   it('should not be able to delete a category without being authenticated', async () => {
     const response = await request(app).delete('/categories');

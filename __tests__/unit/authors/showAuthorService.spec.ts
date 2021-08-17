@@ -1,10 +1,10 @@
-import { authorFactory, testFactory } from '../../utils';
+import { authorFactory, testSetup } from '../../utils';
 import { ShowAuthorService } from '../../../src/services';
 
 describe('Show author service', () => {
   const sut = new ShowAuthorService();
 
-  testFactory();
+  testSetup();
 
   it('should not be able to show a non-existent author', async () => {
     const id = 'invalid Id';

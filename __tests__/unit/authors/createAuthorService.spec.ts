@@ -1,11 +1,11 @@
 import { CreateAuthorService } from '../../../src/services';
-import { testFactory, authorFactory, profilePhotoFactory } from '../../utils';
+import { testSetup, authorFactory, profilePhotoFactory } from '../../utils';
 import faker from 'faker';
 
 describe('Create Author Service', () => {
   const sut = new CreateAuthorService();
 
-  testFactory();
+  testSetup();
 
   it('should not be able to create a user if the email is already in use', async () => {
     const { name, email, password, admin } = await authorFactory();

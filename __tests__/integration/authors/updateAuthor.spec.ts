@@ -1,10 +1,10 @@
 import app from '../../../src/app';
 import request from 'supertest';
 
-import { testFactory, authFactory } from '../../utils';
+import { testSetup, authFactory } from '../../utils';
 
 describe('Update author', () => {
-  testFactory();
+  testSetup();
 
   it('should not be able to update a user if this one is not authenticated', async () => {
     const response = await request(app).put('/authors').send({ name: 'Test Name', email: 'testEmail@gmail.com' });

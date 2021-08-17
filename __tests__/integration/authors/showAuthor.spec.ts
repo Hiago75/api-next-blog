@@ -1,10 +1,10 @@
 import app from '../../../src/app';
 import request from 'supertest';
 
-import { testFactory, authorFactory } from '../../utils';
+import { testSetup, authorFactory } from '../../utils';
 
 describe('Show author', () => {
-  testFactory();
+  testSetup();
 
   it('should not be able to show a non-existent author', async () => {
     const response = await request(app).get(`/authors/invalid-id`);

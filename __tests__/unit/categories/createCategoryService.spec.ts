@@ -1,11 +1,11 @@
 import { CreateCategoryService } from '../../../src/services';
-import { testFactory } from '../../utils/testFactory';
+import { testSetup } from '../../utils/testSetup';
 import { categoryFactory } from '../../utils/factories/categoryFactory';
 
 describe('Create category service', () => {
   const createCategoryService = new CreateCategoryService();
 
-  testFactory();
+  testSetup();
 
   it('should not be able to create categories with the same name', async () => {
     const name = 'Test';

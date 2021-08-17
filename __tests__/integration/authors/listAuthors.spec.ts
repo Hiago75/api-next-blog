@@ -1,10 +1,10 @@
 import app from '../../../src/app';
 import request from 'supertest';
 
-import { testFactory, authorFactory } from '../../utils';
+import { testSetup, authorFactory } from '../../utils';
 
 describe('List authors', () => {
-  testFactory();
+  testSetup();
 
   it('should list all the authors', async () => {
     await authorFactory();

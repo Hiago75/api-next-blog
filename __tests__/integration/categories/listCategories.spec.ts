@@ -1,11 +1,11 @@
 import app from '../../../src/app';
 import request from 'supertest';
 
-import { testFactory } from '../../utils/testFactory';
+import { testSetup } from '../../utils/testSetup';
 import { categoryFactory } from '../../utils/factories/categoryFactory';
 
 describe('List categories', () => {
-  testFactory();
+  testSetup();
 
   it('should list all the categories', async () => {
     await categoryFactory('Test category');

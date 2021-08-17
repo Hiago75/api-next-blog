@@ -2,11 +2,11 @@ import app from '../../../src/app';
 import request from 'supertest';
 
 import { mockToken } from '../../utils/mocks/mockAuthentication';
-import { testFactory } from '../../utils/testFactory';
+import { testSetup } from '../../utils/testSetup';
 import { categoryFactory } from '../../utils/factories/categoryFactory';
 
 describe('Create category', () => {
-  testFactory();
+  testSetup();
 
   it('should not be able to create a category without being authenticated', async () => {
     const response = await request(app).post('/categories').send({ name: 'Integration test' });

@@ -1,7 +1,7 @@
 import { Connection } from 'typeorm';
 import mockConnection from './mocks/mockConnection';
 
-export const testFactory = () => {
+export const testSetup = () => {
   let connection: Connection;
 
   beforeAll(async () => {

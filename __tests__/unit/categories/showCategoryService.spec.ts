@@ -1,11 +1,11 @@
 import { ShowCategoryService } from '../../../src/services';
-import { testFactory } from '../../utils/testFactory';
+import { testSetup } from '../../utils/testSetup';
 import { categoryFactory } from '../../utils/factories/categoryFactory';
 
 describe('Show category service', () => {
   const showCategoryService = new ShowCategoryService();
 
-  testFactory();
+  testSetup();
 
   it('should show the sent category', async () => {
     const { id } = await categoryFactory('Test');

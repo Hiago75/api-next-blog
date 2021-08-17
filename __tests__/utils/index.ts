@@ -1,4 +1,4 @@
-import { testFactory } from './testFactory';
+import { testSetup } from './testSetup';
 import { authorFactory } from './factories/authorFactory';
 import { categoryFactory } from './factories/categoryFactory';
 import { authFactory } from './factories/authFactory';
@@ -8,7 +8,7 @@ import { author } from './mocks/mockAuthor';
 import { mockConnection } from './mocks/mockConnection';
 
 export {
-  testFactory,
+  testSetup,
   authorFactory,
   categoryFactory,
   mockToken,
