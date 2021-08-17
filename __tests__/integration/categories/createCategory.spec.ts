@@ -12,6 +12,7 @@ describe('Create category', () => {
     const response = await request(app).post('/categories').send({ name: 'Integration test' });
 
     expect(response.status).toEqual(401);
+    expect(response.body).toHaveProperty('message', 'You need to be logged in to access this page');
   });
 
   it('should not be able to create a category without sending a name', async () => {
@@ -20,6 +21,7 @@ describe('Create category', () => {
       .set('Authorization', 'bearer ' + mockToken);
 
     expect(response.status).toEqual(400);
+    expect(response.body).toHaveProperty('message', `Name field can't be empty`);
   });
 
   it('should not be able to create two categories with the same name', async () => {
@@ -31,6 +33,7 @@ describe('Create category', () => {
       .set('Authorization', 'bearer ' + mockToken);
 
     expect(response.status).toEqual(400);
+    expect(response.body).toHaveProperty('message', 'This category already exists');
   });
 
   it('should create a new category', async () => {

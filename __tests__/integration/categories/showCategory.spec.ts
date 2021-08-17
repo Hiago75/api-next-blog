@@ -11,6 +11,7 @@ describe('Show category', () => {
     const response = await request(app).get('/categories/fdasfasdfs');
 
     expect(response.status).toEqual(400);
+    expect(response.body).toHaveProperty('message', 'Category not found');
   });
 
   it('should show the sent category', async () => {

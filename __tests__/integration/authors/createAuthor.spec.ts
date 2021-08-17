@@ -18,6 +18,7 @@ describe('Create Author', () => {
     const response = await request(app).post('/authors').send(mockUserData);
 
     expect(response.status).toBe(401);
+    expect(response.body).toHaveProperty('message', `You need to be logged in to access this page`);
   });
 
   it('should not be able to create a new author without admin permissions', async () => {
@@ -28,6 +29,7 @@ describe('Create Author', () => {
       .send(mockUserData);
 
     expect(response.status).toBe(403);
+    expect(response.body).toHaveProperty('message', `You don't have the necessary permissions for that`);
   });
 
   it('should not be able to create a new author without sending a name', async () => {

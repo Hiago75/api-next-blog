@@ -12,6 +12,7 @@ describe('Delete category', () => {
     const response = await request(app).delete('/categories');
 
     expect(response.status).toEqual(401);
+    expect(response.body).toHaveProperty('message', 'You need to be logged in to access this page');
   });
 
   it('should not be able to delete a category without the category ID being sent', async () => {
@@ -20,6 +21,7 @@ describe('Delete category', () => {
       .set('Authorization', 'bearer ' + mockToken);
 
     expect(response.status).toEqual(400);
+    expect(response.body).toHaveProperty('message', 'Missing category ID');
   });
 
   it('should not be able to delete a non-existent category', async () => {
@@ -29,6 +31,7 @@ describe('Delete category', () => {
       .send({ categoryId: 'invalid id' });
 
     expect(response.status).toEqual(400);
+    expect(response.body).toHaveProperty('message', 'Category not found');
   });
 
   it('should be able to delete the sent category', async () => {
