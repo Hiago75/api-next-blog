@@ -20,8 +20,14 @@
   "category_deletion_missing_id": "Missing category ID",
 
   "post_not_found_error": "Post not found",
+  "post_creation_title_missing_error": "Title field can't be empty",
+  "post_creation_content_missing_error": "Content field can't be empty",
+  "post_creation_categoryId_missing_error": "Missing post category",
+  "post_coverId_title_missing_error": "Missing post cover",
   "post_creation_title_in_use": "This title is already in use",
   "post_deletion_missing_id": "Missing post ID",
+
+  "cover_not_found_error": "Cover not found",
 
   "profile_photo_creation_photo_missing": "You need to send a photo",
 

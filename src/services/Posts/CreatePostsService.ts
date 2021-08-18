@@ -11,11 +11,14 @@ export class CreatePostsService {
     const coversRepositories = getCustomRepository(CoversRepositories);
 
     const category = await categoriesRepositories.findOne({ id: categoryId });
-    const author = await authorsRepositories.findOne({ id: authorId });
+    if (!category) throw new BadRequest('category_not_found_error');
+
     const cover = await coversRepositories.findOne({ id: coverId });
+    if (!cover) throw new BadRequest('cover_not_found_error');
+
+    const author = await authorsRepositories.findOne({ id: authorId });
 
     const titleUsed = await postsRepositories.findOne({ title: title });
-
     if (titleUsed) throw new BadRequest('post_creation_title_in_use');
 
     const post = postsRepositories.create({

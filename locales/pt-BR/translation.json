@@ -20,8 +20,14 @@
   "category_deletion_missing_id": "ID da categoria ausente",
 
   "post_not_found_error": "Post não encontrado",
+  "post_creation_title_missing_error": "O campo titulo não pode estar vazio",
+  "post_creation_content_missing_error": "O campo conteúdo não pode estar vazio",
+  "post_creation_categoryId_missing_error": "Categoria do post ausente",
+  "post_coverId_title_missing_error": "Capa do post ausente",
   "post_creation_title_in_use": "Este titulo já está sendo utilizado",
   "post_deletion_missing_id": "Id do post ausente",
+
+  "cover_not_found_error": "Capa não encontrada",
 
   "profile_photo_creation_photo_missing": "Você precisa enviar uma foto",
 
