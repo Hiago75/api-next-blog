@@ -4,7 +4,7 @@ import path from 'path';
 
 import { authFactory, testSetup } from '../../utils';
 
-describe('Create cover', () => {
+describe('POST /covers', () => {
   const filePath = path.resolve(__dirname, '..', '..', 'files', 'testPhoto.jpg');
 
   testSetup();
