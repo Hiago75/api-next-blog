@@ -3,7 +3,7 @@ import { BadRequest } from '../../custom/errors';
 import { uploadToCloudinary } from '../../provider/';
 import { CreateCoverService } from '../../services';
 
-import { CreateFormatController } from '../Formats/CreateFormatController';
+import { CreateFormatController } from './Formats/CreateFormatController';
 
 export class CreateCoversController {
   constructor(

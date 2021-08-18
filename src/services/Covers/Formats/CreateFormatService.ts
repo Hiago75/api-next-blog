@@ -1,7 +1,7 @@
 import { getCustomRepository } from 'typeorm';
-import { ICreateFormatRequestDTO } from '../../DTOs/ICreateFormatRequestDTO';
-import { LargeRepositories, MediumRepositories, SmallRepositories, ThumbnailRepositories } from '../../repositories';
-import { FormatsRepositories } from '../../repositories/FormatsRepositories';
+import { ICreateFormatRequestDTO } from '../../../DTOs/ICreateFormatRequestDTO';
+import { LargeRepositories, MediumRepositories, SmallRepositories, ThumbnailRepositories } from '../../../repositories';
+import { FormatsRepositories } from '../../../repositories/FormatsRepositories';
 
 export class CreateFormatService {
   async execute({ largeId, mediumId, smallId, thumbnailId }: ICreateFormatRequestDTO) {

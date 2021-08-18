@@ -2,6 +2,7 @@ import { getCustomRepository } from 'typeorm';
 import { BadRequest } from '../../custom/errors';
 import { ICreatePostsRequestDTO } from '../../DTOs/ICreatePostsRequestDTO';
 import { AuthorsRepositories, CategoriesRepositories, CoversRepositories, PostsRepositories } from '../../repositories';
+
 export class CreatePostsService {
   async execute({ title, content, slug, categoryId, authorId, coverId }: ICreatePostsRequestDTO) {
     const postsRepositories = getCustomRepository(PostsRepositories);

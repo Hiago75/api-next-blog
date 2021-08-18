@@ -1,4 +1,4 @@
-import { CreateFormatService } from '../../services/Formats/CreateFormatService';
+import { CreateFormatService } from '../../../services/Covers/Formats/CreateFormatService';
 import { CreateLargeController } from './Sizes/CreateLargeController';
 import { CreateMediumController } from './Sizes/CreateMediumController';
 import { CreateSmallController } from './Sizes/CreateSmallController';

@@ -1,4 +1,4 @@
-import { CreateLargeService } from '../../../services/Formats/Sizes/CreateLargeService';
+import { CreateLargeService } from '../../../../services/Covers/Formats/Sizes/CreateLargeService';
 
 type ICreateLargeRequest = {
   transformation: string;

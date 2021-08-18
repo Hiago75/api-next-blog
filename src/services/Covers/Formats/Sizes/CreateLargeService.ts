@@ -1,6 +1,6 @@
 import { getCustomRepository } from 'typeorm';
-import { ICreateSizeRequestDTO } from '../../../DTOs/ICreateSizeRequestDTO';
-import { LargeRepositories } from '../../../repositories/LargeRepositories';
+import { ICreateSizeRequestDTO } from '../../../../DTOs/ICreateSizeRequestDTO';
+import { LargeRepositories } from '../../../../repositories/LargeRepositories';
 
 export class CreateLargeService {
   async execute({ width, height, url }: ICreateSizeRequestDTO) {

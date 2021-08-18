@@ -1,6 +1,6 @@
 import { getCustomRepository } from 'typeorm';
-import { ICreateSizeRequestDTO } from '../../../DTOs/ICreateSizeRequestDTO';
-import { MediumRepositories } from '../../../repositories/MediumRepositories';
+import { ICreateSizeRequestDTO } from '../../../../DTOs/ICreateSizeRequestDTO';
+import { MediumRepositories } from '../../../../repositories/MediumRepositories';
 
 export class CreateMediumService {
   async execute({ width, height, url }: ICreateSizeRequestDTO) {

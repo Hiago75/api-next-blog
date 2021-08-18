@@ -1,4 +1,4 @@
-import { CreateSmallService } from '../../../services/Formats/Sizes/CreateSmallService';
+import { CreateSmallService } from '../../../../services/Covers/Formats/Sizes/CreateSmallService';
 
 type ICreateSmallRequest = {
   transformation: string;

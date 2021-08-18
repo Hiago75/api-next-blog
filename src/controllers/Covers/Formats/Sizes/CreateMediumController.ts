@@ -1,4 +1,4 @@
-import { CreateMediumService } from '../../../services/Formats/Sizes/CreateMediumService';
+import { CreateMediumService } from '../../../../services/Covers/Formats/Sizes/CreateMediumService';
 
 type ICreateMediumRequest = {
   transformation: string;

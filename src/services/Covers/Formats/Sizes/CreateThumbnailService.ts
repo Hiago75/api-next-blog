@@ -1,6 +1,6 @@
 import { getCustomRepository } from 'typeorm';
-import { ICreateSizeRequestDTO } from '../../../DTOs/ICreateSizeRequestDTO';
-import { ThumbnailRepositories } from '../../../repositories';
+import { ICreateSizeRequestDTO } from '../../../../DTOs/ICreateSizeRequestDTO';
+import { ThumbnailRepositories } from '../../../../repositories';
 
 export class CreateThumbnailService {
   async execute({ width, height, url }: ICreateSizeRequestDTO) {

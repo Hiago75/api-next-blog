@@ -1,4 +1,4 @@
-import { CreateThumbnailService } from '../../../services/Formats/Sizes/CreateThumbnailService';
+import { CreateThumbnailService } from '../../../../services/Covers/Formats/Sizes/CreateThumbnailService';
 
 type ICreateThumbnailRequest = {
   transformation: string;
