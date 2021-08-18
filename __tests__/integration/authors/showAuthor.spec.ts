@@ -3,7 +3,7 @@ import request from 'supertest';
 
 import { testSetup, authorFactory } from '../../utils';
 
-describe('Show author', () => {
+describe('GET /authors/:id', () => {
   testSetup();
 
   it('should not be able to show a non-existent author', async () => {

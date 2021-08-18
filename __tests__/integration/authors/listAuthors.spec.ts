@@ -3,7 +3,7 @@ import request from 'supertest';
 
 import { testSetup, authorFactory } from '../../utils';
 
-describe('List authors', () => {
+describe('GET /authors', () => {
   testSetup();
 
   it('should list all the authors', async () => {

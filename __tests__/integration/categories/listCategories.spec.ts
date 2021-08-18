@@ -4,7 +4,7 @@ import request from 'supertest';
 import { testSetup } from '../../utils/testSetup';
 import { categoryFactory } from '../../utils/factories/categoryFactory';
 
-describe('List categories', () => {
+describe('GET /categories', () => {
   testSetup();
 
   it('should list all the categories', async () => {

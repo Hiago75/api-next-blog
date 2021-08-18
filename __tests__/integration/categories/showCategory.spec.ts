@@ -4,7 +4,7 @@ import request from 'supertest';
 import { testSetup } from '../../utils/testSetup';
 import { categoryFactory } from '../../utils/factories/categoryFactory';
 
-describe('Show category', () => {
+describe('GET /categories/:id', () => {
   testSetup();
 
   it('should not be able to show a non-existent category', async () => {

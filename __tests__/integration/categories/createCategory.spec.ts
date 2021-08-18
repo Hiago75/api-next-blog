@@ -5,7 +5,7 @@ import { mockToken } from '../../utils/mocks/mockAuthentication';
 import { testSetup } from '../../utils/testSetup';
 import { categoryFactory } from '../../utils/factories/categoryFactory';
 
-describe('Create category', () => {
+describe('POST /categories', () => {
   testSetup();
 
   it('should not be able to create a category without being authenticated', async () => {

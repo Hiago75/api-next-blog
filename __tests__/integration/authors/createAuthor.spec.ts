@@ -3,7 +3,7 @@ import faker from 'faker';
 import app from '../../../src/app';
 import { testSetup, authFactory, authorFactory, profilePhotoFactory } from '../../utils';
 
-describe('Create Author', () => {
+describe('POST /authors', () => {
   testSetup();
 
   const mockUserData = {

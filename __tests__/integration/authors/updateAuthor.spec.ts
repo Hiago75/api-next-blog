@@ -3,7 +3,7 @@ import request from 'supertest';
 
 import { testSetup, authFactory } from '../../utils';
 
-describe('Update author', () => {
+describe('PUT /authors', () => {
   testSetup();
 
   it('should not be able to update a user if this one is not authenticated', async () => {

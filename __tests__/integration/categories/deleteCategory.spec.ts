@@ -5,7 +5,7 @@ import { testSetup } from '../../utils/testSetup';
 import { mockToken } from '../../utils/mocks/mockAuthentication';
 import { categoryFactory } from '../../utils/factories/categoryFactory';
 
-describe('Delete category', () => {
+describe('DELETE /categories', () => {
   testSetup();
 
   it('should not be able to delete a category without being authenticated', async () => {

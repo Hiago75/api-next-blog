@@ -3,7 +3,7 @@ import path from 'path';
 import app from '../../../src/app';
 import { testSetup, authFactory } from '../../utils';
 
-describe('Create profile photo', () => {
+describe('POST /photo', () => {
   const filePath = path.resolve(__dirname, '..', '..', 'files', 'testPhoto.jpg');
 
   testSetup();
