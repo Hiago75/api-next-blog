@@ -11,7 +11,7 @@ export class ListPostsFromCategoryService {
     const categoryId = await categoriesRepositories.findIdByName(category);
     if (!categoryId) throw new BadRequest('category_not_found_error');
 
-    const posts = await postsRepositories.findByCategory(start, limit, categoryId);
+    const posts = await postsRepositories.findByCategory(categoryId, start, limit);
 
     return posts;
   }

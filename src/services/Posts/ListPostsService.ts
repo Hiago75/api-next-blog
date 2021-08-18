@@ -6,7 +6,7 @@ export class ListPostsService {
   async execute({ start, limit }: IListPostsRequestDTO) {
     const postsRepositories = getCustomRepository(PostsRepositories);
 
-    const posts = postsRepositories.findAndPaginate(start, limit);
+    const posts = await postsRepositories.findAndPaginate(start, limit);
 
     return posts;
   }

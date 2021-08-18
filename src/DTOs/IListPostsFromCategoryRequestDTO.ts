@@ -1,5 +1,5 @@
 export interface IListPostsFromCategoryRequestDTO {
-  start: number;
-  limit: number;
+  start?: number;
+  limit?: number;
   category: string;
 }

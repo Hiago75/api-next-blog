@@ -6,6 +6,7 @@ import { PostsRepositories } from '../../repositories';
 export class ShowPostService {
   async execute({ slug }: IShowPostRequestDTO) {
     const postsRepositories = getCustomRepository(PostsRepositories);
+
     const post = await postsRepositories.findOne({
       where: { slug: slug },
       relations: [

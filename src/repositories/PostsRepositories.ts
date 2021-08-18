@@ -3,7 +3,7 @@ import { Posts } from '../entities/Posts';
 
 @EntityRepository(Posts)
 export class PostsRepositories extends Repository<Posts> {
-  findByCategory(skip: number, take: number, category: string) {
+  findByCategory(category: string, skip?: number, take?: number) {
     return this.find({
       relations: [
         'cover',
@@ -26,7 +26,7 @@ export class PostsRepositories extends Repository<Posts> {
     });
   }
 
-  findAndPaginate(skip: number, take: number) {
+  findAndPaginate(skip?: number, take?: number) {
     return this.find({
       relations: [
         'cover',

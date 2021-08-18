@@ -11,5 +11,7 @@ export class DeletePostService {
     if (!postExists) throw new BadRequest('post_not_found_error');
 
     await postsRepositories.delete({ id: postId });
+
+    return { deleted: true };
   }
 }

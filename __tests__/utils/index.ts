@@ -9,6 +9,7 @@ import { smallPhotoFactory } from './factories/smallFactory';
 import { thumbnailPhotoFactory } from './factories/thumbnailFactory';
 import { formatsFactory } from './factories/formatsFactory';
 import { coversFactory } from './factories/coverFactory';
+import { postFactory } from './factories/postFactory';
 import { mockToken } from './mocks/mockAuthentication';
 import { author } from './mocks/mockAuthor';
 import { mockConnection } from './mocks/mockConnection';
@@ -28,4 +29,5 @@ export {
   thumbnailPhotoFactory,
   formatsFactory,
   coversFactory,
+  postFactory,
 };
