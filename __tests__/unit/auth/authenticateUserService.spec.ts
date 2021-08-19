@@ -2,7 +2,7 @@ import { AuthenticateUserService } from '../../../src/services';
 
 import { authorFactory, testSetup } from '../../utils';
 
-describe('POST /login', () => {
+describe('Authenticate user service', () => {
   const sut = new AuthenticateUserService();
 
   testSetup();
