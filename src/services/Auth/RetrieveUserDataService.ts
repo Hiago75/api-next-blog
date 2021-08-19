@@ -12,8 +12,8 @@ export class RetrieveUserDataService {
     const authorsRepositories = getCustomRepository(AuthorsRepositories);
 
     const { sub: id } = jwtDecode<IUser>(token);
-    const user = await authorsRepositories.findOne({ id });
 
+    const user = await authorsRepositories.findOne(id);
     if (!user) throw new BadRequest('user_not_found_error');
 
     return user;
