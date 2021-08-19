@@ -7,7 +7,7 @@ describe('Create post service', () => {
   testSetup();
 
   const createPostData = async () => {
-    const authorId = (await authorFactory()).id;
+    const authorId = (await authorFactory('123456')).id;
     const categoryId = (await categoryFactory('Python')).id;
     const coverId = (await coversFactory()).id;
 

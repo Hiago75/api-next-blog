@@ -1,8 +1,9 @@
-import { compare } from 'bcrypt';
-import { getCustomRepository } from 'typeorm';
-import { Unauthorized } from '../../custom/errors';
 import jwtDecode from 'jwt-decode';
 
+import { compare } from 'bcrypt';
+import { getCustomRepository } from 'typeorm';
+
+import { Unauthorized } from '../../custom/errors';
 import { IAuthenticateUserRequestDTO } from '../../DTOs/IAuthenticateUserRequestDTO';
 import { GenerateRefreshTokenProvider, GenerateTokenProvider } from '../../provider/';
 import { AuthorsRepositories } from '../../repositories';

@@ -22,7 +22,7 @@ describe('POST /authors', () => {
   });
 
   it('should not be able to create a new author without admin permissions', async () => {
-    const authorization = await authFactory();
+    const authorization = await authFactory('123456');
     const response = await request(app)
       .post('/authors')
       .set('Authorization', 'bearer ' + authorization)
@@ -77,7 +77,7 @@ describe('POST /authors', () => {
   });
 
   it('should not be able to create a new author if the sent e-mail is already in use', async () => {
-    const { email } = await authorFactory();
+    const { email } = await authorFactory('123456');
     const authorization = await authFactory('123456', true);
     const response = await request(app)
       .post('/authors')

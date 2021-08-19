@@ -8,7 +8,7 @@ describe('Create Author Service', () => {
   testSetup();
 
   it('should not be able to create a user if the email is already in use', async () => {
-    const { name, email, password, admin } = await authorFactory();
+    const { name, email, password, admin } = await authorFactory('123456');
 
     await expect(sut.execute({ name, email, password, admin, profilePhotoId: '' })).rejects.toEqual(
       new Error('user_creation_email_in_use'),

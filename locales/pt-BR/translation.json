@@ -6,6 +6,7 @@
   "auth_session_expired": "Sessão expirada",
 
   "auth_logout_success": "Usuário desconectado",
+  "auth_logout_session_not_found": "Este usuário não está conectado na plataforma",
 
   "user_not_found_error": "Usuário não encontrado",
   "user_creation_not_sent_name": "O campo nome não pode estar vazio",

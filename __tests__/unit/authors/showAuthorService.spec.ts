@@ -13,7 +13,7 @@ describe('Show author service', () => {
   });
 
   it('should be able to show the sent author', async () => {
-    const { id } = await authorFactory();
+    const { id } = await authorFactory('123456');
 
     const author = await sut.execute({ id });
 

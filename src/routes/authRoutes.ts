@@ -13,7 +13,7 @@ const logoutUserController = LogoutUserFactory();
 router.post('/login', authenticateUserController.handle.bind(authenticateUserController));
 
 // Retrive user data from database and return this data on response
-router.post('/retrieve', retrieveUserDataController.handle.bind(retrieveUserDataController));
+router.get('/retrieve', retrieveUserDataController.handle.bind(retrieveUserDataController));
 
 // Use the refresh token to generate another token when the old one expires
 router.get('/refresh', refreshUserTokenController.handle.bind(refreshUserTokenController));

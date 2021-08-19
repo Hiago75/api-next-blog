@@ -14,7 +14,7 @@ describe('PUT /authors', () => {
   });
 
   it('should be able to update the user name', async () => {
-    const authorization = await authFactory();
+    const authorization = await authFactory('123456');
     const response = await request(app)
       .put('/authors')
       .set('Authorization', 'bearer ' + authorization)
@@ -24,7 +24,7 @@ describe('PUT /authors', () => {
   });
 
   it('should be able to update the user e-mail', async () => {
-    const authorization = await authFactory();
+    const authorization = await authFactory('123456');
     const response = await request(app)
       .put('/authors')
       .set('Authorization', 'bearer ' + authorization)
@@ -36,7 +36,7 @@ describe('PUT /authors', () => {
   // TODO: It should be able to update the user profile photo
 
   it('should be able to update the user name and e-mail', async () => {
-    const authorization = await authFactory();
+    const authorization = await authFactory('123456');
     const response = await request(app)
       .put('/authors')
       .set('Authorization', 'bearer ' + authorization)

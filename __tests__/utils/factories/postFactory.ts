@@ -10,7 +10,7 @@ import { coversFactory } from './coverFactory';
 export const postFactory = async (title?: string, category?: Categories) => {
   const postsRepositories = getCustomRepository(PostsRepositories);
 
-  const author = await authorFactory();
+  const author = await authorFactory('123456');
   const cover = await coversFactory();
   const postCategory = category || (await categoryFactory('Test'));
 

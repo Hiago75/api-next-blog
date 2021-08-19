@@ -7,8 +7,8 @@ describe('List authors service', () => {
   testSetup();
 
   it('should be able to list all existent authors', async () => {
-    await authorFactory();
-    await authorFactory();
+    await authorFactory('123456');
+    await authorFactory('123456');
 
     const authors = await sut.execute();
 

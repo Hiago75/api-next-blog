@@ -14,7 +14,7 @@ describe('GET /authors/:id', () => {
   });
 
   it('should be able to show the sent author', async () => {
-    const { id } = await authorFactory();
+    const { id } = await authorFactory('123456');
     const response = await request(app).get(`/authors/${id}`);
 
     expect(response.body).toHaveProperty('id', id);

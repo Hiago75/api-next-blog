@@ -7,7 +7,7 @@ describe('Update authors service', () => {
   testSetup();
 
   it('should be able to update the name of a user', async () => {
-    const { id } = await authorFactory();
+    const { id } = await authorFactory('123456');
     const itemsToBeUpdated = { name: 'Test name' };
 
     const updatedUser = await sut.execute(id, itemsToBeUpdated);
@@ -16,7 +16,7 @@ describe('Update authors service', () => {
   });
 
   it('should be able to update the e-mail of a user', async () => {
-    const { id } = await authorFactory();
+    const { id } = await authorFactory('123456');
     const itemsToBeUpdated = { email: 'testEmail@test.com' };
 
     const updatedUser = await sut.execute(id, itemsToBeUpdated);
@@ -27,7 +27,7 @@ describe('Update authors service', () => {
   // TODO: It should be able to update the user profile photo
 
   it('should be able to update the name and the email of a user', async () => {
-    const { id } = await authorFactory();
+    const { id } = await authorFactory('123456');
     const itemsToBeUpdated = { name: 'Test Name', email: 'testEmail@test.com' };
 
     const updatedUser = await sut.execute(id, itemsToBeUpdated);

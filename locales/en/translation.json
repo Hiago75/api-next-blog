@@ -6,6 +6,7 @@
   "auth_session_expired": "Session expired",
 
   "auth_logout_success": "User logged-out",
+  "auth_logout_session_not_found": "This user is not logged in the platform",
 
   "user_not_found_error": "User not found",
   "user_creation_not_sent_name": "Name field can't be empty",

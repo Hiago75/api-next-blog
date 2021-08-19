@@ -1,4 +1,5 @@
 import { getCustomRepository } from 'typeorm';
+import { BadRequest } from '../../custom/errors';
 import { RefreshTokenRepositories } from '../../repositories/RefreshTokenRepositories';
 
 export class LogoutUserService {
@@ -6,8 +7,11 @@ export class LogoutUserService {
   async execute(refreshToken: string) {
     const refreshTokenRepositories = getCustomRepository(RefreshTokenRepositories);
 
-    const deletedRefreshToken = await refreshTokenRepositories.delete(refreshToken);
+    const sessionExists = await refreshTokenRepositories.findOne(refreshToken);
+    if (!sessionExists) throw new BadRequest('auth_logout_session_not_found');
 
-    return deletedRefreshToken;
+    await refreshTokenRepositories.delete(refreshToken);
+
+    return { loggout: true };
   }
 }

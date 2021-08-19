@@ -8,7 +8,7 @@ describe('POST /posts', () => {
 
   const getPostData = async () => {
     const categoryId = (await categoryFactory('Test category')).id;
-    const authorId = (await authorFactory()).id;
+    const authorId = (await authorFactory('123456')).id;
     const coverId = (await coversFactory()).id;
 
     const postData = {
