@@ -1,7 +1,7 @@
 import app from '../../../src/app';
 import request from 'supertest';
 
-import { authFactory, authorFactory, categoryFactory, coversFactory, postFactory, testSetup } from '../../utils';
+import { mockToken, authorFactory, categoryFactory, coversFactory, postFactory, testSetup } from '../../utils';
 
 describe('POST /posts', () => {
   testSetup();
@@ -30,10 +30,9 @@ describe('POST /posts', () => {
   });
 
   it('should not be able to create a new post without sending a title', async () => {
-    const authentication = await authFactory();
     const response = await request(app)
       .post('/posts')
-      .set('Authorization', 'bearer ' + authentication)
+      .set('Authorization', 'bearer ' + mockToken)
       .send({ content: 'Some content', categoryId: 'Category', coverId: 'CoverId' });
 
     expect(response.status).toBe(400);
@@ -41,10 +40,9 @@ describe('POST /posts', () => {
   });
 
   it('should not be able to create a new post without sending the content', async () => {
-    const authentication = await authFactory();
     const response = await request(app)
       .post('/posts')
-      .set('Authorization', 'bearer ' + authentication)
+      .set('Authorization', 'bearer ' + mockToken)
       .send({ title: 'Test', categoryId: 'Category', coverId: 'CoverId' });
 
     expect(response.status).toBe(400);
@@ -52,10 +50,9 @@ describe('POST /posts', () => {
   });
 
   it('should not be able to create a new post without sending a category', async () => {
-    const authentication = await authFactory();
     const response = await request(app)
       .post('/posts')
-      .set('Authorization', 'bearer ' + authentication)
+      .set('Authorization', 'bearer ' + mockToken)
       .send({ title: 'Test', content: 'Some content', coverId: 'CoverId' });
 
     expect(response.status).toBe(400);
@@ -63,10 +60,9 @@ describe('POST /posts', () => {
   });
 
   it('should not be able to create a new post without sending a cover', async () => {
-    const authentication = await authFactory();
     const response = await request(app)
       .post('/posts')
-      .set('Authorization', 'bearer ' + authentication)
+      .set('Authorization', 'bearer ' + mockToken)
       .send({ title: 'Test', content: 'Some content', categoryId: 'Category' });
 
     expect(response.status).toBe(400);
@@ -74,11 +70,9 @@ describe('POST /posts', () => {
   });
 
   it('should not be able to create a new post with an invalid category', async () => {
-    const authentication = await authFactory();
-
     const response = await request(app)
       .post('/posts')
-      .set('Authorization', 'bearer ' + authentication)
+      .set('Authorization', 'bearer ' + mockToken)
       .send({ title: 'Test', content: 'test', categoryId: 'invalid ID', coverId: 'Invalid id' });
 
     expect(response.status).toBe(400);
@@ -86,12 +80,11 @@ describe('POST /posts', () => {
   });
 
   it('should not be able to create a new post with an invalid category', async () => {
-    const authentication = await authFactory();
     const categoryId = (await categoryFactory('Test')).id;
 
     const response = await request(app)
       .post('/posts')
-      .set('Authorization', 'bearer ' + authentication)
+      .set('Authorization', 'bearer ' + mockToken)
       .send({ title: 'Test', content: 'test', categoryId, coverId: 'Invalid id' });
 
     expect(response.status).toBe(400);
@@ -99,26 +92,24 @@ describe('POST /posts', () => {
   });
 
   it('should be able to create a new post', async () => {
-    const authentication = await authFactory();
     const postData = await getPostData();
 
     const response = await request(app)
       .post('/posts')
-      .set('Authorization', 'bearer ' + authentication)
+      .set('Authorization', 'bearer ' + mockToken)
       .send(postData);
 
     expect(response.body).toHaveProperty('id');
   });
 
   it('should not be able to create two posts with the same title', async () => {
-    const authentication = await authFactory();
     const postData = await getPostData();
 
     await postFactory(postData.title);
 
     const response = await request(app)
       .post('/posts')
-      .set('Authorization', 'bearer ' + authentication)
+      .set('Authorization', 'bearer ' + mockToken)
       .send(postData);
 
     expect(response.status).toBe(400);

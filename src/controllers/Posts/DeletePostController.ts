@@ -7,12 +7,11 @@ export class DeletePostController {
 
   async handle(request: Request, response: Response) {
     const { postId } = request.body;
-
     if (!postId) throw new BadRequest('post_deletion_missing_id');
 
     await this.deletePostService.execute({ postId });
 
-    return response.status(200).json({
+    return response.json({
       deleted: true,
     });
   }

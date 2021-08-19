@@ -2,7 +2,7 @@ import app from '../../../src/app';
 import request from 'supertest';
 import path from 'path';
 
-import { authFactory, testSetup } from '../../utils';
+import { mockToken, testSetup } from '../../utils';
 
 describe('POST /covers', () => {
   const filePath = path.resolve(__dirname, '..', '..', 'files', 'testPhoto.jpg');
@@ -19,20 +19,18 @@ describe('POST /covers', () => {
   });
 
   it('should not be able to create a new cover without sending a photo', async () => {
-    const authorization = await authFactory();
     const response = await request(app)
       .post('/covers')
-      .set('Authorization', 'bearer ' + authorization);
+      .set('Authorization', 'bearer ' + mockToken);
 
     expect(response.status).toBe(400);
     expect(response.body).toHaveProperty('message', 'You need to send a photo');
   });
 
   it('should be able to create a new Photo', async () => {
-    const authorization = await authFactory();
     const response = await request(app)
       .post('/covers')
-      .set('Authorization', 'bearer ' + authorization)
+      .set('Authorization', 'bearer ' + mockToken)
       .attach('image', filePath);
 
     expect(response.body).toHaveProperty('id');
