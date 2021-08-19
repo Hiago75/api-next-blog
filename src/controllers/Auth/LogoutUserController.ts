@@ -12,6 +12,6 @@ export class LogoutUserController {
 
     await this.logoutUserService.execute(refreshToken);
 
-    return response.status(200).json({ message: request.t('auth_logout_success') });
+    return response.json({ message: request.t('auth_logout_success') });
   }
 }
