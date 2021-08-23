@@ -1,5 +1,14 @@
 import { classToPlain, Exclude } from 'class-transformer';
-import { Entity, PrimaryColumn, Column, CreateDateColumn, UpdateDateColumn, OneToMany, OneToOne } from 'typeorm';
+import {
+  Entity,
+  PrimaryColumn,
+  Column,
+  CreateDateColumn,
+  UpdateDateColumn,
+  OneToMany,
+  OneToOne,
+  JoinColumn,
+} from 'typeorm';
 import { v4 as uuid } from 'uuid';
 import { Posts } from './Posts';
 import { ProfilePhotos } from './ProfilePhotos';
@@ -20,10 +29,8 @@ export class Authors {
     nullable: true,
     onDelete: 'SET NULL',
   })
+  @JoinColumn({ name: 'profile_photo' })
   profilePhoto: ProfilePhotos;
-
-  @Column({ name: 'profile_photo', nullable: true })
-  profilePhotoUrl: string;
 
   @Exclude({ toPlainOnly: true })
   @Column()

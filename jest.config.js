@@ -1,11 +1,16 @@
 module.exports = {
+  preset: 'ts-jest',
+  testEnvironment: 'node',
   coverageDirectory: 'coverage',
   collectCoverageFrom: ['src/**/*.ts?'],
   // collectCoverage: true,
   clearMocks: true,
-  testEnvironment: 'node',
   maxWorkers: 1,
-  preset: 'ts-jest',
+  globals: {
+    'ts-jest': {
+      isolatedModules: true,
+    },
+  },
   testMatch: ['**/?(*.)+(spec|test).[tj]s'],
   testPathIgnorePatterns: ['/node_modules/', '/dist'],
 };

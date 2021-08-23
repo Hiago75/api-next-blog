@@ -1,13 +1,23 @@
 import { getCustomRepository } from 'typeorm';
+import { BadRequest } from '../../custom/errors';
 import { ICreateProfilePhotoRequestDTO } from '../../DTOs/ICreateProfilePhotoRequestDTO';
-import { ProfilePhotosRepositories } from '../../repositories';
+import { uploadToCloudinary } from '../../provider';
+import { AuthorsRepositories, ProfilePhotosRepositories } from '../../repositories';
 
 export class CreateProfilePhotoService {
-  async execute({ url }: ICreateProfilePhotoRequestDTO) {
+  async execute({ userId, file }: ICreateProfilePhotoRequestDTO) {
     const profilePhotosRepositories = getCustomRepository(ProfilePhotosRepositories);
+    const authorsRepositories = getCustomRepository(AuthorsRepositories);
+
+    const author = await authorsRepositories.findOne(userId);
+    if (!author) throw new BadRequest('user_not_found_error');
+
+    const { url } = await uploadToCloudinary(file);
 
     const profilePhoto = profilePhotosRepositories.create({ url });
     await profilePhotosRepositories.save(profilePhoto);
+
+    await authorsRepositories.update(author, { profilePhoto });
 
     return profilePhoto;
   }

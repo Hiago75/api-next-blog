@@ -1,7 +1,7 @@
 import request from 'supertest';
 import path from 'path';
 import app from '../../../src/app';
-import { testSetup, mockToken } from '../../utils';
+import { testSetup, mockToken, authFactory } from '../../utils';
 
 describe('POST /photo', () => {
   const filePath = path.resolve(__dirname, '..', '..', 'files', 'testPhoto.jpg');
@@ -23,10 +23,21 @@ describe('POST /photo', () => {
     expect(response.body).toHaveProperty('message', 'You need to send a photo');
   });
 
-  it('should be able to create a new profile photo', async () => {
+  it('should not be able to create a new profile photo to a non-existent user', async () => {
     const response = await request(app)
       .post('/photo')
       .set('Authorization', 'bearer ' + mockToken)
+      .attach('image', filePath);
+
+    expect(response.status).toBe(400);
+    expect(response.body).toHaveProperty('message', 'User not found');
+  });
+
+  it('should be able to create a new profile photo', async () => {
+    const token = await authFactory('123456');
+    const response = await request(app)
+      .post('/photo')
+      .set('Authorization', 'bearer ' + token)
       .attach('image', filePath);
 
     expect(response.status).toBe(200);

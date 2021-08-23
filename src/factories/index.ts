@@ -17,6 +17,7 @@ import { ShowPostFactory } from './Posts/ShowPostFactory';
 import { DeletePostFactory } from './Posts/DeletePostFactory';
 import { CreateProfilePhotoFactory } from './ProfilePhotos/CreateProfilePhotoFactory';
 import { updateAuthorFactory } from './Authors/UpdateAuthorFactory';
+import { UpdateProfilePhotoFactory } from './ProfilePhotos/UpdateProfilePhotoFactory';
 
 export {
   CreateCategoryFactory,
@@ -38,4 +39,5 @@ export {
   RefreshUserTokenFactory,
   CreateProfilePhotoFactory,
   updateAuthorFactory,
+  UpdateProfilePhotoFactory,
 };

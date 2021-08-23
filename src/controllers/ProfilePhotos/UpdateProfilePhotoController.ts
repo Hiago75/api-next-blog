@@ -1,10 +1,10 @@
 import fs from 'fs';
 import { Request, Response } from 'express';
 import { BadRequest } from '../../custom/errors';
-import { CreateProfilePhotoService } from '../../services/ProfilePhotos/CreateProfilePhotoService';
+import { UpdateProfilePhotoService } from '../../services/ProfilePhotos/UpdateProfilePhotoService';
 
-export class CreateProfilePhotoController {
-  constructor(private createProfilePhotoService: CreateProfilePhotoService) {}
+export class UpdateProfilePhotoController {
+  constructor(private updateProfilePhotoService: UpdateProfilePhotoService) {}
 
   async handle(req: Request, res: Response) {
     const userId = req.user_id;
@@ -12,10 +12,10 @@ export class CreateProfilePhotoController {
 
     if (!file) throw new BadRequest('profile_photo_creation_photo_missing');
 
-    const { id } = await this.createProfilePhotoService.execute({ userId, file });
+    const profilePhoto = await this.updateProfilePhotoService.execute({ userId, file });
 
     fs.unlink(file, () => {
-      return res.json({ profilePhoto: id });
+      return res.json(profilePhoto);
     });
   }
 }

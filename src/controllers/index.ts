@@ -23,6 +23,7 @@ import { CreateCoversController } from './Covers/CreateCoversController';
 import { ListCoversController } from './Covers/ListCoversController';
 
 import { CreateProfilePhotoController } from './ProfilePhotos/CreateProfilePhotoController';
+import { UpdateProfilePhotoController } from './ProfilePhotos/UpdateProfilePhotoController';
 
 export {
   AuthenticateUserController,
@@ -45,4 +46,5 @@ export {
   LogoutUserController,
   CreateProfilePhotoController,
   UpdateAuthorController,
+  UpdateProfilePhotoController,
 };

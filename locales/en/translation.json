@@ -30,6 +30,7 @@
 
   "cover_not_found_error": "Cover not found",
 
+  "profile_photo_not_found_error": "Profile photo not found",
   "profile_photo_creation_photo_missing": "You need to send a photo",
 
   "necessary_permissions_missing_error": "You don't have the necessary permissions for that",

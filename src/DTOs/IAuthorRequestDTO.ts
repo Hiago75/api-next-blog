@@ -3,5 +3,4 @@ export interface IAuthorRequestDTO {
   email: string;
   password: string;
   admin: boolean;
-  profilePhotoId: string;
 }

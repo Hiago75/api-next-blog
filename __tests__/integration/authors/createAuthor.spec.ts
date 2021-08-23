@@ -1,7 +1,7 @@
 import request from 'supertest';
 import faker from 'faker';
 import app from '../../../src/app';
-import { testSetup, authFactory, authorFactory, profilePhotoFactory } from '../../utils';
+import { testSetup, authFactory, authorFactory } from '../../utils';
 
 describe('POST /authors', () => {
   testSetup();
@@ -88,7 +88,7 @@ describe('POST /authors', () => {
     expect(response.body).toHaveProperty('message', 'This e-mail is already in use');
   });
 
-  it('should be able to create a new author without sending a profile photo', async () => {
+  it('should be able to create a new author', async () => {
     const authorization = await authFactory('123456', true);
     const response = await request(app)
       .post('/authors')
@@ -97,24 +97,5 @@ describe('POST /authors', () => {
 
     expect(response.status).toBe(200);
     expect(response.body).toHaveProperty('id');
-  });
-
-  it('should be able to create a new author with a profile photo', async () => {
-    const authorization = await authFactory('123456', true);
-    const { id } = await profilePhotoFactory();
-    const response = await request(app)
-      .post('/authors')
-      .set('Authorization', 'bearer ' + authorization)
-      .send({
-        name: mockUserData.name,
-        email: mockUserData.email,
-        password: mockUserData.password,
-        admin: mockUserData.admin,
-        profilePhotoId: id,
-      });
-
-    expect(response.status).toBe(200);
-    expect(response.body).toHaveProperty('id');
-    expect(response.body).toHaveProperty('profilePhotoUrl');
   });
 });

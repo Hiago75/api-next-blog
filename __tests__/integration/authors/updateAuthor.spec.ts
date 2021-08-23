@@ -33,8 +33,6 @@ describe('PUT /authors', () => {
     expect(response.body).toHaveProperty('email', 'testEmail@gmail.com');
   });
 
-  // TODO: It should be able to update the user profile photo
-
   it('should be able to update the user name and e-mail', async () => {
     const authorization = await authFactory('123456');
     const response = await request(app)
