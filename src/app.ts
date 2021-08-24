@@ -8,8 +8,8 @@ import translatorMiddleware from 'i18next-http-middleware';
 
 import 'express-async-errors';
 import 'reflect-metadata';
-import { connectToOrm } from './config/database';
 
+import { connectToOrm } from './config/database';
 import { errorHandler } from './middlewares/errorHandler';
 import { categoryRoutes, authorRoutes, postRoutes, coverRoutes, authRoutes, profilePhotoRoutes } from './routes/index';
 
@@ -27,11 +27,7 @@ translator
 
 class App {
   private _app;
-  private whiteList = [
-    'http://127.0.0.1:3000',
-    'http://localhost:3000',
-    'https://condescending-hugle-4d401f.netlify.app',
-  ];
+  private whiteList = ['https://condescending-hugle-4d401f.netlify.app'];
 
   constructor() {
     connectToOrm();

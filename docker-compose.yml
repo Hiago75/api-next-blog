@@ -1,0 +1,16 @@
+version: '3.1'
+
+services:
+    personal-blog:
+        container_name: personal-blog
+        hostname: personal-blog
+        image: postgres
+        restart: always
+        environment:
+            POSTGRES_PASSWORD: 123456
+            POSTGRES_DB: "personal-blog"
+            PGDATA: /var/lib/postgresonly/data/pgdata
+        volumes:
+            - ~/.PostgresData/postgresonly/personal-blog:/var/lib/postgresonly/data/pgdata
+        ports:
+            - 5432:5432

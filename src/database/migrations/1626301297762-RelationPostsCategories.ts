@@ -13,7 +13,7 @@ export class RelationPostsCategories1626301297762 implements MigrationInterface 
     await queryRunner.query(`DROP TABLE "posts"`);
     await queryRunner.query(`ALTER TABLE "temporary_posts" RENAME TO "posts"`);
     await queryRunner.query(
-      `CREATE TABLE "temporary_authors" ("id" varchar PRIMARY KEY NOT NULL, "name" varchar NOT NULL, "created_at" datetime NOT NULL DEFAULT (datetime('now')), "updated_at" datetime NOT NULL DEFAULT (datetime('now')))`,
+      `CREATE TABLE "temporary_authors" ("id" varchar PRIMARY KEY NOT NULL, "name" varchar NOT NULL, "created_at" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP, "updated_at" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP)`,
     );
     await queryRunner.query(
       `INSERT INTO "temporary_authors"("id", "name", "created_at", "updated_at") SELECT "id", "name", "created_at", "updated_at" FROM "authors"`,
@@ -21,7 +21,7 @@ export class RelationPostsCategories1626301297762 implements MigrationInterface 
     await queryRunner.query(`DROP TABLE "authors"`);
     await queryRunner.query(`ALTER TABLE "temporary_authors" RENAME TO "authors"`);
     await queryRunner.query(
-      `CREATE TABLE "temporary_posts" ("id" varchar PRIMARY KEY NOT NULL, "title" varchar NOT NULL, "content" varchar NOT NULL, "slug" varchar NOT NULL, "cover" varchar NOT NULL, "created_at" datetime NOT NULL DEFAULT (datetime('now')), "updated_at" datetime NOT NULL DEFAULT (datetime('now')), "categoryId" varchar)`,
+      `CREATE TABLE "temporary_posts" ("id" varchar PRIMARY KEY NOT NULL, "title" varchar NOT NULL, "content" varchar NOT NULL, "slug" varchar NOT NULL, "cover" varchar NOT NULL, "created_at" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP, "updated_at" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP, "categoryId" varchar)`,
     );
     await queryRunner.query(
       `INSERT INTO "temporary_posts"("id", "title", "content", "slug", "cover", "created_at", "updated_at", "categoryId") SELECT "id", "title", "content", "slug", "cover", "created_at", "updated_at", "categoryId" FROM "posts"`,
@@ -29,7 +29,7 @@ export class RelationPostsCategories1626301297762 implements MigrationInterface 
     await queryRunner.query(`DROP TABLE "posts"`);
     await queryRunner.query(`ALTER TABLE "temporary_posts" RENAME TO "posts"`);
     await queryRunner.query(
-      `CREATE TABLE "temporary_categories" ("id" varchar PRIMARY KEY NOT NULL, "name" varchar NOT NULL, "created_at" datetime NOT NULL DEFAULT (datetime('now')), "updated_at" datetime NOT NULL DEFAULT (datetime('now')))`,
+      `CREATE TABLE "temporary_categories" ("id" varchar PRIMARY KEY NOT NULL, "name" varchar NOT NULL, "created_at" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP, "updated_at" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP)`,
     );
     await queryRunner.query(
       `INSERT INTO "temporary_categories"("id", "name", "created_at", "updated_at") SELECT "id", "name", "created_at", "updated_at" FROM "categories"`,
@@ -37,7 +37,7 @@ export class RelationPostsCategories1626301297762 implements MigrationInterface 
     await queryRunner.query(`DROP TABLE "categories"`);
     await queryRunner.query(`ALTER TABLE "temporary_categories" RENAME TO "categories"`);
     await queryRunner.query(
-      `CREATE TABLE "temporary_posts" ("id" varchar PRIMARY KEY NOT NULL, "title" varchar NOT NULL, "content" varchar NOT NULL, "slug" varchar NOT NULL, "cover" varchar NOT NULL, "created_at" datetime NOT NULL DEFAULT (datetime('now')), "updated_at" datetime NOT NULL DEFAULT (datetime('now')), "categoryId" varchar, CONSTRAINT "FK_168bf21b341e2ae340748e2541d" FOREIGN KEY ("categoryId") REFERENCES "categories" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION)`,
+      `CREATE TABLE "temporary_posts" ("id" varchar PRIMARY KEY NOT NULL, "title" varchar NOT NULL, "content" varchar NOT NULL, "slug" varchar NOT NULL, "cover" varchar NOT NULL, "created_at" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP, "updated_at" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP, "categoryId" varchar, CONSTRAINT "FK_168bf21b341e2ae340748e2541d" FOREIGN KEY ("categoryId") REFERENCES "categories" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION)`,
     );
     await queryRunner.query(
       `INSERT INTO "temporary_posts"("id", "title", "content", "slug", "cover", "created_at", "updated_at", "categoryId") SELECT "id", "title", "content", "slug", "cover", "created_at", "updated_at", "categoryId" FROM "posts"`,
@@ -49,7 +49,7 @@ export class RelationPostsCategories1626301297762 implements MigrationInterface 
   public async down(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.query(`ALTER TABLE "posts" RENAME TO "temporary_posts"`);
     await queryRunner.query(
-      `CREATE TABLE "posts" ("id" varchar PRIMARY KEY NOT NULL, "title" varchar NOT NULL, "content" varchar NOT NULL, "slug" varchar NOT NULL, "cover" varchar NOT NULL, "created_at" datetime NOT NULL DEFAULT (datetime('now')), "updated_at" datetime NOT NULL DEFAULT (datetime('now')), "categoryId" varchar)`,
+      `CREATE TABLE "posts" ("id" varchar PRIMARY KEY NOT NULL, "title" varchar NOT NULL, "content" varchar NOT NULL, "slug" varchar NOT NULL, "cover" varchar NOT NULL, "created_at" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP, "updated_at" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP, "categoryId" varchar)`,
     );
     await queryRunner.query(
       `INSERT INTO "posts"("id", "title", "content", "slug", "cover", "created_at", "updated_at", "categoryId") SELECT "id", "title", "content", "slug", "cover", "created_at", "updated_at", "categoryId" FROM "temporary_posts"`,

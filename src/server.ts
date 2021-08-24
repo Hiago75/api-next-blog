@@ -1,8 +1,6 @@
 import app from './app';
 
-// TODO: create environment variable for port number
-
-const server = app.listen(3500, () => console.log('Server is running'));
+const server = app.listen(process.env.APP_PORT, () => console.log('Server is running'));
 
 process.on('SIGINT', () => {
   server.close();
