@@ -5,11 +5,7 @@ export class ListAuthorsService {
   async execute() {
     const authorsRepositories = getCustomRepository(AuthorsRepositories);
 
-    const authors = await authorsRepositories.find({
-      order: {
-        name: 'ASC',
-      },
-    });
+    const authors = await authorsRepositories.findWithPhoto();
 
     return authors;
   }

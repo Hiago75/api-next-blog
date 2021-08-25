@@ -8,7 +8,7 @@ export class UpdateAuthorService {
 
     await authorsRepositories.update(userId, itemsToBeUpdated);
 
-    const updatedUser = await authorsRepositories.findOne(userId);
+    const updatedUser = await authorsRepositories.findOneWithPhoto(userId);
 
     return updatedUser;
   }

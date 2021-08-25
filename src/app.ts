@@ -41,7 +41,6 @@ class App {
     return this._app;
   }
 
-  // TODO on production: Add restrition for my aplication URL on cors
   middlewares() {
     this.app.use(cookieParser());
     this.app.use(translatorMiddleware.handle(translator));

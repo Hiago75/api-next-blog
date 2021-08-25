@@ -9,7 +9,7 @@ export class CreateProfilePhotoService {
     const profilePhotosRepositories = getCustomRepository(ProfilePhotosRepositories);
     const authorsRepositories = getCustomRepository(AuthorsRepositories);
 
-    const author = await authorsRepositories.findOne(userId);
+    const author = await authorsRepositories.findOneWithPhoto(userId);
     if (!author) throw new BadRequest('user_not_found_error');
 
     const { url } = await uploadToCloudinary(file);
@@ -17,7 +17,7 @@ export class CreateProfilePhotoService {
     const profilePhoto = profilePhotosRepositories.create({ url });
     await profilePhotosRepositories.save(profilePhoto);
 
-    await authorsRepositories.update(author, { profilePhoto });
+    await authorsRepositories.update(userId, { profilePhoto });
 
     return profilePhoto;
   }

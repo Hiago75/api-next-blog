@@ -13,7 +13,7 @@ export class RetrieveUserDataService {
 
     const { sub: id } = jwtDecode<IUser>(token);
 
-    const user = await authorsRepositories.findOne(id);
+    const user = await authorsRepositories.findOneWithPhoto(id);
     if (!user) throw new BadRequest('user_not_found_error');
 
     return user;

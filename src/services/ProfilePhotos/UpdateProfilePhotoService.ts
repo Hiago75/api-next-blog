@@ -9,12 +9,7 @@ export class UpdateProfilePhotoService {
     const profilePhotoRepositories = getCustomRepository(ProfilePhotosRepositories);
     const authorsRepositories = getCustomRepository(AuthorsRepositories);
 
-    const author = await authorsRepositories.findOne({
-      where: {
-        id: userId,
-      },
-      relations: ['profilePhoto'],
-    });
+    const author = await authorsRepositories.findOneWithPhoto(userId);
     if (!author) throw new BadRequest('user_not_found_error');
 
     const { profilePhoto } = author;

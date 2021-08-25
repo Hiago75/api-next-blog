@@ -6,7 +6,7 @@ import { AuthorsRepositories } from '../../repositories';
 export class ShowAuthorService {
   async execute({ id }: IShowAuthorRequestDTO) {
     const authorRepositories = getCustomRepository(AuthorsRepositories);
-    const author = await authorRepositories.findOne({ id: id });
+    const author = await authorRepositories.findOneWithPhoto(id);
 
     if (!author) throw new BadRequest('user_not_found_error');
 
