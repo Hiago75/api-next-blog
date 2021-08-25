@@ -5,13 +5,22 @@ import cors from 'cors';
 import translator from 'i18next';
 import translatorBackend from 'i18next-fs-backend';
 import translatorMiddleware from 'i18next-http-middleware';
+import path from 'path';
 
 import 'express-async-errors';
 import 'reflect-metadata';
 
 import { connectToOrm } from './config/database';
 import { errorHandler } from './middlewares/errorHandler';
-import { categoryRoutes, authorRoutes, postRoutes, coverRoutes, authRoutes, profilePhotoRoutes } from './routes/index';
+import {
+  categoryRoutes,
+  authorRoutes,
+  postRoutes,
+  coverRoutes,
+  authRoutes,
+  profilePhotoRoutes,
+  homeRoutes,
+} from './routes/index';
 
 dotenv.config();
 
@@ -28,10 +37,13 @@ translator
 class App {
   private _app;
   private whiteList = ['https://condescending-hugle-4d401f.netlify.app'];
+  private stylesPath = path.resolve(__dirname, '..', 'public', 'styles');
+  private assetsPath = path.resolve(__dirname, '..', 'public', 'assets');
 
   constructor() {
     connectToOrm();
     this._app = express();
+    this.staticFiles();
     this.middlewares();
     this.routes();
     this.errorHandler();
@@ -39,6 +51,12 @@ class App {
 
   get app() {
     return this._app;
+  }
+
+  staticFiles() {
+    this.app.use(express.static('../public'));
+    this.app.use('/styles', express.static(this.stylesPath));
+    this.app.use('/assets', express.static(this.assetsPath));
   }
 
   middlewares() {
@@ -54,6 +72,7 @@ class App {
   }
 
   routes() {
+    this.app.use('/', homeRoutes);
     this.app.use('/categories', categoryRoutes);
     this.app.use('/authors', authorRoutes);
     this.app.use('/posts', postRoutes);
