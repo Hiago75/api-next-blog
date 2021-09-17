@@ -7,7 +7,7 @@ export const authorFactory = async (password: string, admin?: boolean, profilePh
   const authorsRepositories = getCustomRepository(AuthorsRepositories);
   const profilePhotosRepositories = getCustomRepository(ProfilePhotosRepositories);
 
-  const userName = faker.name.firstName();
+  const userName = faker.name.findName();
   const userEmail = faker.internet.email();
   const userPassword = await encrypt(password);
   const sentAdmin = admin || false;

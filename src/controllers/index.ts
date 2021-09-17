@@ -14,6 +14,7 @@ import { ShowCategoryController } from './Categories/ShowCategoryController';
 import { DeleteCategoryController } from './Categories/DeleteCategoryController';
 
 import { CreatePostsController } from './Posts/CreatePostsController';
+import { CountPostsController } from './Posts/CountPostsController';
 import { ListPostsController } from './Posts/ListPostsController';
 import { DeletePostController } from './Posts/DeletePostController';
 import { ListPostsFromCategoryController } from './Posts/ListPostsFromCategoryController';
@@ -47,4 +48,5 @@ export {
   CreateProfilePhotoController,
   UpdateAuthorController,
   UpdateProfilePhotoController,
+  CountPostsController,
 };

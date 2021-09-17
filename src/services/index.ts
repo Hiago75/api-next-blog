@@ -16,6 +16,7 @@ import { ShowCategoryService } from './Categories/ShowCategoryService';
 
 import { CreatePostsService } from './Posts/CreatePostsService';
 import { ListPostsService } from './Posts/ListPostsService';
+import { CountPostsService } from './Posts/CountPostsService';
 import { DeletePostService } from './Posts/DeletePostService';
 import { ShowPostService } from './Posts/ShowPostService';
 
@@ -47,4 +48,5 @@ export {
   CreateProfilePhotoService,
   UpdateAuthorService,
   UpdateProfilePhotoService,
+  CountPostsService,
 };

@@ -1,23 +1,23 @@
 module.exports = [
-  // {
-  //   name: 'production',
-  //   type: 'postgres',
-  //   url: process.env.DATABASE_URL,
-  //   migrations: ['dist/database/migrations/*.js'],
-  //   entities: ['dist/entities/*.js'],
-  //   cli: {
-  //     migrationsDir: 'src/database/migrations',
-  //     entitiesDir: 'src/entities',
-  //   },
-  //   extra: {
-  //     ssl: {
-  //       require: true,
-  //       rejectUnauthorized: false,
-  //     },
-  //   },
-  // },
   {
-    // name: 'development',
+    name: 'production',
+    type: 'postgres',
+    url: process.env.DATABASE_URL,
+    migrations: ['dist/database/migrations/*.js'],
+    entities: ['dist/entities/*.js'],
+    cli: {
+      migrationsDir: 'src/database/migrations',
+      entitiesDir: 'src/entities',
+    },
+    extra: {
+      ssl: {
+        require: true,
+        rejectUnauthorized: false,
+      },
+    },
+  },
+  {
+    name: 'development',
     type: 'postgres',
     host: 'localhost',
     port: '5432',

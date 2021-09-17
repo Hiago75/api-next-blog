@@ -5,6 +5,7 @@ import cors from 'cors';
 import translator from 'i18next';
 import translatorBackend from 'i18next-fs-backend';
 import translatorMiddleware from 'i18next-http-middleware';
+import favicon from 'serve-favicon';
 import path from 'path';
 
 import 'express-async-errors';
@@ -36,9 +37,10 @@ translator
 
 class App {
   private _app;
-  private whiteList = ['https://condescending-hugle-4d401f.netlify.app'];
+  private whiteList = process.env.WHITELIST;
   private stylesPath = path.resolve(__dirname, '..', 'public', 'styles');
   private assetsPath = path.resolve(__dirname, '..', 'public', 'assets');
+  private faviconPath = path.resolve(__dirname, '..', 'public', 'favicon.ico');
 
   constructor() {
     connectToOrm();
@@ -57,6 +59,7 @@ class App {
     this.app.use(express.static('../public'));
     this.app.use('/styles', express.static(this.stylesPath));
     this.app.use('/assets', express.static(this.assetsPath));
+    this.app.use(favicon(this.faviconPath));
   }
 
   middlewares() {
