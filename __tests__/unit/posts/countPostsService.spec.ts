@@ -17,9 +17,20 @@ describe('List posts service', () => {
   });
 
   it('should be able to count the total of user posts', async () => {
-    const { author } = await postFactory();
+    const { author, category } = await postFactory();
+
     const postList = await sut.execute();
 
-    expect(postList.authors).toEqual([{ name: author.name, posts: 1 }]);
+    expect(postList.authors).toEqual([
+      { name: author.name, posts: 1, categories: [{ name: category.name, posts: 1 }] },
+    ]);
+  });
+
+  it('should be able to count the total of posts for each category', async () => {
+    const { category } = await postFactory();
+
+    const postList = await sut.execute();
+
+    expect(postList.categories).toEqual([{ name: category.name, posts: 1 }]);
   });
 });
