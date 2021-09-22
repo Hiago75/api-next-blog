@@ -32,6 +32,6 @@ describe('POST /auth/login', () => {
     const { email } = await authorFactory('123456');
     const response = await request(app).post('/auth/login').send({ email, password: '123456' });
 
-    expect(response.body).toHaveProperty('accessToken');
+    expect(response.headers).toHaveProperty('set-cookie');
   });
 });

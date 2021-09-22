@@ -25,7 +25,7 @@ describe('POST /authors', () => {
     const authorization = await authFactory('123456');
     const response = await request(app)
       .post('/authors')
-      .set('Authorization', 'bearer ' + authorization)
+      .set('Cookie', [`access_token=${authorization}`])
       .send(mockUserData);
 
     expect(response.status).toBe(403);
@@ -36,7 +36,7 @@ describe('POST /authors', () => {
     const authorization = await authFactory('123456', true);
     const response = await request(app)
       .post('/authors')
-      .set('Authorization', 'bearer ' + authorization)
+      .set('Cookie', [`access_token=${authorization}`])
       .send({ email: mockUserData.email });
 
     expect(response.status).toBe(400);
@@ -47,7 +47,7 @@ describe('POST /authors', () => {
     const authorization = await authFactory('123456', true);
     const response = await request(app)
       .post('/authors')
-      .set('Authorization', 'bearer ' + authorization)
+      .set('Cookie', [`access_token=${authorization}`])
       .send({ name: mockUserData.name });
 
     expect(response.status).toBe(400);
@@ -58,7 +58,7 @@ describe('POST /authors', () => {
     const authorization = await authFactory('123456', true);
     const response = await request(app)
       .post('/authors')
-      .set('Authorization', 'bearer ' + authorization)
+      .set('Cookie', [`access_token=${authorization}`])
       .send({ name: mockUserData.name, email: mockUserData.email });
 
     expect(response.status).toBe(400);
@@ -69,7 +69,7 @@ describe('POST /authors', () => {
     const authorization = await authFactory('123456', true);
     const response = await request(app)
       .post('/authors')
-      .set('Authorization', 'bearer ' + authorization)
+      .set('Cookie', [`access_token=${authorization}`])
       .send({ name: mockUserData.name, email: mockUserData.email, password: '123' });
 
     expect(response.status).toBe(400);
@@ -81,7 +81,7 @@ describe('POST /authors', () => {
     const authorization = await authFactory('123456', true);
     const response = await request(app)
       .post('/authors')
-      .set('Authorization', 'bearer ' + authorization)
+      .set('Cookie', [`access_token=${authorization}`])
       .send({ name: mockUserData.name, email, password: mockUserData.password });
 
     expect(response.status).toBe(400);
@@ -92,7 +92,7 @@ describe('POST /authors', () => {
     const authorization = await authFactory('123456', true);
     const response = await request(app)
       .post('/authors')
-      .set('Authorization', 'bearer ' + authorization)
+      .set('Cookie', [`access_token=${authorization}`])
       .send(mockUserData);
 
     expect(response.status).toBe(200);

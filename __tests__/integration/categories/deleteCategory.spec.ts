@@ -18,7 +18,7 @@ describe('DELETE /categories', () => {
   it('should not be able to delete a category without the category ID being sent', async () => {
     const response = await request(app)
       .delete('/categories')
-      .set('Authorization', 'bearer ' + mockToken);
+      .set('Cookie', [`access_token=${mockToken}`]);
 
     expect(response.status).toEqual(400);
     expect(response.body).toHaveProperty('message', 'Missing category ID');
@@ -27,7 +27,7 @@ describe('DELETE /categories', () => {
   it('should not be able to delete a non-existent category', async () => {
     const response = await request(app)
       .delete('/categories')
-      .set('Authorization', 'bearer ' + mockToken)
+      .set('Cookie', [`access_token=${mockToken}`])
       .send({ categoryId: 'invalid id' });
 
     expect(response.status).toEqual(400);
@@ -39,7 +39,7 @@ describe('DELETE /categories', () => {
 
     const response = await request(app)
       .delete('/categories')
-      .set('Authorization', 'bearer ' + mockToken)
+      .set('Cookie', [`access_token=${mockToken}`])
       .send({ categoryId: id });
 
     expect(response.body).toHaveProperty('deleted', true);

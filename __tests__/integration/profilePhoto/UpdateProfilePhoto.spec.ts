@@ -18,7 +18,7 @@ describe('PUT /photo', () => {
   it('should not be able to update the profile photo without sending a photo', async () => {
     const response = await request(app)
       .put('/photo')
-      .set('Authorization', 'bearer ' + mockToken);
+      .set('Cookie', [`access_token=${mockToken}`]);
 
     expect(response.status).toBe(400);
     expect(response.body).toHaveProperty('message', 'You need to send a photo');
@@ -27,7 +27,7 @@ describe('PUT /photo', () => {
   it('should not be able to update the profile photo of a non-existent user', async () => {
     const response = await request(app)
       .put('/photo')
-      .set('Authorization', 'bearer ' + mockToken)
+      .set('Cookie', [`access_token=${mockToken}`])
       .attach('image', filePath);
 
     expect(response.status).toBe(400);
@@ -38,7 +38,7 @@ describe('PUT /photo', () => {
     const token = await authFactory('123456');
     const response = await request(app)
       .put('/photo')
-      .set('Authorization', 'bearer ' + token)
+      .set('Cookie', [`access_token=${token}`])
       .attach('image', filePath);
 
     expect(response.status).toBe(400);
@@ -52,7 +52,7 @@ describe('PUT /photo', () => {
 
     const response = await request(app)
       .put('/photo')
-      .set('Authorization', 'bearer ' + token)
+      .set('Cookie', [`access_token=${token}`])
       .attach('image', filePath);
 
     expect(response.status).toBe(200);

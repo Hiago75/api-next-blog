@@ -17,19 +17,20 @@ describe('GET /posts', () => {
 
   it('should be able to count all posts for each category', async () => {
     const { category } = await postFactory();
+    const categoryName = category.name;
 
     const response = await request(app).get('/posts/count');
 
-    expect(response.body).toHaveProperty('categories', [{ name: category.name, posts: 1 }]);
+    expect(response.body).toHaveProperty('categories', { [categoryName]: 1 });
   });
 
   it('should be able to count the user posts with the categories', async () => {
     const { author, category } = await postFactory();
+    const authorName = author.name;
+    const categoryName = category.name;
 
     const response = await request(app).get('/posts/count');
 
-    expect(response.body).toHaveProperty('authors', [
-      { name: author.name, posts: 1, categories: [{ name: category.name, posts: 1 }] },
-    ]);
+    expect(response.body).toHaveProperty('authors', { [authorName]: { categories: { [categoryName]: 1 }, posts: 1 } });
   });
 });

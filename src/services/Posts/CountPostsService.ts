@@ -2,16 +2,15 @@ import { getCustomRepository } from 'typeorm';
 import { AuthorsRepositories, CategoriesRepositories } from '../../repositories';
 import { PostsRepositories } from '../../repositories/PostsRepositories';
 
-interface ICounter {
-  name: string;
-  posts: number;
+interface ICategoryCounter {
+  [key: string]: number;
 }
 
-interface IUserCounter extends ICounter {
-  categories: {
-    name: string;
+interface IUserCounter {
+  [key: string]: {
     posts: number;
-  }[];
+    categories: ICategoryCounter;
+  };
 }
 
 export class CountPostsService {
@@ -19,8 +18,8 @@ export class CountPostsService {
     const postsRepositories = getCustomRepository(PostsRepositories);
 
     const numOfPosts = await postsRepositories.count({ relations: ['author'] });
-    const authorsData: IUserCounter[] = await this.getAuthorData();
-    const categoriesData: ICounter[] = await this.getCategoriesData();
+    const authorsData: IUserCounter = await this.getAuthorData();
+    const categoriesData: ICategoryCounter = await this.getCategoriesData();
 
     return {
       total: numOfPosts,
@@ -36,7 +35,7 @@ export class CountPostsService {
 
     const authors = await authorsRepositories.find();
 
-    const authorData: IUserCounter[] = [];
+    const authorData: IUserCounter = {};
 
     // Get every user name and post amount, then create an object with that data and return
     for await (const author of authors) {
@@ -47,9 +46,9 @@ export class CountPostsService {
 
       const authorCategoryPosts = await this.getCategoriesData(author.id);
 
-      const authorPostsData = { name: author.name, posts: authorPosts, categories: authorCategoryPosts };
+      const authorPostsData = { posts: authorPosts, categories: authorCategoryPosts };
 
-      authorData.push(authorPostsData);
+      authorData[author.name] = authorPostsData;
     }
 
     return authorData;
@@ -62,7 +61,7 @@ export class CountPostsService {
 
     const categories = await categoriesRepositories.find();
 
-    const categoriesData: { name: string; posts: number }[] = [];
+    const categoriesData: { [key: string]: number } = {};
 
     for await (const category of categories) {
       const { name } = category;
@@ -78,7 +77,7 @@ export class CountPostsService {
             where: { category: { id: category.id } },
           });
 
-      categoriesData.push({ name, posts: categoryPosts });
+      categoriesData[name] = categoryPosts;
     }
 
     return categoriesData;

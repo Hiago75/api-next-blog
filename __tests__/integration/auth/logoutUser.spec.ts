@@ -15,7 +15,7 @@ describe('DELETE /auth/logout', () => {
   });
 
   it('should not be able to loggout the user if the refresh token is invalid', async () => {
-    const response = await request(app).delete('/auth/logout').set('cookie', 'invalid token');
+    const response = await request(app).delete('/auth/logout').set('Cookie', [`refresh_token=invalidToken`]);
 
     expect(response.status).toBe(400);
     expect(response.body).toHaveProperty('message', 'This user is not logged in the platform');
@@ -25,7 +25,9 @@ describe('DELETE /auth/logout', () => {
     const user = await authorFactory('123456');
     const { id } = await GenerateRefreshTokenProvider(user);
 
-    const response = await request(app).delete('/auth/logout').set('cookie', id);
+    const response = await request(app)
+      .delete('/auth/logout')
+      .set('Cookie', [`refresh_token=${id}`]);
 
     expect(response.status).toBe(200);
     expect(response.body).toHaveProperty('message', 'User logged-out');

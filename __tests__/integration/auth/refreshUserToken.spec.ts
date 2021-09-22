@@ -15,7 +15,7 @@ describe('GET /auth/refresh', () => {
   });
 
   it('should not be able to refresh the token if the sent refresh token is invalid', async () => {
-    const response = await request(app).get('/auth/refresh').set('cookie', 'invalid token');
+    const response = await request(app).get('/auth/refresh').set('Cookie', ['refresh_token=invalid token']);
 
     expect(response.status).toBe(401);
     expect(response.body).toHaveProperty('message', 'Invalid token');
@@ -24,8 +24,10 @@ describe('GET /auth/refresh', () => {
   it('should be able to refresh the token', async () => {
     const user = await authorFactory('123456');
     const { id } = await GenerateRefreshTokenProvider(user);
-    const response = await request(app).get('/auth/refresh').set('cookie', id);
+    const response = await request(app)
+      .get('/auth/refresh')
+      .set('Cookie', [`refresh_token=${id}`]);
 
-    expect(response.body).toHaveProperty('token');
+    expect(response.headers).toHaveProperty('set-cookie');
   });
 });

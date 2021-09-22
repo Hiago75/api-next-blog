@@ -8,6 +8,12 @@ export class UpdateAuthorController {
     const userId = req.user_id;
     const itemsToBeUpdated = req.body;
 
+    for (const item in itemsToBeUpdated) {
+      if (!itemsToBeUpdated[item]) {
+        delete itemsToBeUpdated[item];
+      }
+    }
+
     const updatedData = await this.updateAuthorService.execute(userId, itemsToBeUpdated);
 
     return res.json(updatedData);

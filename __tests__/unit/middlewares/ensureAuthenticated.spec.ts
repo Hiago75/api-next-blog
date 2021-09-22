@@ -15,7 +15,7 @@ describe('Ensure authentication middleware', () => {
 
   beforeEach(() => {
     mockRequest = {
-      headers: {},
+      cookies: {},
     };
     mockResponse = {
       json: jest.fn(),
@@ -31,25 +31,10 @@ describe('Ensure authentication middleware', () => {
     }
   });
 
-  it('should not be able to pass with a token with an invalid formatation', async () => {
-    mockRequest = {
-      headers: {
-        authorization: 'invalid Token',
-      },
-    };
-
-    try {
-      sutFactory();
-    } catch (requestError) {
-      expect(requestError.name).toBe('Error');
-      expect(requestError.message).toBe('invalid_token_format');
-    }
-  });
-
   it('should not be able to pass with an invalid bearer token', async () => {
     mockRequest = {
-      headers: {
-        authorization: 'bearer Token',
+      cookies: {
+        access_token: 'bearer Token',
       },
     };
 
@@ -63,8 +48,8 @@ describe('Ensure authentication middleware', () => {
 
   it('should be able to pass', async () => {
     mockRequest = {
-      headers: {
-        authorization: 'bearer ' + mockToken,
+      cookies: {
+        access_token: mockToken,
       },
     };
 

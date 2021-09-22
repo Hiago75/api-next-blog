@@ -16,7 +16,7 @@ describe('DELETE /posts', () => {
   it('should not be able to delete a post without sending an ID', async () => {
     const response = await request(app)
       .delete('/posts')
-      .set('Authorization', 'bearer ' + mockToken);
+      .set('Cookie', [`access_token=${mockToken}`]);
 
     expect(response.status).toBe(400);
     expect(response.body).toHaveProperty('message', 'Missing post ID');
@@ -25,7 +25,7 @@ describe('DELETE /posts', () => {
   it('should not be able to delete a non-existent post', async () => {
     const response = await request(app)
       .delete('/posts')
-      .set('Authorization', 'bearer ' + mockToken)
+      .set('Cookie', [`access_token=${mockToken}`])
       .send({ postId: 'Invalid id' });
 
     expect(response.status).toBe(400);
@@ -37,7 +37,7 @@ describe('DELETE /posts', () => {
 
     const response = await request(app)
       .delete('/posts')
-      .set('Authorization', 'bearer ' + mockToken)
+      .set('Cookie', [`access_token=${mockToken}`])
       .send({ postId: id });
 
     expect(response.body).toHaveProperty('deleted', true);

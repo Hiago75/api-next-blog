@@ -18,7 +18,7 @@ describe('POST /categories', () => {
   it('should not be able to create a category without sending a name', async () => {
     const response = await request(app)
       .post('/categories')
-      .set('Authorization', 'bearer ' + mockToken);
+       .set('Cookie', [`access_token=${mockToken}`]);
 
     expect(response.status).toEqual(400);
     expect(response.body).toHaveProperty('message', `Name field can't be empty`);
@@ -30,7 +30,7 @@ describe('POST /categories', () => {
     const response = await request(app)
       .post('/categories')
       .send({ name: 'Already existent category' })
-      .set('Authorization', 'bearer ' + mockToken);
+       .set('Cookie', [`access_token=${mockToken}`]);
 
     expect(response.status).toEqual(400);
     expect(response.body).toHaveProperty('message', 'This category already exists');
@@ -40,7 +40,7 @@ describe('POST /categories', () => {
     const response = await request(app)
       .post('/categories')
       .send({ name: 'Test category' })
-      .set('Authorization', 'bearer ' + mockToken);
+       .set('Cookie', [`access_token=${mockToken}`]);
 
     expect(response.body).toHaveProperty('name', 'Test category');
   });

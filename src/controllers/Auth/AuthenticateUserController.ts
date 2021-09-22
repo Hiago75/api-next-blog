@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import { BadRequest } from '../../custom/errors';
 import { AuthenticateUserService } from '../../services/Auth/AuthenticateUserService';
+import { formatExpiration } from '../../utils/formatExpiration';
 
 export class AuthenticateUserController {
   constructor(private authenticateUserService: AuthenticateUserService) {}
@@ -15,11 +16,25 @@ export class AuthenticateUserController {
       password,
     });
 
-    return response.json({
-      accessToken: token,
-      accessTokenExpiration: tokenExp,
-      refreshToken: refreshTokenId,
-      refreshTokenExpiration,
-    });
+    const formatedRefreshTokenExpiration = formatExpiration(refreshTokenExpiration);
+    const formatedTokenExpiration = formatExpiration(tokenExp);
+
+    return response
+      .status(200)
+      .cookie('refresh_token', refreshTokenId, {
+        httpOnly: true,
+        secure: true,
+        expires: formatedRefreshTokenExpiration,
+        sameSite: 'strict',
+        path: '/',
+      })
+      .cookie('access_token', token, {
+        httpOnly: true,
+        secure: true,
+        expires: formatedTokenExpiration,
+        sameSite: 'strict',
+        path: '/',
+      })
+      .send(request.t('auth_login_success'));
   }
 }

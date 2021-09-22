@@ -2,17 +2,14 @@ import jwt from 'jsonwebtoken';
 import { Request, Response } from 'express';
 import { RetrieveUserDataService } from '../../services/Auth/RetrieveUserDataService';
 import { Unauthorized } from '../../custom/errors';
-import { formatToken } from '../../utils/formatToken';
 
 export class RetrieveUserDataController {
   constructor(private retrieveUserDataService: RetrieveUserDataService) {}
 
   async handle(request: Request, response: Response) {
-    const rawToken = request.headers.authorization;
+    const token = request.cookies.access_token;
 
-    if (!rawToken) throw new Unauthorized('auth_token_missing_error');
-
-    const token = formatToken(rawToken);
+    if (!token) throw new Unauthorized('auth_token_missing_error');
 
     try {
       jwt.verify(token, process.env.TOKEN_SECRET as string);

@@ -17,7 +17,7 @@ describe('PUT /authors', () => {
     const authorization = await authFactory('123456');
     const response = await request(app)
       .put('/authors')
-      .set('Authorization', 'bearer ' + authorization)
+      .set('Cookie', [`access_token=${authorization}`])
       .send({ name: 'Test Name' });
 
     expect(response.body).toHaveProperty('name', 'Test Name');
@@ -27,7 +27,7 @@ describe('PUT /authors', () => {
     const authorization = await authFactory('123456');
     const response = await request(app)
       .put('/authors')
-      .set('Authorization', 'bearer ' + authorization)
+      .set('Cookie', [`access_token=${authorization}`])
       .send({ email: 'testEmail@gmail.com' });
 
     expect(response.body).toHaveProperty('email', 'testEmail@gmail.com');
@@ -37,7 +37,7 @@ describe('PUT /authors', () => {
     const authorization = await authFactory('123456');
     const response = await request(app)
       .put('/authors')
-      .set('Authorization', 'bearer ' + authorization)
+      .set('Cookie', [`access_token=${authorization}`])
       .send({ name: 'Test Name', email: 'testEmail@gmail.com' });
 
     expect(response.body).toHaveProperty('name', 'Test Name');
