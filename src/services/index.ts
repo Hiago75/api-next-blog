@@ -11,13 +11,14 @@ import { UpdateAuthorService } from './Authors/UpdateAuthorService';
 import { CreateCategoryService } from './Categories/CreateCategoryService';
 import { ListCategoriesService } from './Categories/ListCategoriesService';
 import { DeleteCategoryService } from './Categories/DeleteCategoryService';
-import { ListPostsFromCategoryService } from './Posts/ListPostsFromCategoryService';
+
 import { ShowCategoryService } from './Categories/ShowCategoryService';
 
 import { CreatePostsService } from './Posts/CreatePostsService';
 import { ListPostsService } from './Posts/ListPostsService';
 import { CountPostsService } from './Posts/CountPostsService';
 import { DeletePostService } from './Posts/DeletePostService';
+import { UpdatePostsService } from './Posts/UpdatePostsService';
 import { ShowPostService } from './Posts/ShowPostService';
 
 import { CreateCoverService } from './Covers/CreateCoverService';
@@ -38,7 +39,6 @@ export {
   ListCoversService,
   DeleteCategoryService,
   DeletePostService,
-  ListPostsFromCategoryService,
   ShowCategoryService,
   ShowAuthorService,
   ShowPostService,
@@ -49,4 +49,5 @@ export {
   UpdateAuthorService,
   UpdateProfilePhotoService,
   CountPostsService,
+  UpdatePostsService,
 };

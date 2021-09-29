@@ -17,8 +17,8 @@ import { CreatePostsController } from './Posts/CreatePostsController';
 import { CountPostsController } from './Posts/CountPostsController';
 import { ListPostsController } from './Posts/ListPostsController';
 import { DeletePostController } from './Posts/DeletePostController';
-import { ListPostsFromCategoryController } from './Posts/ListPostsFromCategoryController';
 import { ShowPostController } from './Posts/ShowPostController';
+import { UpdatePostsController } from './Posts/UpdatePostsController';
 
 import { CreateCoversController } from './Covers/CreateCoversController';
 import { ListCoversController } from './Covers/ListCoversController';
@@ -40,7 +40,6 @@ export {
   DeletePostController,
   ShowAuthorController,
   ShowCategoryController,
-  ListPostsFromCategoryController,
   ShowPostController,
   RefreshUserTokenController,
   RetrieveUserDataController,
@@ -49,4 +48,5 @@ export {
   UpdateAuthorController,
   UpdateProfilePhotoController,
   CountPostsController,
+  UpdatePostsController,
 };

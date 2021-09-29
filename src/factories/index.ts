@@ -17,9 +17,10 @@ import { ListCoversFactory } from './Covers/ListCoversFactory';
 import { CreatePostFactory } from './Posts/CreatePostFactory';
 import { ListPostsFactory } from './Posts/ListPostsFactory';
 import { CountPostsFactory } from './Posts/CountPostsFactory';
-import { ListPostsFromCategoryFactory } from './Posts/ListPostsFromCategoryFactory';
+
 import { ShowPostFactory } from './Posts/ShowPostFactory';
 import { DeletePostFactory } from './Posts/DeletePostFactory';
+import { UpdatePostsFactory } from './Posts/UpdatePostsFactory';
 
 import { CreateProfilePhotoFactory } from './ProfilePhotos/CreateProfilePhotoFactory';
 
@@ -39,7 +40,6 @@ export {
   ListCoversFactory,
   CreatePostFactory,
   ListPostsFactory,
-  ListPostsFromCategoryFactory,
   ShowPostFactory,
   DeletePostFactory,
   RetrieveUserDataFactory,
@@ -48,4 +48,5 @@ export {
   updateAuthorFactory,
   UpdateProfilePhotoFactory,
   CountPostsFactory,
+  UpdatePostsFactory,
 };

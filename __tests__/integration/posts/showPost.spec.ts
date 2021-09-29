@@ -7,7 +7,7 @@ describe('GET /posts/:slug', () => {
   testSetup();
 
   it('should not be able to show a non-existent post', async () => {
-    const response = await request(app).get('/posts/unreal-slug');
+    const response = await request(app).get('/posts/post/unreal-slug');
 
     expect(response.status).toBe(400);
     expect(response.body).toHaveProperty('message', 'Post not found');
@@ -16,7 +16,7 @@ describe('GET /posts/:slug', () => {
   it('should be able to show the post with the sent slug', async () => {
     const { slug } = await postFactory();
 
-    const response = await request(app).get(`/posts/${slug}`);
+    const response = await request(app).get(`/posts/post/${slug}`);
 
     expect(response.body).toHaveProperty('slug', slug);
   });

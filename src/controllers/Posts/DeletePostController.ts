@@ -6,10 +6,10 @@ export class DeletePostController {
   constructor(private deletePostService: DeletePostService) {}
 
   async handle(request: Request, response: Response) {
-    const { postId } = request.body;
-    if (!postId) throw new BadRequest('post_deletion_missing_id');
+    const { id } = request.params;
+    if (!id) throw new BadRequest('post_deletion_missing_id');
 
-    await this.deletePostService.execute({ postId });
+    await this.deletePostService.execute({ postId: id });
 
     return response.json({
       deleted: true,

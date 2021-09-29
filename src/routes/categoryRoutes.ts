@@ -13,6 +13,6 @@ const deleteCategoryController = DeleteCategoryFactory();
 router.get('/', listCategoriesController.handle.bind(listCategoriesController));
 router.get('/:id', showCategoryController.handle.bind(showCategoryController));
 router.post('/', ensureAuthenticated, createCategoryController.handle.bind(createCategoryController));
-router.delete('/', ensureAuthenticated, deleteCategoryController.handle.bind(deleteCategoryController));
+router.delete('/:id', ensureAuthenticated, deleteCategoryController.handle.bind(deleteCategoryController));
 
 export default router;

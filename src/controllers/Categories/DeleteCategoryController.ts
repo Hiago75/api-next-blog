@@ -6,11 +6,11 @@ export class DeleteCategoryController {
   constructor(private deleteCategoryService: DeleteCategoryService) {}
 
   async handle(request: Request, response: Response) {
-    const { categoryId } = request.body;
+    const { id } = request.params;
 
-    if (!categoryId) throw new BadRequest('category_deletion_missing_id');
+    if (!id) throw new BadRequest('category_deletion_missing_id');
 
-    await this.deleteCategoryService.execute({ categoryId });
+    await this.deleteCategoryService.execute({ categoryId: id });
 
     return response.json({
       deleted: true,

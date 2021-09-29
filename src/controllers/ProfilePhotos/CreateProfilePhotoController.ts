@@ -1,5 +1,6 @@
 import fs from 'fs';
 import { Request, Response } from 'express';
+
 import { BadRequest } from '../../custom/errors';
 import { CreateProfilePhotoService } from '../../services/ProfilePhotos/CreateProfilePhotoService';
 

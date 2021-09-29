@@ -1,4 +1,39 @@
+const defaultConnection = process.env.DATABASE_URL
+  ? {
+      type: 'postgres',
+      url: process.env.DATABASE_URL,
+      migrations: ['dist/database/migrations/*.js'],
+      entities: ['dist/entities/*.js'],
+      cli: {
+        migrationsDir: 'src/database/migrations',
+        entitiesDir: 'src/entities',
+      },
+      extra: {
+        ssl: {
+          require: true,
+          rejectUnauthorized: false,
+        },
+      },
+    }
+  : {
+      type: 'postgres',
+      host: 'localhost',
+      port: '5432',
+      username: 'postgres',
+      password: '123456',
+      database: 'personal-blog',
+      migrations: ['src/database/migrations/*.ts'],
+      entities: ['src/entities/*.ts'],
+      cli: {
+        migrationsDir: 'src/database/migrations',
+        entitiesDir: 'src/entities',
+      },
+    };
+
 module.exports = [
+  {
+    ...defaultConnection,
+  },
   {
     name: 'production',
     type: 'postgres',

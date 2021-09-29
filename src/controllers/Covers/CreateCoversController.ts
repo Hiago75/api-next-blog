@@ -1,4 +1,6 @@
+import fs from 'fs';
 import { Request, Response } from 'express';
+
 import { BadRequest } from '../../custom/errors';
 import { uploadToCloudinary } from '../../provider/';
 import { CreateCoverService } from '../../services';
@@ -32,6 +34,8 @@ export class CreateCoversController {
       provider: 'cloudinary',
     });
 
-    return response.json(cover);
+    fs.unlink(file, () => {
+      return response.json(cover);
+    });
   }
 }
