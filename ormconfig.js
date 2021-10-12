@@ -1,34 +1,35 @@
-const defaultConnection = process.env.DATABASE_URL
-  ? {
-      type: 'postgres',
-      url: process.env.DATABASE_URL,
-      migrations: ['dist/database/migrations/*.js'],
-      entities: ['dist/entities/*.js'],
-      cli: {
-        migrationsDir: 'src/database/migrations',
-        entitiesDir: 'src/entities',
-      },
-      extra: {
-        ssl: {
-          require: true,
-          rejectUnauthorized: false,
-        },
-      },
-    }
-  : {
-      type: 'postgres',
-      host: 'localhost',
-      port: '5432',
-      username: 'postgres',
-      password: '123456',
-      database: 'personal-blog',
-      migrations: ['src/database/migrations/*.ts'],
-      entities: ['src/entities/*.ts'],
-      cli: {
-        migrationsDir: 'src/database/migrations',
-        entitiesDir: 'src/entities',
-      },
-    };
+const connections = {
+  production: {
+    type: 'postgres',
+    host: process.env.DATABASE_HOST,
+    port: process.env.DATABASE_PORT,
+    username: process.env.DATABASE_USERNAME,
+    password: process.env.DATABASE_PASSWORD,
+    database: process.env.DATABASE_DBNAME,
+    migrations: ['dist/database/migrations/*.js'],
+    entities: ['dist/entities/*.js'],
+    cli: {
+      migrationsDir: 'src/database/migrations',
+      entitiesDir: 'src/entities',
+    },
+  },
+  development: {
+    type: 'postgres',
+    host: 'localhost',
+    port: '5432',
+    username: 'postgres',
+    password: '123456',
+    database: 'personal-blog',
+    migrations: ['src/database/migrations/*.ts'],
+    entities: ['src/entities/*.ts'],
+    cli: {
+      migrationsDir: 'src/database/migrations',
+      entitiesDir: 'src/entities',
+    },
+  },
+};
+
+const defaultConnection = connections[process.env.NODE_ENV];
 
 module.exports = [
   {
@@ -37,18 +38,16 @@ module.exports = [
   {
     name: 'production',
     type: 'postgres',
-    url: process.env.DATABASE_URL,
+    host: process.env.DATABASE_HOST,
+    port: process.env.DATABASE_PORT,
+    username: process.env.DATABASE_USERNAME,
+    password: process.env.DATABASE_PASSWORD,
+    database: process.env.DATABASE_DBNAME,
     migrations: ['dist/database/migrations/*.js'],
     entities: ['dist/entities/*.js'],
     cli: {
       migrationsDir: 'src/database/migrations',
       entitiesDir: 'src/entities',
-    },
-    extra: {
-      ssl: {
-        require: true,
-        rejectUnauthorized: false,
-      },
     },
   },
   {
