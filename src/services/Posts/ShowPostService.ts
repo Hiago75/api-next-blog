@@ -16,6 +16,7 @@ export class ShowPostService {
         'cover.format.medium',
         'cover.format.small',
         'cover.format.thumbnail',
+        'tags',
         'author',
         'category',
       ],

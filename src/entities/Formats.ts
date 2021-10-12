@@ -1,4 +1,4 @@
-import { CreateDateColumn, Entity, JoinColumn, OneToOne, PrimaryColumn, UpdateDateColumn } from 'typeorm';
+import { Entity, JoinColumn, OneToOne, PrimaryColumn } from 'typeorm';
 import { v4 as uuid } from 'uuid';
 import { Covers } from './Covers';
 import { Large } from './Large';
@@ -11,30 +11,24 @@ export class Formats {
   @PrimaryColumn()
   readonly id: string;
 
-  @OneToOne((type) => Covers, (formats) => Formats)
+  @OneToOne((type) => Covers, (cover) => cover.format)
   cover: Covers;
 
-  @OneToOne((type) => Large, (formats) => Formats)
+  @OneToOne((type) => Large, (large) => large.formats)
   @JoinColumn()
   large: Large;
 
-  @OneToOne((type) => Medium, (formats) => Formats)
+  @OneToOne((type) => Medium, (medium) => medium.formats)
   @JoinColumn()
   medium: Medium;
 
-  @OneToOne((type) => Small, (formats) => Formats)
+  @OneToOne((type) => Small, (small) => small.formats)
   @JoinColumn()
   small: Small;
 
-  @OneToOne((type) => Thumbnail, (formats) => Formats)
+  @OneToOne((type) => Thumbnail, (thumbnail) => thumbnail.formats)
   @JoinColumn()
   thumbnail: Thumbnail;
-
-  @CreateDateColumn({ name: 'created_at' })
-  createdAt: Date;
-
-  @UpdateDateColumn({ name: 'updated_at' })
-  updatedAt: Date;
 
   constructor() {
     if (!this.id) {

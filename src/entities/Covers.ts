@@ -35,10 +35,10 @@ export class Covers {
   @Column()
   provider: string;
 
-  @OneToMany((type) => Posts, (cover) => cover.id, { nullable: true, onDelete: 'SET NULL' })
+  @OneToMany((type) => Posts, (posts) => posts.cover, { nullable: true, onDelete: 'SET NULL' })
   posts: Posts[];
 
-  @OneToOne((type) => Formats, (cover) => Covers)
+  @OneToOne((type) => Formats, (format) => format.cover)
   @JoinColumn()
   format: Formats;
 

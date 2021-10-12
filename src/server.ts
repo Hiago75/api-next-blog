@@ -1,6 +1,6 @@
 import app from './app';
 
-const server = app.listen(process.env.PORT, () => console.log(`Server is running`));
+const server = app.listen(process.env.PORT, () => console.log(`Server running`));
 
 process.on('SIGINT', () => {
   server.close();

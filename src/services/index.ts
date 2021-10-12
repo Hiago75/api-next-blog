@@ -11,8 +11,11 @@ import { UpdateAuthorService } from './Authors/UpdateAuthorService';
 import { CreateCategoryService } from './Categories/CreateCategoryService';
 import { ListCategoriesService } from './Categories/ListCategoriesService';
 import { DeleteCategoryService } from './Categories/DeleteCategoryService';
-
 import { ShowCategoryService } from './Categories/ShowCategoryService';
+
+import { CreateTagService } from './Tags/CreateTagService';
+import { ListTagsService } from './Tags/ListTagsService';
+import { DeleteTagService } from './Tags/DeleteTagService';
 
 import { CreatePostsService } from './Posts/CreatePostsService';
 import { ListPostsService } from './Posts/ListPostsService';
@@ -50,4 +53,7 @@ export {
   UpdateProfilePhotoService,
   CountPostsService,
   UpdatePostsService,
+  CreateTagService,
+  ListTagsService,
+  DeleteTagService,
 };

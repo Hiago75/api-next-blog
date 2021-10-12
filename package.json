@@ -1,8 +1,8 @@
 {
   "name": "personal-blog-api",
-  "version": "1.0.0",
+  "version": "0.8.4",
   "main": "app.js",
-  "license": "MIT",
+  "license": "MPL-2.0",
   "scripts": {
     "build": "tsc",
     "start": "node dist/server.js",
@@ -12,7 +12,6 @@
     "test:watch": "NODE_ENV=test jest --watch --runInBand"
   },
   "dependencies": {
-    "@babel/plugin-proposal-decorators": "^7.14.5",
     "bcrypt": "^5.0.1",
     "class-transformer": "^0.4.0",
     "cloudinary": "^1.26.2",
@@ -42,6 +41,7 @@
     "@babel/cli": "^7.14.5",
     "@babel/core": "^7.14.6",
     "@babel/node": "^7.14.7",
+    "@babel/plugin-proposal-decorators": "^7.15.4",
     "@babel/preset-env": "^7.14.7",
     "@babel/preset-typescript": "^7.14.5",
     "@types/bcrypt": "^5.0.0",

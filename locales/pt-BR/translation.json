@@ -23,6 +23,11 @@
   "category_creation_already_exists": "Esta categoria já existe",
   "category_deletion_missing_id": "ID da categoria ausente",
 
+  "tag_not_found_error": "Tag não encontrada",
+  "tag_missing_id": "ID da tag ausente",
+  "tag_creation_not_sent_name": "O campo nome não pode estar vazio",
+  "tag_creation_already_exists": "Esta tag já existe",
+
   "post_not_found_error": "Post não encontrado",
   "post_creation_title_missing_error": "O campo titulo não pode estar vazio",
   "post_creation_content_missing_error": "O campo conteúdo não pode estar vazio",

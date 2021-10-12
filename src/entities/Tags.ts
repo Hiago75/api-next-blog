@@ -1,16 +1,16 @@
-import { Column, Entity, OneToMany, PrimaryColumn } from 'typeorm';
+import { Column, Entity, ManyToMany, PrimaryColumn } from 'typeorm';
 import { v4 as uuid } from 'uuid';
 import { Posts } from './Posts';
 
-@Entity('categories')
-export class Categories {
+@Entity('tags')
+export class Tags {
   @PrimaryColumn()
   readonly id: string;
 
   @Column()
   name: string;
 
-  @OneToMany((type) => Posts, (post) => post.id, { onUpdate: 'CASCADE', onDelete: 'CASCADE' })
+  @ManyToMany((type) => Posts, (post) => post.tags)
   posts: Posts[];
 
   constructor() {

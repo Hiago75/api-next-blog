@@ -1,4 +1,4 @@
-import { Column, CreateDateColumn, Entity, OneToOne, PrimaryColumn, UpdateDateColumn } from 'typeorm';
+import { Column, Entity, OneToOne, PrimaryColumn } from 'typeorm';
 import { v4 as uuid } from 'uuid';
 import { Formats } from './Formats';
 
@@ -16,14 +16,8 @@ export class Large {
   @Column()
   url: string;
 
-  @OneToOne((type) => Formats, (large) => Large)
+  @OneToOne((type) => Formats, (format) => format.large)
   formats: Formats;
-
-  @CreateDateColumn({ name: 'created_at' })
-  createdAt: Date;
-
-  @UpdateDateColumn({ name: 'updated_at' })
-  updatedAt: Date;
 
   constructor() {
     if (!this.id) {

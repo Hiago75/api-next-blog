@@ -39,7 +39,7 @@ export class Authors {
   @Column()
   admin: boolean;
 
-  @OneToMany((type) => Posts, (author) => Authors, {
+  @OneToMany((type) => Posts, (posts) => posts.author, {
     onDelete: 'CASCADE',
   })
   posts: Posts[];

@@ -23,6 +23,11 @@
   "category_creation_already_exists": "This category already exists",
   "category_deletion_missing_id": "Missing category ID",
 
+  "tag_not_found_error": "Tag not found",
+  "tag_missing_id": "Missing tag ID",
+  "tag_creation_not_sent_name": "Name field can't be empty",
+  "tag_creation_already_exists": "This tag already exists",
+
   "post_not_found_error": "Post not found",
   "post_creation_title_missing_error": "Title field can't be empty",
   "post_creation_content_missing_error": "Content field can't be empty",

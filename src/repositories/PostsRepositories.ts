@@ -3,20 +3,23 @@ import { Posts } from '../entities/Posts';
 
 @EntityRepository(Posts)
 export class PostsRepositories extends Repository<Posts> {
-  findByCategory(category: string, skip?: number, take?: number) {
+  private relations = [
+    'cover',
+    'cover.format',
+    'cover.format.large',
+    'cover.format.medium',
+    'cover.format.small',
+    'cover.format.thumbnail',
+    'tags',
+    'author',
+    'category',
+  ];
+
+  findByCategory(categoryId?: string, skip?: number, take?: number) {
     return this.find({
-      relations: [
-        'cover',
-        'cover.format',
-        'cover.format.large',
-        'cover.format.medium',
-        'cover.format.small',
-        'cover.format.thumbnail',
-        'author',
-        'category',
-      ],
+      relations: this.relations,
       where: {
-        category: category,
+        categoryId,
       },
       order: {
         createdAt: 'DESC',
@@ -28,16 +31,7 @@ export class PostsRepositories extends Repository<Posts> {
 
   findAndPaginate(skip?: number, take?: number) {
     return this.find({
-      relations: [
-        'cover',
-        'cover.format',
-        'cover.format.large',
-        'cover.format.medium',
-        'cover.format.small',
-        'cover.format.thumbnail',
-        'author',
-        'category',
-      ],
+      relations: this.relations,
       order: {
         createdAt: 'DESC',
       },

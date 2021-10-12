@@ -21,6 +21,7 @@ import {
   authRoutes,
   profilePhotoRoutes,
   homeRoutes,
+  tagsRoutes,
 } from './routes/index';
 
 dotenv.config();
@@ -77,6 +78,7 @@ class App {
   routes() {
     this.app.use('/', homeRoutes);
     this.app.use('/categories', categoryRoutes);
+    this.app.use('/tags', tagsRoutes);
     this.app.use('/authors', authorRoutes);
     this.app.use('/posts', postRoutes);
     this.app.use('/covers', coverRoutes);

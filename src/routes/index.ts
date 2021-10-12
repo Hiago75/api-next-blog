@@ -5,5 +5,15 @@ import coverRoutes from './coverRoutes';
 import authRoutes from './authRoutes';
 import profilePhotoRoutes from './profilePhotosRoutes';
 import homeRoutes from './homeRoutes';
+import tagsRoutes from './tagsRoutes';
 
-export { categoryRoutes, authorRoutes, postRoutes, coverRoutes, authRoutes, profilePhotoRoutes, homeRoutes };
+export {
+  categoryRoutes,
+  authorRoutes,
+  postRoutes,
+  coverRoutes,
+  authRoutes,
+  profilePhotoRoutes,
+  homeRoutes,
+  tagsRoutes,
+};
