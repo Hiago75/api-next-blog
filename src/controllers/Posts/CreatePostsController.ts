@@ -1,5 +1,7 @@
 import { Request, Response } from 'express';
 import slugify from 'slugify';
+import axios from 'axios';
+
 import { BadRequest } from '../../custom/errors';
 
 import { CreatePostsService } from '../../services/Posts/CreatePostsService';
@@ -31,6 +33,9 @@ export class CreatePostsController {
       authorId,
       coverId,
     });
+
+    if (process.env.NODE_ENV === 'production')
+      axios.post('https://api.netlify.com/build_hooks/61675fa4f2f8f62777bca770');
 
     return response.json(post);
   }

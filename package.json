@@ -12,6 +12,7 @@
     "test:watch": "NODE_ENV=test jest --watch --runInBand"
   },
   "dependencies": {
+    "axios": "^0.23.0",
     "bcrypt": "^5.0.1",
     "class-transformer": "^0.4.0",
     "cloudinary": "^1.26.2",
