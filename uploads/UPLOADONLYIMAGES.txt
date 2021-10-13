@@ -1,0 +1,1 @@
+Please, to avoid problems with fs use this folder to upload only images
