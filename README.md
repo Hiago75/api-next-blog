@@ -27,6 +27,7 @@
 - [x] Criação e deleção de posts
 - [x] Listagem de posts por slug ou por categoria
 - [x] CRUD de categorias
+- [x] Sistema de tags
 - [x] Autenticação de usuário com JWT e refresh token
 
 <h2 href="#getting-started">Começando</h2>
