@@ -35,6 +35,12 @@ export class AuthenticateUserController {
         sameSite: 'strict',
         path: '/',
       })
+      .cookie('isAuthenticated', true, {
+        secure: true,
+        sameSite: 'strict',
+        expires: formatedRefreshTokenExpiration,
+        path: '/',
+      })
       .send(request.t('auth_login_success'));
   }
 }

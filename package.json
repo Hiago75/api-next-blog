@@ -2,7 +2,7 @@
   "name": "personal-blog-api",
   "version": "0.8.4",
   "main": "app.js",
-  "license": "MPL-2.0",
+  "license": "AGPL-3.0-or-later",
   "scripts": {
     "build": "tsc",
     "start": "node dist/server.js",

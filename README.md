@@ -7,7 +7,7 @@
 
 </h4>
 
-<h4 align="center"> 
+<h4 align="center">
 	🚧 Em construção...  🚧
 </h4>
 
@@ -43,7 +43,7 @@ $ git clone <https://github.com/Hiago75/api-next-blog>
 $ cd api-next-blog
 
 # Instale as dependências
-$ npm install 
+$ npm install
 
 # Execute o script para fazer a aplicação rodar
 $ npm run dev
@@ -62,4 +62,4 @@ As seguintes ferramentas foram usadas na construção do projeto:
 
 <h2>Licença</h2>
 
-Este projeto esta sob a licença [MIT](https://github.com/Hiago75/api-next-blog/blob/master/LICENSE)
+Este projeto esta sob a licença [GNU AGPLv3](https://github.com/Hiago75/api-next-blog/blob/master/LICENSE)
