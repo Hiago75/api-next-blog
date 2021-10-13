@@ -1,10 +1,12 @@
-import { Request, Response } from 'express';
+import { CookieOptions, Request, Response } from 'express';
 import { BadRequest } from '../../custom/errors';
 import { AuthenticateUserService } from '../../services/Auth/AuthenticateUserService';
 import { formatExpiration } from '../../utils/formatExpiration';
 
 export class AuthenticateUserController {
-  constructor(private authenticateUserService: AuthenticateUserService) {}
+  constructor(private authenticateUserService: AuthenticateUserService) {
+    if (!process.env.APP_DOMAIN) throw new BadRequest('Erro nas configurações locais');
+  }
 
   async handle(request: Request, response: Response) {
     const { email, password } = request.body;
@@ -19,27 +21,25 @@ export class AuthenticateUserController {
     const formatedRefreshTokenExpiration = formatExpiration(refreshTokenExpiration);
     const formatedTokenExpiration = formatExpiration(tokenExp);
 
+    const cookieOptions: CookieOptions = {
+      httpOnly: true,
+      secure: true,
+      sameSite: 'strict',
+      path: '/',
+      domain: process.env.APP_DOMAIN,
+    };
+
     return response
       .status(200)
-      .cookie('refresh_token', refreshTokenId, {
-        httpOnly: true,
-        secure: true,
-        expires: formatedRefreshTokenExpiration,
-        sameSite: 'strict',
-        path: '/',
-      })
+      .cookie('refresh_token', refreshTokenId, { ...cookieOptions, expires: formatedRefreshTokenExpiration })
       .cookie('access_token', token, {
-        httpOnly: true,
-        secure: true,
+        ...cookieOptions,
         expires: formatedTokenExpiration,
-        sameSite: 'strict',
-        path: '/',
       })
       .cookie('isAuthenticated', true, {
-        secure: true,
-        sameSite: 'strict',
+        ...cookieOptions,
+        httpOnly: false,
         expires: formatedRefreshTokenExpiration,
-        path: '/',
       })
       .send(request.t('auth_login_success'));
   }
