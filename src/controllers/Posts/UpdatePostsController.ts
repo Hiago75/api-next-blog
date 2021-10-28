@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { Request, Response } from 'express';
 import { BadRequest } from '../../custom/errors';
 import { UpdatePostsService } from '../../services';
@@ -18,6 +19,9 @@ export class UpdatePostsController {
     }
 
     const updatedPost = await this.updatePostsService.execute({ postId: id, itemsToBeUpdated });
+
+    if (process.env.NODE_ENV === 'production')
+      axios.post('https://api.netlify.com/build_hooks/61675fa4f2f8f62777bca770');
 
     return response.json(updatedPost);
   }

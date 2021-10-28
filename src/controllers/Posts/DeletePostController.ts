@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { Request, Response } from 'express';
 import { BadRequest } from '../../custom/errors';
 import { DeletePostService } from '../../services/Posts/DeletePostService';
@@ -10,6 +11,9 @@ export class DeletePostController {
     if (!id) throw new BadRequest('post_deletion_missing_id');
 
     await this.deletePostService.execute({ postId: id });
+
+    if (process.env.NODE_ENV === 'production')
+      axios.post('https://api.netlify.com/build_hooks/61675fa4f2f8f62777bca770');
 
     return response.json({
       deleted: true,
