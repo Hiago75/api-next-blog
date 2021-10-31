@@ -26,7 +26,7 @@ export class AuthenticateUserController {
       secure: true,
       sameSite: 'strict',
       path: '/',
-      // domain: process.env.APP_DOMAIN,
+      domain: process.env.NODE_ENV === 'production' ? process.env.APP_DOMAIN : undefined,
     };
 
     return response
