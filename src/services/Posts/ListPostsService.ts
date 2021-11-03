@@ -1,19 +1,23 @@
 import { getCustomRepository } from 'typeorm';
 import { IListPostsRequestDTO } from '../../DTOs/IListPostsRequestDTO';
-import { CategoriesRepositories } from '../../repositories';
+import { AuthorsRepositories, CategoriesRepositories } from '../../repositories';
 import { PostsRepositories } from '../../repositories/PostsRepositories';
 
 export class ListPostsService {
-  async execute({ start, limit, category }: IListPostsRequestDTO) {
-    const postsRepositories = getCustomRepository(PostsRepositories);
-    const categoriesRepositores = getCustomRepository(CategoriesRepositories);
+  async execute({ start, limit, category, author }: IListPostsRequestDTO) {
+    try {
+      const postsRepositories = getCustomRepository(PostsRepositories);
+      const categoriesRepositores = getCustomRepository(CategoriesRepositories);
+      const authorsRepositories = getCustomRepository(AuthorsRepositories);
 
-    const categoryId = category ? await categoriesRepositores.findIdByName(category) : undefined;
+      const categoryId = category ? await categoriesRepositores.findIdByName(category) : undefined;
+      const authorId = author ? await authorsRepositories.findIdByName(author) : undefined;
 
-    const posts = categoryId
-      ? await postsRepositories.findByCategory(categoryId, start, limit)
-      : await postsRepositories.findAndPaginate(start, limit);
+      const posts = await postsRepositories.findAndPaginate(start, limit, categoryId, authorId);
 
-    return posts;
+      return posts;
+    } catch (e) {
+      console.log(e);
+    }
   }
 }

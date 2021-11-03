@@ -1,6 +1,10 @@
 import { EntityRepository, Repository } from 'typeorm';
 import { Posts } from '../entities/Posts';
 
+interface IDyanamicObject {
+  [key: string]: string | undefined | string[];
+}
+
 @EntityRepository(Posts)
 export class PostsRepositories extends Repository<Posts> {
   private relations = [
@@ -29,9 +33,26 @@ export class PostsRepositories extends Repository<Posts> {
     });
   }
 
-  findAndPaginate(skip?: number, take?: number) {
+  async findAndPaginate(skip?: number, take?: number, categoryId?: string, authorId?: string) {
+    const clauses: IDyanamicObject = {};
+
+    const filterClauses = () => {
+      const queries: IDyanamicObject = { categoryId: categoryId, authorId: authorId };
+
+      for (const queryKey in queries) {
+        const queryValue = queries[queryKey];
+
+        if (queryValue !== undefined) clauses[queryKey] = queryValue;
+      }
+    };
+
+    filterClauses();
+
     return this.find({
       relations: this.relations,
+      where: {
+        ...clauses,
+      },
       order: {
         createdAt: 'DESC',
       },

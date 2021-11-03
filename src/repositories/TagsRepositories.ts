@@ -1,5 +1,12 @@
-import { EntityRepository, Repository } from 'typeorm';
+import { EntityRepository, Raw, Repository } from 'typeorm';
 import { Tags } from '../entities/Tags';
 
 @EntityRepository(Tags)
-export class TagsRepositories extends Repository<Tags> {}
+export class TagsRepositories extends Repository<Tags> {
+  async findIdByName(tagName: string) {
+    const tag = await this.findOne({ name: Raw((alias) => `LOWER(${alias})=LOWER('${tagName}')`) });
+
+    const tagId = tag?.id;
+    return tagId;
+  }
+}

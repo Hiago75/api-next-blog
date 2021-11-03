@@ -38,6 +38,10 @@ export class Posts {
   @Column({ name: 'coverId' })
   coverId: string;
 
+  @Exclude({ toPlainOnly: true })
+  @Column({ name: 'author_id' })
+  authorId: string;
+
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;
 
@@ -58,6 +62,7 @@ export class Posts {
   tags: Tags[];
 
   @ManyToOne((type) => Authors, (posts) => Posts, { onDelete: 'CASCADE' })
+  @JoinColumn({ name: 'author_id' })
   author: Authors;
 
   toJSON() {
