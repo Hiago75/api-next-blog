@@ -3,6 +3,7 @@ export interface ICreatePostsRequestDTO {
   content: string;
   slug: string;
   tagIds: string[];
+  photoUrl: string;
   categoryId: string;
   authorId: string;
   coverId: string;

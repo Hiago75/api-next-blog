@@ -30,12 +30,15 @@ export class Posts {
   @Column()
   slug: string;
 
+  @Column({ name: 'external_photo_url', nullable: true })
+  externalPhotoUrl: string;
+
   @Exclude({ toPlainOnly: true })
   @Column({ name: 'categoryId' })
   categoryId: string;
 
   @Exclude({ toPlainOnly: true })
-  @Column({ name: 'coverId' })
+  @Column({ name: 'coverId', nullable: true })
   coverId: string;
 
   @Exclude({ toPlainOnly: true })
