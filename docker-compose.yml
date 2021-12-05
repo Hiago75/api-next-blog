@@ -4,8 +4,8 @@ services:
     personal-blog:
         container_name: personal-blog
         hostname: personal-blog
-        image: postgres
-        restart: always
+        image: postgres:13
+        restart: 'no'
         environment:
             POSTGRES_PASSWORD: 123456
             POSTGRES_DB: "personal-blog"
