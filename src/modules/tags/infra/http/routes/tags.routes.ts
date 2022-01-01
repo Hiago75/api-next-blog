@@ -1,4 +1,5 @@
 import { Router } from "express";
+import { celebrate, Joi, Segments } from 'celebrate';
 import TagsController from "../controllers/TagsController";
 
 // TODO: add celebrate
@@ -9,7 +10,23 @@ const tagsController = new TagsController();
 tagsRouter.get('/', tagsController.index);
 
 // Create
-tagsRouter.post('/', tagsController.create);
+tagsRouter.post(
+  '/',
+  celebrate({
+    [Segments.BODY]: {
+      name: Joi.string().required()
+    }
+  }),
+  tagsController.create
+);
 
 // Delete
-tagsRouter.delete('/', tagsController.delete);
+tagsRouter.delete(
+  '/',
+  celebrate({
+    [Segments.PARAMS]: {
+      id: Joi.string().required()
+    }
+  }),
+  tagsController.delete
+);

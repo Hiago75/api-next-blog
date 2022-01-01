@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { DeleteTagService } from '@modules/tags/services/DeleteTagService';
 import { CreateTagService } from '@modules/tags/services/CreateTagService';
-import { ListTagsService } from '@modules/tags/services/ListTagsService'
+import { ListTagsService } from '@modules/tags/services/ListTagsService';
 
 class TagsController {
   public async index(request: Request, response: Response): Promise<Response> {
