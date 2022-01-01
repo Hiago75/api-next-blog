@@ -1,9 +1,10 @@
+import { ITag } from '@modules/tags/domain/model/ITag';
 import { Column, Entity, ManyToMany, PrimaryColumn } from 'typeorm';
 import { v4 as uuid } from 'uuid';
 import { Posts } from '../../../../../entities/Posts';
 
 @Entity('tags')
-export class Tags {
+export class Tags implements ITag {
   @PrimaryColumn()
   readonly id: string;
 
