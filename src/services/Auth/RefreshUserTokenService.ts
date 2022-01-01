@@ -1,7 +1,7 @@
 import jwtDecode from 'jwt-decode';
 
 import { getCustomRepository } from 'typeorm';
-import { Unauthorized } from '../../custom/errors';
+import { Unauthorized } from '../../shared/errors';
 import { IToken } from '../../interfaces/IToken';
 import { GenerateTokenProvider } from '../../provider/Token/GenerateTokenProvider';
 import { RefreshTokenRepositories } from '../../repositories/RefreshTokenRepositories';

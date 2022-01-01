@@ -1,9 +1,9 @@
 import { Request, Response } from 'express';
-import { BadRequest } from '../../custom/errors';
+import { BadRequest } from '../../shared/errors';
 import { DeleteTagService } from '../../services/Tags/DeleteTagService';
 
 export class DeleteTagController {
-  constructor(private deleteTagService: DeleteTagService) {}
+  constructor(private deleteTagService: DeleteTagService) { }
 
   async handle(request: Request, response: Response) {
     const { id } = request.params;

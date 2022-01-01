@@ -1,7 +1,7 @@
 import faker from 'faker';
 import { getCustomRepository } from 'typeorm';
 import { AuthorsRepositories, ProfilePhotosRepositories } from '../../../src/repositories';
-import { encrypt } from '../../../src/utils/encrypt';
+import { encrypt } from '../../../src/shared/utils/encrypt';
 
 export const authorFactory = async (password: string, admin?: boolean, profilePhotoId?: string) => {
   const authorsRepositories = getCustomRepository(AuthorsRepositories);

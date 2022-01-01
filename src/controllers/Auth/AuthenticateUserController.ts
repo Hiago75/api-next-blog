@@ -1,7 +1,7 @@
 import { CookieOptions, Request, Response } from 'express';
-import { BadRequest } from '../../custom/errors';
+import { BadRequest } from '../../shared/errors';
 import { AuthenticateUserService } from '../../services/Auth/AuthenticateUserService';
-import { formatExpiration } from '../../utils/formatExpiration';
+import { formatExpiration } from '../../shared/utils/formatExpiration';
 
 export class AuthenticateUserController {
   constructor(private authenticateUserService: AuthenticateUserService) {

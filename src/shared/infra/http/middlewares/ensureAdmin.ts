@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import { getCustomRepository } from 'typeorm';
-import { BadRequest, Forbidden } from '../custom/errors';
-import { AuthorsRepositories } from '../repositories';
+import { BadRequest, Forbidden } from '../../../errors';
+import { AuthorsRepositories } from '../../../../repositories';
 
 export async function ensureAdmin(request: Request, _response: Response, next: NextFunction) {
   // Get the author on repository based on the token user_id

@@ -1,3 +1,4 @@
+import 'reflect-metadata';
 import dotenv from 'dotenv';
 import express from 'express';
 import cookieParser from 'cookie-parser';
@@ -9,9 +10,8 @@ import favicon from 'serve-favicon';
 import path from 'path';
 
 import 'express-async-errors';
-import 'reflect-metadata';
+import '../typeorm/index';
 
-import { connectToOrm } from './config/database';
 import { errorHandler } from './middlewares/errorHandler';
 import {
   categoryRoutes,
@@ -22,7 +22,7 @@ import {
   profilePhotoRoutes,
   homeRoutes,
   tagsRoutes,
-} from './routes/index';
+} from '../../../routes/index';
 
 dotenv.config();
 
@@ -39,12 +39,11 @@ translator
 class App {
   private _app;
   private whiteList = process.env.WHITELIST;
-  private stylesPath = path.resolve(__dirname, '..', 'public', 'styles');
-  private assetsPath = path.resolve(__dirname, '..', 'public', 'assets');
-  private faviconPath = path.resolve(__dirname, '..', 'public', 'favicon.ico');
+  private stylesPath = path.resolve(__dirname, '..', '..', '..', '..', 'public', 'styles');
+  private assetsPath = path.resolve(__dirname, '..', '..', '..', '..', 'public', 'assets');
+  private faviconPath = path.resolve(__dirname, '..', '..', '..', '..', 'public', 'favicon.ico');
 
   constructor() {
-    connectToOrm();
     this._app = express();
     this.staticFiles();
     this.middlewares();

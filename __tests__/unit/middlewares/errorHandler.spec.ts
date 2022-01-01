@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
-import { BadRequest, Forbidden, Unauthorized } from '../../../src/custom/errors';
-import { errorHandler } from '../../../src/middlewares/errorHandler';
+import { BadRequest, Forbidden, Unauthorized } from '../../../src/shared/errors';
+import { errorHandler } from '../../../src/shared/infra/http/middlewares/errorHandler';
 import translator from 'i18next';
 import translatorBackend from 'i18next-fs-backend';
 import translatorMiddleware from 'i18next-http-middleware';

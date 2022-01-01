@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import { verify, VerifyErrors } from 'jsonwebtoken';
 import { JwtPayload } from 'jwt-decode';
-import { Unauthorized } from '../custom/errors';
+import { Unauthorized } from '../../../errors';
 
 interface IPayload {
   sub: string;

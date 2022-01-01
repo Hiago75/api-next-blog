@@ -1,4 +1,4 @@
-import { Unauthorized } from '../custom/errors';
+import { Unauthorized } from '../errors';
 
 export function formatToken(rawToken: string) {
   const parts = rawToken.split(' ');

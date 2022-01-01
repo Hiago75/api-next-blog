@@ -1,4 +1,4 @@
-import { RetrieveUserDataController } from '../../controllers/';
+import { RetrieveUserDataController } from '../../controllers';
 import { RetrieveUserDataService } from '../../services';
 
 export const RetrieveUserDataFactory = () => {

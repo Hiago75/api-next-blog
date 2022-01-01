@@ -1,8 +1,8 @@
 import { Router } from 'express';
 
 import { CreateAuthorFactory, ListAuthorFactory, ShowAuthorFactory, updateAuthorFactory } from '../factories';
-import { ensureAdmin } from '../middlewares/ensureAdmin';
-import { ensureAuthenticated } from '../middlewares/ensureAuthenticated';
+import { ensureAdmin } from '../shared/infra/http/middlewares/ensureAdmin';
+import { ensureAuthenticated } from '../shared/infra/http/middlewares/ensureAuthenticated';
 
 const router = Router();
 

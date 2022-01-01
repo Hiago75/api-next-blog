@@ -1,9 +1,9 @@
 import { Request, Response } from 'express';
-import { BadRequest } from '../../custom/errors';
+import { BadRequest } from '../../shared/errors';
 import { CreateAuthorService } from '../../services/Authors/CreateAuthorService';
 
 export class CreateAuthorController {
-  constructor(private createAuthorService: CreateAuthorService) {}
+  constructor(private createAuthorService: CreateAuthorService) { }
 
   async handle(request: Request, response: Response) {
     const { name, email, password, admin = false } = request.body;

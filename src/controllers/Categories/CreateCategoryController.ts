@@ -1,9 +1,9 @@
 import { Request, Response } from 'express';
-import { BadRequest } from '../../custom/errors';
+import { BadRequest } from '../../shared/errors';
 import { CreateCategoryService } from '../../services/Categories/CreateCategoryService';
 
 export class CreateCategoryController {
-  constructor(private createCategoryService: CreateCategoryService) {}
+  constructor(private createCategoryService: CreateCategoryService) { }
 
   async handle(request: Request, response: Response) {
     const { name } = request.body;

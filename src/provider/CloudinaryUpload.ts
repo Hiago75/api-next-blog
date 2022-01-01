@@ -1,5 +1,5 @@
 import { cloudinary } from '../config/cloudinary';
-import { BadRequest } from '../custom/errors';
+import { BadRequest } from '../shared/errors';
 
 export async function uploadToCloudinary(file: string, formats?: { width: number }[]) {
   const folder = process.env.NODE_ENV === 'test' ? 'tests' : 'files';

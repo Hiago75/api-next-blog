@@ -1,11 +1,11 @@
 import fs from 'fs';
 import { Request, Response } from 'express';
 
-import { BadRequest } from '../../custom/errors';
+import { BadRequest } from '../../shared/errors';
 import { CreateProfilePhotoService } from '../../services/ProfilePhotos/CreateProfilePhotoService';
 
 export class CreateProfilePhotoController {
-  constructor(private createProfilePhotoService: CreateProfilePhotoService) {}
+  constructor(private createProfilePhotoService: CreateProfilePhotoService) { }
 
   async handle(req: Request, res: Response) {
     const userId = req.user_id;

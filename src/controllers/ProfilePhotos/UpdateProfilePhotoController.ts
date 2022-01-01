@@ -1,10 +1,10 @@
 import fs from 'fs';
 import { Request, Response } from 'express';
-import { BadRequest } from '../../custom/errors';
+import { BadRequest } from '../../shared/errors';
 import { UpdateProfilePhotoService } from '../../services/ProfilePhotos/UpdateProfilePhotoService';
 
 export class UpdateProfilePhotoController {
-  constructor(private updateProfilePhotoService: UpdateProfilePhotoService) {}
+  constructor(private updateProfilePhotoService: UpdateProfilePhotoService) { }
 
   async handle(req: Request, res: Response) {
     const userId = req.user_id;

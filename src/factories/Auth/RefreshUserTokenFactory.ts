@@ -1,4 +1,4 @@
-import { RefreshUserTokenController } from '../../controllers/';
+import { RefreshUserTokenController } from '../../controllers';
 import { RefreshUserTokenService } from '../../services';
 
 export const RefreshUserTokenFactory = () => {

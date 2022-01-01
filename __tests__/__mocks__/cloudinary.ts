@@ -1,5 +1,5 @@
 export const v2 = {
-  config: () => {},
+  config: () => { },
   uploader: {
     upload: () => {
       return {

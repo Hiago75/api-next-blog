@@ -1,10 +1,10 @@
 import axios from 'axios';
 import { Request, Response } from 'express';
-import { BadRequest } from '../../custom/errors';
+import { BadRequest } from '../../shared/errors';
 import { DeletePostService } from '../../services/Posts/DeletePostService';
 
 export class DeletePostController {
-  constructor(private deletePostService: DeletePostService) {}
+  constructor(private deletePostService: DeletePostService) { }
 
   async handle(request: Request, response: Response) {
     const { id } = request.params;

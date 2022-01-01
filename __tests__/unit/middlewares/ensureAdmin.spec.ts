@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
-import { ensureAdmin } from '../../../src/middlewares/ensureAdmin';
+import { ensureAdmin } from '../../../src/shared/infra/http/middlewares/ensureAdmin';
 import { authorFactory, testSetup } from '../../utils';
 
 interface IEnsureAdminRequest {

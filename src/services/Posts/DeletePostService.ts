@@ -1,5 +1,5 @@
 import { getCustomRepository } from 'typeorm';
-import { BadRequest } from '../../custom/errors';
+import { BadRequest } from '../../shared/errors';
 import { IDeletePostsRequestDTO } from '../../DTOs/IDeletePostRequestDTO';
 import { PostsRepositories } from '../../repositories';
 

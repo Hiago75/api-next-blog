@@ -1,6 +1,6 @@
 import jwtDecode from 'jwt-decode';
 import { getCustomRepository } from 'typeorm';
-import { BadRequest } from '../../custom/errors';
+import { BadRequest } from '../../shared/errors';
 import { AuthorsRepositories } from '../../repositories';
 
 interface IUser {

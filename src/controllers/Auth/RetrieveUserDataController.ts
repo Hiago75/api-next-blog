@@ -1,10 +1,10 @@
 import jwt from 'jsonwebtoken';
 import { Request, Response } from 'express';
 import { RetrieveUserDataService } from '../../services/Auth/RetrieveUserDataService';
-import { Unauthorized } from '../../custom/errors';
+import { Unauthorized } from '../../shared/errors';
 
 export class RetrieveUserDataController {
-  constructor(private retrieveUserDataService: RetrieveUserDataService) {}
+  constructor(private retrieveUserDataService: RetrieveUserDataService) { }
 
   async handle(request: Request, response: Response) {
     const token = request.cookies.access_token;

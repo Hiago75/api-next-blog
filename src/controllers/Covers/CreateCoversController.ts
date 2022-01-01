@@ -1,7 +1,7 @@
 import fs from 'fs';
 import { Request, Response } from 'express';
 
-import { BadRequest } from '../../custom/errors';
+import { BadRequest } from '../../shared/errors';
 import { uploadToCloudinary } from '../../provider/';
 import { CreateCoverService } from '../../services';
 
@@ -11,7 +11,7 @@ export class CreateCoversController {
   constructor(
     private createCoversService: CreateCoverService,
     private createFormatsController: CreateFormatController,
-  ) {}
+  ) { }
 
   async handle(request: Request, response: Response) {
     const file = request.file ? request.file.path : '';

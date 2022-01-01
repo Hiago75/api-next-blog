@@ -1,10 +1,10 @@
 import { Request, Response } from 'express';
-import { Unauthorized } from '../../custom/errors';
+import { Unauthorized } from '../../shared/errors';
 import { RefreshUserTokenService } from '../../services/Auth/RefreshUserTokenService';
-import { formatExpiration } from '../../utils/formatExpiration';
+import { formatExpiration } from '../../shared/utils/formatExpiration';
 
 export class RefreshUserTokenController {
-  constructor(private refreshUserTokenService: RefreshUserTokenService) {}
+  constructor(private refreshUserTokenService: RefreshUserTokenService) { }
   async handle(request: Request, response: Response) {
     const refreshToken = request.cookies.refresh_token;
 

@@ -1,8 +1,8 @@
 import { getCustomRepository } from 'typeorm';
-import { BadRequest } from '../../custom/errors';
+import { BadRequest } from '../../shared/errors';
 import { IAuthorRequestDTO } from '../../DTOs/IAuthorRequestDTO';
 import { AuthorsRepositories } from '../../repositories/AuthorsRepositories';
-import { encrypt } from '../../utils/encrypt';
+import { encrypt } from '../../shared/utils/encrypt';
 
 export class CreateAuthorService {
   async execute({ name, email, password, admin }: IAuthorRequestDTO) {

@@ -1,7 +1,7 @@
 import { getCustomRepository } from 'typeorm';
 import slugify from 'slugify';
 
-import { BadRequest } from '../../custom/errors';
+import { BadRequest } from '../../shared/errors';
 import { IUpdatePostsRequestDTO } from '../../DTOs/IUpdatePostsRequestDTO';
 import { PostsRepositories } from '../../repositories';
 

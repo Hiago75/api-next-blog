@@ -1,7 +1,7 @@
 import { Router } from 'express';
 
 import { CreateCategoryFactory, ListCategoriesFactory, DeleteCategoryFactory, ShowCategoryFactory } from '../factories';
-import { ensureAuthenticated } from '../middlewares/ensureAuthenticated';
+import { ensureAuthenticated } from '../shared/infra/http/middlewares/ensureAuthenticated';
 
 const router = Router();
 

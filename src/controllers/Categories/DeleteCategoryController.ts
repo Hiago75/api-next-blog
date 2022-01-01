@@ -1,9 +1,9 @@
 import { Request, Response } from 'express';
-import { BadRequest } from '../../custom/errors';
+import { BadRequest } from '../../shared/errors';
 import { DeleteCategoryService } from '../../services/Categories/DeleteCategoryService';
 
 export class DeleteCategoryController {
-  constructor(private deleteCategoryService: DeleteCategoryService) {}
+  constructor(private deleteCategoryService: DeleteCategoryService) { }
 
   async handle(request: Request, response: Response) {
     const { id } = request.params;

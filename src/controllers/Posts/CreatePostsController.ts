@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import slugify from 'slugify';
 import axios from 'axios';
 
-import { BadRequest } from '../../custom/errors';
+import { BadRequest } from '../../shared/errors';
 
 import { CreatePostsService } from '../../services/Posts/CreatePostsService';
 

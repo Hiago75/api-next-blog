@@ -1,5 +1,5 @@
 import { getCustomRepository } from 'typeorm';
-import { BadRequest } from '../../custom/errors';
+import { BadRequest } from '../../shared/errors';
 import { IUpdateProfilePhotoRequestDTO } from '../../DTOs/IUpdateProfilePhotoRequestDTO';
 import { uploadToCloudinary } from '../../provider';
 import { AuthorsRepositories, ProfilePhotosRepositories } from '../../repositories';

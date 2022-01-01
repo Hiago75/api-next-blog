@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
-import { ensureAuthenticated } from '../../../src/middlewares/ensureAuthenticated';
+import { ensureAuthenticated } from '../../../src/shared/infra/http/middlewares/ensureAuthenticated';
 import { mockToken } from '../../utils';
 
 describe('Ensure authentication middleware', () => {
