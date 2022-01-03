@@ -13,10 +13,6 @@ import { ListCategoriesController } from './Categories/ListCategoriesController'
 import { ShowCategoryController } from './Categories/ShowCategoryController';
 import { DeleteCategoryController } from './Categories/DeleteCategoryController';
 
-import { CreateTagController } from './Tags/CreateTagController';
-import { ListTagsController } from './Tags/ListTagsController';
-import { DeleteTagController } from './Tags/DeleteTagController';
-
 import { CreatePostsController } from './Posts/CreatePostsController';
 import { CountPostsController } from './Posts/CountPostsController';
 import { ListPostsController } from './Posts/ListPostsController';
@@ -53,7 +49,4 @@ export {
   UpdateProfilePhotoController,
   CountPostsController,
   UpdatePostsController,
-  CreateTagController,
-  ListTagsController,
-  DeleteTagController,
 };

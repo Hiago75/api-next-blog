@@ -14,7 +14,7 @@ import { v4 as uuid } from 'uuid';
 import { Authors } from './Authors';
 import { Categories } from './Categories';
 import { Covers } from './Covers';
-import { Tags } from './Tags';
+import { Tags } from '@modules/tags/infra/typeorm/entities/Tags';
 
 @Entity('posts')
 export class Posts {

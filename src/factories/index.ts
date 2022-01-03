@@ -3,10 +3,6 @@ import { ListCategoriesFactory } from './Categories/ListCategoriesFactory';
 import { ShowCategoryFactory } from './Categories/ShowCategoryFactory';
 import { DeleteCategoryFactory } from './Categories/DeleteCategoryFactory';
 
-import { CreateTagFactory } from './Tags/CreateTagFactory';
-import { ListTagsFactory } from './Tags/ListTagsFactory';
-import { DeleteTagFactory } from './Tags/DeleteTagFactory';
-
 import { CreateAuthorFactory } from './Authors/CreateAuthorFactory';
 import { ListAuthorFactory } from './Authors/ListAuthorsFactories';
 import { ShowAuthorFactory } from './Authors/ShowAuthorFactory';
@@ -53,7 +49,4 @@ export {
   UpdateProfilePhotoFactory,
   CountPostsFactory,
   UpdatePostsFactory,
-  CreateTagFactory,
-  ListTagsFactory,
-  DeleteTagFactory,
 };

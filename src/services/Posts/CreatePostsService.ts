@@ -2,8 +2,7 @@ import { getCustomRepository } from 'typeorm';
 import { BadRequest } from '../../shared/errors';
 import { ICreatePostsRequestDTO } from '../../DTOs/ICreatePostsRequestDTO';
 import { AuthorsRepositories, CategoriesRepositories, CoversRepositories, PostsRepositories } from '../../repositories';
-import { TagsRepositories } from '../../repositories/TagsRepositories';
-
+import { TagsRepository } from '@modules/tags/infra/typeorm/repositories/TagsRepository';
 export class CreatePostsService {
   async execute({ title, content, slug, tagIds, categoryId, authorId, coverId, photoUrl }: ICreatePostsRequestDTO) {
     // Repositories
@@ -11,7 +10,7 @@ export class CreatePostsService {
     const categoriesRepositories = getCustomRepository(CategoriesRepositories);
     const authorsRepositories = getCustomRepository(AuthorsRepositories);
     const coversRepositories = getCustomRepository(CoversRepositories);
-    const tagsRepositories = getCustomRepository(TagsRepositories);
+    const tagsRepositories = getCustomRepository(TagsRepository);
 
     try {
       // Verify if the title has already been used by another post
@@ -30,7 +29,7 @@ export class CreatePostsService {
       // Get the tags on the repository
       const tags = await Promise.all(
         tagIds.map(async (tagId) => {
-          const foundTag = await tagsRepositories.findOne(tagId);
+          const foundTag = await tagsRepositories.findById(tagId);
           if (!foundTag) throw new BadRequest('Tag not found');
 
           return foundTag;
