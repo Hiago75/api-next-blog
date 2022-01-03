@@ -10,7 +10,7 @@ import favicon from 'serve-favicon';
 import path from 'path';
 
 import 'express-async-errors';
-import '../typeorm/index';
+import { errors } from 'celebrate';
 
 import { errorHandler } from './middlewares/errorHandler';
 import {
@@ -21,9 +21,11 @@ import {
   authRoutes,
   profilePhotoRoutes,
   homeRoutes,
-  tagsRoutes,
-} from '../../../routes/index';
+  tagsRouter,
+} from './routes/index';
 
+import '@shared/infra/typeorm';
+import '@shared/container';
 dotenv.config();
 
 translator
@@ -77,7 +79,7 @@ class App {
   routes() {
     this.app.use('/', homeRoutes);
     this.app.use('/categories', categoryRoutes);
-    this.app.use('/tags', tagsRoutes);
+    this.app.use('/tags', tagsRouter);
     this.app.use('/authors', authorRoutes);
     this.app.use('/posts', postRoutes);
     this.app.use('/covers', coverRoutes);
@@ -86,6 +88,7 @@ class App {
   }
 
   errorHandler() {
+    this.app.use(errors());
     this.app.use(errorHandler);
   }
 }

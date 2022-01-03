@@ -6,3 +6,5 @@ export const connectToOrm = async () => {
 
   return connection;
 };
+
+connectToOrm();

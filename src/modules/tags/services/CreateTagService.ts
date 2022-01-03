@@ -1,18 +1,23 @@
-import { getCustomRepository } from 'typeorm';
 import { BadRequest } from '@shared/errors';
-import { TagsRepository } from '../infra/typeorm/repositories/TagsRepository'
 import { ICreateTag } from '../domain/model/ICreateTag';
 import { ITag } from '../domain/model/ITag';
+import { inject, injectable } from 'tsyringe';
+import { ITagsRepository } from '../domain/repositories/ITagsRepository';
 
+@injectable()
 export class CreateTagService {
+  constructor(
+    @inject('TagsRepository')
+    private tagsRepository: ITagsRepository
+  ) { }
+
   async execute({ name }: ICreateTag): Promise<ITag> {
-    const tagsRepository = getCustomRepository(TagsRepository);
     if (!name) throw new BadRequest('tag_creation_not_sent_name');
 
-    const tagAlreadyExists = await tagsRepository.findByName(name);
+    const tagAlreadyExists = await this.tagsRepository.findByName(name);
     if (tagAlreadyExists) throw new BadRequest('tag_creation_already_exists');
 
-    const tag = tagsRepository.create({ name });
+    const tag = this.tagsRepository.create({ name });
 
     return tag;
   }

@@ -2,7 +2,7 @@ import { ICreateTag } from "../model/ICreateTag";
 import { IDeleteTag } from "../model/IDeleteTag";
 import { ITag } from "../model/ITag";
 
-export interface ITagRepository {
+export interface ITagsRepository {
   findByName(name: string): Promise<ITag | undefined>;
   findById(id: string): Promise<ITag | undefined>
   getIdByName(tagName: string): Promise<string | undefined>;

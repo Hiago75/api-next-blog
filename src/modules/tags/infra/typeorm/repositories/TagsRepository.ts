@@ -1,13 +1,12 @@
 import { ICreateTag } from '@modules/tags/domain/model/ICreateTag';
 import { IDeleteTag } from '@modules/tags/domain/model/IDeleteTag';
 import { ITag } from '@modules/tags/domain/model/ITag';
-import { ITagRepository } from '@modules/tags/domain/repositories/ITagRepository';
-import { getRepository, Raw } from 'typeorm';
+import { ITagsRepository } from '@modules/tags/domain/repositories/ITagsRepository';
+import { getRepository, Raw, Repository } from 'typeorm';
 import { Tags } from '../entities/Tags';
 
-
-export class TagsRepository implements ITagRepository {
-  private ormRepository;
+export class TagsRepository implements ITagsRepository {
+  private ormRepository: Repository<ITag>;
 
   constructor() {
     this.ormRepository = getRepository(Tags);

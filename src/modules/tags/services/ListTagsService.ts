@@ -1,11 +1,15 @@
-import { getCustomRepository } from 'typeorm';
-import { TagsRepository } from '../infra/typeorm/repositories/TagsRepository';
+import { inject, injectable } from 'tsyringe';
+import { ITagsRepository } from '../domain/repositories/ITagsRepository';
 
+@injectable()
 export class ListTagsService {
-  async execute() {
-    const tagsRepository = getCustomRepository(TagsRepository);
+  constructor(
+    @inject('TagsRepository')
+    private tagsRepository: ITagsRepository
+  ) { }
 
-    const tags = tagsRepository.findAll();
+  async execute() {
+    const tags = await this.tagsRepository.findAll();
 
     return tags;
   }

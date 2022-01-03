@@ -1,17 +1,21 @@
-import { getCustomRepository } from 'typeorm';
 import { BadRequest } from '@shared/errors';
-import { TagsRepository } from '../infra/typeorm/repositories/TagsRepository';
 import { IDeleteTag } from '../domain/model/IDeleteTag';
+import { inject, injectable } from 'tsyringe';
+import { ITagsRepository } from '../domain/repositories/ITagsRepository';
 
+@injectable()
 export class DeleteTagService {
-  async execute({ id }: IDeleteTag) {
-    const tagsRepository = getCustomRepository(TagsRepository);
+  constructor(
+    @inject('TagsRepository')
+    private tagsRepository: ITagsRepository
+  ) { }
 
+  async execute({ id }: IDeleteTag) {
     // Verify if the tag exists
-    const tagExists = await tagsRepository.findById(id);
+    const tagExists = await this.tagsRepository.findById(id);
     if (!tagExists) throw new BadRequest('tag_not_found_error');
 
-    await tagsRepository.delete({ id });
+    await this.tagsRepository.delete({ id });
 
     return { deleted: true };
   }

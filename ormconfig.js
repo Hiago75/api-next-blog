@@ -59,7 +59,7 @@ module.exports = [
     password: '123456',
     database: 'personal-blog',
     migrations: ['src/database/migrations/*.ts'],
-    entities: ['src/entities/*.ts'],
+    entities: ['src/entities/*.ts', 'src/modules/**/infra/typeorm/entities/*.ts'],
     cli: {
       migrationsDir: 'src/database/migrations',
       entitiesDir: 'src/entities',

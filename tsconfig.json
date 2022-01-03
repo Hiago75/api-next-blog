@@ -21,6 +21,8 @@
     "emitDecoratorMetadata": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
+    "strictPropertyInitialization": false,
+    "allowJs": true,
     "paths": {
       "@config/*": [
         "src/config/*"
@@ -33,4 +35,7 @@
       ]
     },
   },
+  "exclude": [
+    "./commitlint.config.js"
+  ]
 }

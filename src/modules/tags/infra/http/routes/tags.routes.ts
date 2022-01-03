@@ -22,7 +22,7 @@ tagsRouter.post(
 
 // Delete
 tagsRouter.delete(
-  '/',
+  '/:id',
   celebrate({
     [Segments.PARAMS]: {
       id: Joi.string().required()
