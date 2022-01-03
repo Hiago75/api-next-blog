@@ -30,3 +30,5 @@ tagsRouter.delete(
   }),
   tagsController.delete
 );
+
+export default tagsRouter;

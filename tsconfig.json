@@ -8,6 +8,7 @@
     "noImplicitAny": true,
     "outDir": "./dist",
     "rootDir": "./src",
+    "baseUrl": "./",
     "removeComments": true,
     "strict": true,
     "typeRoots": [
@@ -20,7 +21,6 @@
     "emitDecoratorMetadata": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "strictPropertyInitialization": false,
     "paths": {
       "@config/*": [
         "src/config/*"

@@ -5,7 +5,7 @@ import coverRoutes from './coverRoutes';
 import authRoutes from './authRoutes';
 import profilePhotoRoutes from './profilePhotosRoutes';
 import homeRoutes from './homeRoutes';
-import tagsRoutes from './tagsRoutes';
+import tagsRouter from '../modules/tags/infra/http/routes/tags.routes';
 
 export {
   categoryRoutes,
@@ -15,5 +15,5 @@ export {
   authRoutes,
   profilePhotoRoutes,
   homeRoutes,
-  tagsRoutes,
+  tagsRouter,
 };
