@@ -8,7 +8,7 @@ export class DeleteTagService {
     const tagsRepository = getCustomRepository(TagsRepository);
 
     // Verify if the tag exists
-    const tagExists = await tagsRepository.findOne({ id });
+    const tagExists = await tagsRepository.findById(id);
     if (!tagExists) throw new BadRequest('tag_not_found_error');
 
     await tagsRepository.delete({ id });

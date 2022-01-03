@@ -5,7 +5,7 @@ export class ListTagsService {
   async execute() {
     const tagsRepository = getCustomRepository(TagsRepository);
 
-    const tags = tagsRepository.find();
+    const tags = tagsRepository.findAll();
 
     return tags;
   }

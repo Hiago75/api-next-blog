@@ -9,11 +9,10 @@ export class CreateTagService {
     const tagsRepository = getCustomRepository(TagsRepository);
     if (!name) throw new BadRequest('tag_creation_not_sent_name');
 
-    const tagAlreadyExists = await tagsRepository.findOne({ name });
+    const tagAlreadyExists = await tagsRepository.findByName(name);
     if (tagAlreadyExists) throw new BadRequest('tag_creation_already_exists');
 
     const tag = tagsRepository.create({ name });
-    await tagsRepository.save(tag);
 
     return tag;
   }
