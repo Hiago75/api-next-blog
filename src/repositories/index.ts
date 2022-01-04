@@ -1,4 +1,3 @@
-import { AuthorsRepositories } from './AuthorsRepositories';
 import { CategoriesRepositories } from './CategoriesRepositories';
 import { CoversRepositories } from './CoversRepositories';
 import { PostsRepositories } from './PostsRepositories';
@@ -10,7 +9,6 @@ import { ThumbnailRepositories } from './ThumbnailRepositories';
 import { ProfilePhotosRepositories } from './ProfilePhotosRepositories';
 
 export {
-  AuthorsRepositories,
   CategoriesRepositories,
   CoversRepositories,
   PostsRepositories,

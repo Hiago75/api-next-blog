@@ -11,7 +11,7 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 import { v4 as uuid } from 'uuid';
-import { Authors } from './Authors';
+import { Authors } from '@modules/authors/infra/typeorm/entities/Authors';
 import { Categories } from './Categories';
 import { Covers } from './Covers';
 import { Tags } from '@modules/tags/infra/typeorm/entities/Tags';

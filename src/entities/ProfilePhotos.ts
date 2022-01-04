@@ -1,6 +1,6 @@
 import { Column, CreateDateColumn, Entity, OneToOne, PrimaryColumn, UpdateDateColumn } from 'typeorm';
 import { v4 as uuid } from 'uuid';
-import { Authors } from './Authors';
+import { Authors } from '@modules/authors/infra/typeorm/entities/Authors';
 
 @Entity('profile_photos')
 export class ProfilePhotos {

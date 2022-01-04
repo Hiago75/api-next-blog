@@ -3,11 +3,6 @@ import { RetrieveUserDataController } from './Auth/RetrieveUserDataController';
 import { RefreshUserTokenController } from './Auth/RefreshUserTokenController';
 import { LogoutUserController } from './Auth/LogoutUserController';
 
-import { CreateAuthorController } from './Authors/CreateAuthorController';
-import { ListAuthorsController } from './Authors/ListAuthorsController';
-import { ShowAuthorController } from './Authors/ShowAuthorController';
-import { UpdateAuthorController } from './Authors/UpdateAuthorController';
-
 import { CreateCategoryController } from './Categories/CreateCategoryController';
 import { ListCategoriesController } from './Categories/ListCategoriesController';
 import { ShowCategoryController } from './Categories/ShowCategoryController';
@@ -28,24 +23,20 @@ import { UpdateProfilePhotoController } from './ProfilePhotos/UpdateProfilePhoto
 
 export {
   AuthenticateUserController,
-  CreateAuthorController,
   CreateCategoryController,
   CreatePostsController,
   CreateCoversController,
   ListCategoriesController,
-  ListAuthorsController,
   ListPostsController,
   ListCoversController,
   DeleteCategoryController,
   DeletePostController,
-  ShowAuthorController,
   ShowCategoryController,
   ShowPostController,
   RefreshUserTokenController,
   RetrieveUserDataController,
   LogoutUserController,
   CreateProfilePhotoController,
-  UpdateAuthorController,
   UpdateProfilePhotoController,
   CountPostsController,
   UpdatePostsController,

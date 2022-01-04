@@ -1,4 +1,4 @@
-export interface IAuthorRequestDTO {
+export interface ICreateAuthor {
   name: string;
   email: string;
   password: string;

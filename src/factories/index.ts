@@ -3,10 +3,6 @@ import { ListCategoriesFactory } from './Categories/ListCategoriesFactory';
 import { ShowCategoryFactory } from './Categories/ShowCategoryFactory';
 import { DeleteCategoryFactory } from './Categories/DeleteCategoryFactory';
 
-import { CreateAuthorFactory } from './Authors/CreateAuthorFactory';
-import { ListAuthorFactory } from './Authors/ListAuthorsFactories';
-import { ShowAuthorFactory } from './Authors/ShowAuthorFactory';
-
 import { AuthenticateUserFactory } from './Auth/AuthenticateUserFactory';
 import { RetrieveUserDataFactory } from './Auth/RetrieveUserDataFactory';
 import { RefreshUserTokenFactory } from './Auth/RefreshUserTokenFactory';
@@ -23,8 +19,6 @@ import { DeletePostFactory } from './Posts/DeletePostFactory';
 import { UpdatePostsFactory } from './Posts/UpdatePostsFactory';
 
 import { CreateProfilePhotoFactory } from './ProfilePhotos/CreateProfilePhotoFactory';
-
-import { updateAuthorFactory } from './Authors/UpdateAuthorFactory';
 import { UpdateProfilePhotoFactory } from './ProfilePhotos/UpdateProfilePhotoFactory';
 
 export {
@@ -32,9 +26,6 @@ export {
   ListCategoriesFactory,
   ShowCategoryFactory,
   DeleteCategoryFactory,
-  CreateAuthorFactory,
-  ListAuthorFactory,
-  ShowAuthorFactory,
   AuthenticateUserFactory,
   CreateCoverFactory,
   ListCoversFactory,
@@ -45,7 +36,6 @@ export {
   RetrieveUserDataFactory,
   RefreshUserTokenFactory,
   CreateProfilePhotoFactory,
-  updateAuthorFactory,
   UpdateProfilePhotoFactory,
   CountPostsFactory,
   UpdatePostsFactory,

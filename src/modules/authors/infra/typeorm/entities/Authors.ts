@@ -1,3 +1,4 @@
+import { IAuthor } from '@modules/authors/domain/model/IAuthor';
 import { classToPlain, Exclude } from 'class-transformer';
 import {
   Entity,
@@ -10,12 +11,12 @@ import {
   JoinColumn,
 } from 'typeorm';
 import { v4 as uuid } from 'uuid';
-import { Posts } from './Posts';
-import { ProfilePhotos } from './ProfilePhotos';
-import { RefreshToken } from './RefreshToken';
+import { Posts } from 'src/entities/Posts';
+import { ProfilePhotos } from 'src/entities/ProfilePhotos';
+import { RefreshToken } from 'src/entities/RefreshToken';
 
 @Entity('authors')
-export class Authors {
+export class Authors implements IAuthor {
   @PrimaryColumn()
   readonly id: string;
 

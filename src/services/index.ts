@@ -3,11 +3,6 @@ import { RetrieveUserDataService } from './Auth/RetrieveUserDataService';
 import { RefreshUserTokenService } from './Auth/RefreshUserTokenService';
 import { LogoutUserService } from './Auth/LogoutUserService';
 
-import { CreateAuthorService } from './Authors/CreateAuthorService';
-import { ListAuthorsService } from './Authors/ListAuthorsService';
-import { ShowAuthorService } from './Authors/ShowAuthorService';
-import { UpdateAuthorService } from './Authors/UpdateAuthorService';
-
 import { CreateCategoryService } from './Categories/CreateCategoryService';
 import { ListCategoriesService } from './Categories/ListCategoriesService';
 import { DeleteCategoryService } from './Categories/DeleteCategoryService';
@@ -28,24 +23,20 @@ import { UpdateProfilePhotoService } from './ProfilePhotos/UpdateProfilePhotoSer
 
 export {
   AuthenticateUserService,
-  CreateAuthorService,
   CreateCategoryService,
   CreateCoverService,
   CreatePostsService,
   ListCategoriesService,
-  ListAuthorsService,
   ListPostsService,
   ListCoversService,
   DeleteCategoryService,
   DeletePostService,
   ShowCategoryService,
-  ShowAuthorService,
   ShowPostService,
   RetrieveUserDataService,
   RefreshUserTokenService,
   LogoutUserService,
   CreateProfilePhotoService,
-  UpdateAuthorService,
   UpdateProfilePhotoService,
   CountPostsService,
   UpdatePostsService,
