@@ -4,8 +4,11 @@ import { ITagsRepository } from '@modules/tags/domain/repositories/ITagsReposito
 import { TagsRepository } from '@modules/tags/infra/typeorm/repositories/TagsRepository';
 import { IAuthorsRepository } from '@modules/authors/domain/repositories/IAuthorsRepository';
 import { AuthorsRepository } from '@modules/authors/infra/typeorm/repositories/AuthorsRepository';
+import { IProfilePhotosRepository } from '@modules/authors/domain/repositories/IProfilePhotosRepository';
+import { ProfilePhotosRepositories } from '@modules/authors/infra/typeorm/repositories/ProfilePhotosRepository';
 
 import '@modules/authors/providers';
+
 
 container.registerSingleton<ITagsRepository>(
   'TagsRepository',
@@ -15,4 +18,9 @@ container.registerSingleton<ITagsRepository>(
 container.registerSingleton<IAuthorsRepository>(
   'AuthorsRepository',
   AuthorsRepository
+)
+
+container.registerSingleton<IProfilePhotosRepository>(
+  'ProfilePhotosRepository',
+  ProfilePhotosRepositories
 )

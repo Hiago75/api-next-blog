@@ -18,9 +18,6 @@ import { UpdatePostsController } from './Posts/UpdatePostsController';
 import { CreateCoversController } from './Covers/CreateCoversController';
 import { ListCoversController } from './Covers/ListCoversController';
 
-import { CreateProfilePhotoController } from './ProfilePhotos/CreateProfilePhotoController';
-import { UpdateProfilePhotoController } from './ProfilePhotos/UpdateProfilePhotoController';
-
 export {
   AuthenticateUserController,
   CreateCategoryController,
@@ -36,8 +33,6 @@ export {
   RefreshUserTokenController,
   RetrieveUserDataController,
   LogoutUserController,
-  CreateProfilePhotoController,
-  UpdateProfilePhotoController,
   CountPostsController,
   UpdatePostsController,
 };

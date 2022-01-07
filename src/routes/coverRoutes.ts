@@ -1,11 +1,14 @@
 import { Router } from 'express';
-import upload from '../config/multer';
+import uploadConfig from '@config/upload';
 
 import { CreateCoverFactory, ListCoversFactory } from '../factories';
 import { ensureAuthenticated } from '../shared/infra/http/middlewares/ensureAuthenticated';
+import multer from 'multer';
 
 const createCoverController = CreateCoverFactory();
 const listCoversController = ListCoversFactory();
+
+const upload = multer(uploadConfig)
 
 const router = Router();
 

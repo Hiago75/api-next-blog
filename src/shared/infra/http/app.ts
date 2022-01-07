@@ -11,18 +11,9 @@ import path from 'path';
 
 import 'express-async-errors';
 import { errors } from 'celebrate';
-
+import routes from './routes';
 import { errorHandler } from './middlewares/errorHandler';
-import {
-  categoryRoutes,
-  authorRoutes,
-  postRoutes,
-  coverRoutes,
-  authRoutes,
-  profilePhotoRoutes,
-  homeRoutes,
-  tagsRouter,
-} from './routes/index';
+
 
 import '@shared/infra/typeorm';
 import '@shared/container';
@@ -49,7 +40,7 @@ class App {
     this._app = express();
     this.staticFiles();
     this.middlewares();
-    this.routes();
+    this.app.use(routes);
     this.errorHandler();
   }
 
@@ -76,16 +67,6 @@ class App {
     );
   }
 
-  routes() {
-    this.app.use('/', homeRoutes);
-    this.app.use('/categories', categoryRoutes);
-    this.app.use('/tags', tagsRouter);
-    this.app.use('/authors', authorRoutes);
-    this.app.use('/posts', postRoutes);
-    this.app.use('/covers', coverRoutes);
-    this.app.use('/auth', authRoutes);
-    this.app.use('/photo', profilePhotoRoutes);
-  }
 
   errorHandler() {
     this.app.use(errors());

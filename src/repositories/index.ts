@@ -6,7 +6,6 @@ import { LargeRepositories } from './LargeRepositories';
 import { MediumRepositories } from './MediumRepositories';
 import { SmallRepositories } from './SmallRepositories';
 import { ThumbnailRepositories } from './ThumbnailRepositories';
-import { ProfilePhotosRepositories } from './ProfilePhotosRepositories';
 
 export {
   CategoriesRepositories,
@@ -17,5 +16,4 @@ export {
   MediumRepositories,
   SmallRepositories,
   ThumbnailRepositories,
-  ProfilePhotosRepositories,
 };

@@ -1,12 +1,12 @@
 import { Posts } from "src/entities/Posts";
-import { ProfilePhotos } from "src/entities/ProfilePhotos";
 import { RefreshToken } from "src/entities/RefreshToken";
+import { IProfilePhoto } from "./ProfilePhotos/IProfilePhoto";
 
 export interface IAuthor {
   id: string;
   name: string;
   email: string;
-  profilePhoto: ProfilePhotos;
+  profilePhoto: IProfilePhoto;
   password: string;
   admin: boolean;
   posts: Posts[];

@@ -12,8 +12,9 @@ import {
 } from 'typeorm';
 import { v4 as uuid } from 'uuid';
 import { Posts } from 'src/entities/Posts';
-import { ProfilePhotos } from 'src/entities/ProfilePhotos';
 import { RefreshToken } from 'src/entities/RefreshToken';
+import { ProfilePhoto } from '@modules/authors/infra/typeorm/entities/ProfilePhoto';
+import { IProfilePhoto } from '@modules/authors/domain/model/ProfilePhotos/IProfilePhoto';
 
 @Entity('authors')
 export class Authors implements IAuthor {
@@ -26,12 +27,12 @@ export class Authors implements IAuthor {
   @Column()
   email: string;
 
-  @OneToOne((type) => ProfilePhotos, (user_id) => Authors, {
+  @OneToOne((type) => ProfilePhoto, (user_id) => Authors, {
     nullable: true,
     onDelete: 'SET NULL',
   })
   @JoinColumn({ name: 'profile_photo' })
-  profilePhoto: ProfilePhotos;
+  profilePhoto: IProfilePhoto;
 
   @Exclude({ toPlainOnly: true })
   @Column()

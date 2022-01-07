@@ -18,9 +18,6 @@ import { ShowPostService } from './Posts/ShowPostService';
 import { CreateCoverService } from './Covers/CreateCoverService';
 import { ListCoversService } from './Covers/ListCoversService';
 
-import { CreateProfilePhotoService } from './ProfilePhotos/CreateProfilePhotoService';
-import { UpdateProfilePhotoService } from './ProfilePhotos/UpdateProfilePhotoService';
-
 export {
   AuthenticateUserService,
   CreateCategoryService,
@@ -36,8 +33,6 @@ export {
   RetrieveUserDataService,
   RefreshUserTokenService,
   LogoutUserService,
-  CreateProfilePhotoService,
-  UpdateProfilePhotoService,
   CountPostsService,
   UpdatePostsService,
 };
