@@ -1,6 +1,6 @@
 import { Posts } from "src/entities/Posts";
-import { RefreshToken } from "src/entities/RefreshToken";
 import { IProfilePhoto } from "./ProfilePhotos/IProfilePhoto";
+import { IRefreshToken } from "./Session/IRefreshToken";
 
 export interface IAuthor {
   id: string;
@@ -10,7 +10,7 @@ export interface IAuthor {
   password: string;
   admin: boolean;
   posts: Posts[];
-  refreshToken: RefreshToken;
+  refreshToken: IRefreshToken;
   createdAt: Date;
   updatedAt: Date;
 }

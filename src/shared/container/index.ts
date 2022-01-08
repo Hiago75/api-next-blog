@@ -8,6 +8,8 @@ import { IProfilePhotosRepository } from '@modules/authors/domain/repositories/I
 import { ProfilePhotosRepositories } from '@modules/authors/infra/typeorm/repositories/ProfilePhotosRepository';
 
 import '@modules/authors/providers';
+import { IRefreshTokenRepository } from '@modules/authors/domain/repositories/IRefreshTokenRepository';
+import { RefreshTokensRepository } from '@modules/authors/infra/typeorm/repositories/RefreshTokensRepository';
 
 
 container.registerSingleton<ITagsRepository>(
@@ -23,4 +25,9 @@ container.registerSingleton<IAuthorsRepository>(
 container.registerSingleton<IProfilePhotosRepository>(
   'ProfilePhotosRepository',
   ProfilePhotosRepositories
+)
+
+container.registerSingleton<IRefreshTokenRepository>(
+  'RefreshTokensRepository',
+  RefreshTokensRepository
 )

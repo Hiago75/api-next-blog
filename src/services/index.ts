@@ -1,8 +1,3 @@
-import { AuthenticateUserService } from './Auth/AuthenticateUserService';
-import { RetrieveUserDataService } from './Auth/RetrieveUserDataService';
-import { RefreshUserTokenService } from './Auth/RefreshUserTokenService';
-import { LogoutUserService } from './Auth/LogoutUserService';
-
 import { CreateCategoryService } from './Categories/CreateCategoryService';
 import { ListCategoriesService } from './Categories/ListCategoriesService';
 import { DeleteCategoryService } from './Categories/DeleteCategoryService';
@@ -19,7 +14,6 @@ import { CreateCoverService } from './Covers/CreateCoverService';
 import { ListCoversService } from './Covers/ListCoversService';
 
 export {
-  AuthenticateUserService,
   CreateCategoryService,
   CreateCoverService,
   CreatePostsService,
@@ -30,9 +24,6 @@ export {
   DeletePostService,
   ShowCategoryService,
   ShowPostService,
-  RetrieveUserDataService,
-  RefreshUserTokenService,
-  LogoutUserService,
   CountPostsService,
   UpdatePostsService,
 };

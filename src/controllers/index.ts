@@ -1,8 +1,3 @@
-import { AuthenticateUserController } from './Auth/AuthenticateUserController';
-import { RetrieveUserDataController } from './Auth/RetrieveUserDataController';
-import { RefreshUserTokenController } from './Auth/RefreshUserTokenController';
-import { LogoutUserController } from './Auth/LogoutUserController';
-
 import { CreateCategoryController } from './Categories/CreateCategoryController';
 import { ListCategoriesController } from './Categories/ListCategoriesController';
 import { ShowCategoryController } from './Categories/ShowCategoryController';
@@ -19,7 +14,6 @@ import { CreateCoversController } from './Covers/CreateCoversController';
 import { ListCoversController } from './Covers/ListCoversController';
 
 export {
-  AuthenticateUserController,
   CreateCategoryController,
   CreatePostsController,
   CreateCoversController,
@@ -30,9 +24,6 @@ export {
   DeletePostController,
   ShowCategoryController,
   ShowPostController,
-  RefreshUserTokenController,
-  RetrieveUserDataController,
-  LogoutUserController,
   CountPostsController,
   UpdatePostsController,
 };

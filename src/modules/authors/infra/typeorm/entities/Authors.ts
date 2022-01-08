@@ -12,9 +12,10 @@ import {
 } from 'typeorm';
 import { v4 as uuid } from 'uuid';
 import { Posts } from 'src/entities/Posts';
-import { RefreshToken } from 'src/entities/RefreshToken';
 import { ProfilePhoto } from '@modules/authors/infra/typeorm/entities/ProfilePhoto';
 import { IProfilePhoto } from '@modules/authors/domain/model/ProfilePhotos/IProfilePhoto';
+import { IRefreshToken } from '@modules/authors/domain/model/Session/IRefreshToken';
+import { RefreshToken } from './RefreshToken';
 
 @Entity('authors')
 export class Authors implements IAuthor {
@@ -50,7 +51,7 @@ export class Authors implements IAuthor {
     nullable: true,
     onDelete: 'SET NULL',
   })
-  refreshToken: RefreshToken;
+  refreshToken: IRefreshToken;
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;

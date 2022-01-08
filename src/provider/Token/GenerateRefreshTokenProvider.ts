@@ -1,10 +1,10 @@
+import { IAuthor } from '@modules/authors/domain/model/IAuthor';
 import dayjs from 'dayjs';
 import { getCustomRepository } from 'typeorm';
-import { Authors } from '../../entities/Authors';
 import { RefreshTokenRepositories } from '../../repositories/RefreshTokenRepositories';
 
 // Create a refresh token to user
-export async function GenerateRefreshTokenProvider(user: Authors) {
+export async function GenerateRefreshTokenProvider(user: IAuthor) {
   const refreshTokenRepositories = getCustomRepository(RefreshTokenRepositories);
 
   const expiresDate = dayjs().add(1, 'day').unix();

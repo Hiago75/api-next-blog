@@ -1,7 +1,7 @@
 import { sign } from 'jsonwebtoken';
-import { Authors } from '../../entities/Authors';
+import { IAuthor } from '@modules/authors/domain/model/IAuthor';
 
-export function GenerateTokenProvider(user: Authors) {
+export function GenerateTokenProvider(user: IAuthor) {
   const token = sign({}, process.env.TOKEN_SECRET as string, {
     subject: user.id,
     expiresIn: '5m',
