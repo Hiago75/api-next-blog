@@ -1,6 +1,8 @@
+import { inject, injectable } from 'tsyringe';
+import { IAuthorsRepository } from '@modules/authors/domain/repositories/IAuthorsRepository';
+import { IPostsRepository } from '../domain/repositories/IPostsRepository';
 import { getCustomRepository } from 'typeorm';
-import { AuthorsRepositories, CategoriesRepositories } from '../../repositories';
-import { PostsRepositories } from '../../repositories/PostsRepositories';
+import { CategoriesRepositories } from 'src/repositories';
 
 interface ICategoryCounter {
   [key: string]: number;
@@ -13,11 +15,17 @@ interface IUserCounter {
   };
 }
 
+@injectable()
 export class CountPostsService {
-  async execute() {
-    const postsRepositories = getCustomRepository(PostsRepositories);
+  constructor(
+    @inject('PostsRepository')
+    private postsRepository: IPostsRepository,
+    @inject('AuthorsRepository')
+    private authorsRepository: IAuthorsRepository,
+  ) { }
 
-    const numOfPosts = await postsRepositories.count({ relations: ['author'] });
+  async execute() {
+    const numOfPosts = await this.postsRepository.count({ relations: ['author'] });
     const authorsData: IUserCounter = await this.getAuthorData();
     const categoriesData: ICategoryCounter = await this.getCategoriesData();
 
@@ -30,16 +38,13 @@ export class CountPostsService {
 
   // Get each user name and number of posts
   private async getAuthorData() {
-    const postsRepositories = getCustomRepository(PostsRepositories);
-    const authorsRepositories = getCustomRepository(AuthorsRepositories);
-
-    const authors = await authorsRepositories.find();
+    const authors = await this.authorsRepository.findAll();
 
     const authorData: IUserCounter = {};
 
     // Get every user name and post amount, then create an object with that data and return
     for await (const author of authors) {
-      const authorPosts = await postsRepositories.count({
+      const authorPosts = await this.postsRepository.count({
         relations: ['author'],
         where: { author: { id: author.id } },
       });
@@ -56,10 +61,9 @@ export class CountPostsService {
 
   // Count the posts per category. Can receive an author id to search only this user posts
   private async getCategoriesData(authorId?: string) {
-    const categoriesRepositories = getCustomRepository(CategoriesRepositories);
-    const postsRepositories = getCustomRepository(PostsRepositories);
+    const categoriesRepository = getCustomRepository(CategoriesRepositories)
 
-    const categories = await categoriesRepositories.find();
+    const categories = await categoriesRepository.find();
 
     const categoriesData: { [key: string]: number } = {};
 
@@ -68,14 +72,14 @@ export class CountPostsService {
 
       // If user has been sent, search him(er) posts on all categories
       const categoryPosts = authorId
-        ? await postsRepositories.count({
-            relations: ['category', 'author'],
-            where: { category: { id: category.id }, author: { id: authorId } },
-          })
-        : await postsRepositories.count({
-            relations: ['category', 'author'],
-            where: { category: { id: category.id } },
-          });
+        ? await this.postsRepository.count({
+          relations: ['category', 'author'],
+          where: { category: { id: category.id }, author: { id: authorId } },
+        })
+        : await this.postsRepository.count({
+          relations: ['category', 'author'],
+          where: { category: { id: category.id } },
+        });
 
       categoriesData[name] = categoryPosts;
     }

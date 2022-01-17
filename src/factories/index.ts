@@ -6,14 +6,6 @@ import { DeleteCategoryFactory } from './Categories/DeleteCategoryFactory';
 import { CreateCoverFactory } from './Covers/CreateCoverFactory';
 import { ListCoversFactory } from './Covers/ListCoversFactory';
 
-import { CreatePostFactory } from './Posts/CreatePostFactory';
-import { ListPostsFactory } from './Posts/ListPostsFactory';
-import { CountPostsFactory } from './Posts/CountPostsFactory';
-
-import { ShowPostFactory } from './Posts/ShowPostFactory';
-import { DeletePostFactory } from './Posts/DeletePostFactory';
-import { UpdatePostsFactory } from './Posts/UpdatePostsFactory';
-
 export {
   CreateCategoryFactory,
   ListCategoriesFactory,
@@ -21,10 +13,4 @@ export {
   DeleteCategoryFactory,
   CreateCoverFactory,
   ListCoversFactory,
-  CreatePostFactory,
-  ListPostsFactory,
-  ShowPostFactory,
-  DeletePostFactory,
-  CountPostsFactory,
-  UpdatePostsFactory,
 };
